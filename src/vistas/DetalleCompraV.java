@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.vistas;
+package vistas;
 
 /**
  *
@@ -46,6 +46,7 @@ public class DetalleCompraV extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        background.setBackground(new java.awt.Color(153, 153, 153));
         background.setPreferredSize(new java.awt.Dimension(800, 600));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,7 +142,7 @@ public class DetalleCompraV extends javax.swing.JFrame {
             detalleCompraTable.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 700, 110));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 700, 110));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
