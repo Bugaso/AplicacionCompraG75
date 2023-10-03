@@ -1,6 +1,6 @@
 package accesoADatos;
 
-import java.sql.*;
+import java.sql.Connection;
 
 public class DetalleCompraData {
 	private Connection con = null;

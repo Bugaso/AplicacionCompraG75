@@ -3,7 +3,7 @@ package entidades;
 import java.time.LocalDate;
 
 public class Compra {
-    private int idCompra;
+	private int idCompra;
     private Proveedor proveedor;
     private LocalDate fecha;
     
