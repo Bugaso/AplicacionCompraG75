@@ -4,6 +4,8 @@
  */
 package sistema_de_compras;
 
+import com.vistas.DetalleCompraV;
+
 /**
  *
  * @author Bugaso
@@ -15,6 +17,8 @@ public class SISTEMA_DE_COMPRAS {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        DetalleCompraV vistaCompraD = new DetalleCompraV();
+        vistaCompraD.setVisible(true);
     }
     
 }

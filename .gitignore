@@ -3,4 +3,11 @@
 /test/
 
 #build.xml
+
 #manifest.mf
+
+/build/
+
+/build.xml
+
+/manifest.mf

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class DetalleCompraData {
     private DetalleCompra detalleCompra;
-
+    
     public DetalleCompraData(DetalleCompra detalleCompra) {
         this.detalleCompra = detalleCompra;
     }
