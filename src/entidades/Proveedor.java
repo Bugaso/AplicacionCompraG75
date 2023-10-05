@@ -2,14 +2,15 @@ package entidades;
 
 public class Proveedor {
     private int idProveedor;
+    private int cuit;
     private String razonSocial;
     private String domicilio;
     private String telefono;
-    private int cuit;
+    
     
     public Proveedor() {
     }
-    /*
+    
     public Proveedor(int idProveedor,int cuit ,String razonSocial, String domicilio, String telefono) {
         this.idProveedor = idProveedor;
         this.cuit = cuit;
@@ -17,7 +18,7 @@ public class Proveedor {
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
-    */
+    
     public Proveedor(int cuit,String razonSocial, String domicilio, String telefono) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
@@ -28,6 +29,10 @@ public class Proveedor {
 	public int getIdProveedor() {return this.idProveedor;}
 
 	public void setIdProveedor(int idProveedor) {this.idProveedor = idProveedor;}
+	
+	public int getCuit() {return this.cuit;}
+
+    public void setCuit(int cuit) {this.cuit = cuit;}
 
 	public String getRazonSocial() {return this.razonSocial;}
 
@@ -41,18 +46,8 @@ public class Proveedor {
 
 	public void setTelefono(String telefono) {this.telefono = telefono;}
 
-    public int getCuit() {
-        return cuit;
-    }
-
-    public void setCuit(int cuit) {
-        this.cuit = cuit;
-    }
-
     @Override
     public String toString() {
         return "Proveedor{" + "idProveedor=" + idProveedor + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono + ", cuit=" + cuit + '}';
     }
-
-	
 }
