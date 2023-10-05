@@ -35,7 +35,9 @@ public class ProductoData {
 			producto.setIdProducto(rs.getInt(1));
 			JOptionPane.showMessageDialog(null, "el producto ha sido Guardado exitosamente");// Muestra un mensaje de éxito o error en una ventana emergente utilizando `JOptionPane`
 		}
-			
+		
+		ps.close();
+		
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto");
 		}
