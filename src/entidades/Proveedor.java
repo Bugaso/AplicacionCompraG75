@@ -2,6 +2,7 @@ package entidades;
 
 public class Proveedor {
 	private int idProveedor;
+	private int cuit;
     private String razonSocial;
     private String domicilio;
     private String telefono;
@@ -10,15 +11,17 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int idProveedor, String razonSocial, String domicilio, String telefono) {
+    public Proveedor(int idProveedor, int cuit, String razonSocial, String domicilio, String telefono) {
         this.idProveedor = idProveedor;
+        this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
     
-    public Proveedor(String razonSocial, String domicilio, String telefono) {
-        this.razonSocial = razonSocial;
+    public Proveedor(int cuit, String razonSocial, String domicilio, String telefono) {
+        this.cuit = cuit;
+    	this.razonSocial = razonSocial;
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
@@ -26,6 +29,10 @@ public class Proveedor {
 	public int getIdProveedor() {return this.idProveedor;}
 
 	public void setIdProveedor(int idProveedor) {this.idProveedor = idProveedor;}
+	
+	public int getCuit() {return this.getCuit();}
+	
+	public void setCuit(int cuit) {this.cuit = cuit;}
 
 	public String getRazonSocial() {return this.razonSocial;}
 
@@ -41,7 +48,7 @@ public class Proveedor {
 
 	@Override
 	public String toString() {
-		return "Proveedor [idProveedor=" + idProveedor + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio
-				+ ", telefono=" + telefono + "]";
+		return "Proveedor [idProveedor=" + idProveedor + ", cuit=" + cuit + ", razonSocial=" + razonSocial
+				+ ", domicilio=" + domicilio + ", telefono=" + telefono + "]";
 	}
 }
