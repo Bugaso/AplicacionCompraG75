@@ -1,9 +1,15 @@
 /nbproject/
-\build\
-/test/
+
 /build/
-#build.xml
-#manifest.mf
+
+/test/
+
+build.xml
+/DB - SISTEMA DE COMPRAS
+manifest.mf
+
+nb-configuration.xml
+nbactions.xml
 /bin/
 /dist/
 
