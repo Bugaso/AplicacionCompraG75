@@ -1,8 +1,11 @@
 /nbproject/
-
+\build\
 /test/
-
+/build/
 #build.xml
 #manifest.mf
 /bin/
 /dist/
+
+
+/src/Main
