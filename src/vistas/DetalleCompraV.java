@@ -4,9 +4,6 @@
  */
 package vistas;
 
-import accesoADatos.ProveedorData;
-import entidades.Proveedor;
-
 /**
  *
  * @author Bugaso
@@ -18,15 +15,6 @@ public class DetalleCompraV extends javax.swing.JFrame {
      */
     public DetalleCompraV() {
         initComponents();
-       MostrarProovedor();
-    }
-    public void MostrarProovedor(){
-        ProveedorData provD = new ProveedorData();
-        Proveedor prov = provD.buscarProveedor(1);
-        
-        MostrarNoRLabel.setText(prov.getRazonSocial());
-        mostrarDLabel.setText(prov.getDomicilio());
-        mostrarDLabel.setText(prov.getTelefono());
     }
 
     /**
@@ -53,18 +41,12 @@ public class DetalleCompraV extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         detalleCompraTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(1024, 729));
-        setName("DetalleCV"); // NOI18N
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        background.setBackground(new java.awt.Color(153, 153, 153));
-        background.setMinimumSize(new java.awt.Dimension(800, 600));
-        background.setPreferredSize(new java.awt.Dimension(1024, 729));
+        background.setPreferredSize(new java.awt.Dimension(800, 600));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Datos_Proveedor.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -159,9 +141,9 @@ public class DetalleCompraV extends javax.swing.JFrame {
             detalleCompraTable.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 700, 110));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 700, 110));
 
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,8 +177,11 @@ public class DetalleCompraV extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-       
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new DetalleCompraV().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
