@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -18,7 +22,7 @@ public class Menú extends javax.swing.JFrame {
     public Menú() {
         initComponents();
     }
-
+    private BevelBorder bord = new BevelBorder(BevelBorder.RAISED, null, null, null, Color.LIGHT_GRAY);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,34 +32,70 @@ public class Menú extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        primalPGround = new javax.swing.JPanel();
         MenusPanel = new javax.swing.JPanel();
+        regisProdPane = new javax.swing.JPanel();
+        regisProdLabel = new javax.swing.JLabel();
         DetalleCompraPanel = new javax.swing.JPanel();
         DetalleCompraLabel = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(928, 768));
+        setPreferredSize(new java.awt.Dimension(928, 768));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        primalPGround.setBackground(new java.awt.Color(105, 70, 137));
+        primalPGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        MenusPanel.setBackground(new java.awt.Color(162, 70, 137));
+        MenusPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.lightGray));
 
         javax.swing.GroupLayout MenusPanelLayout = new javax.swing.GroupLayout(MenusPanel);
         MenusPanel.setLayout(MenusPanelLayout);
         MenusPanelLayout.setHorizontalGroup(
             MenusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 878, Short.MAX_VALUE)
+            .addGap(0, 936, Short.MAX_VALUE)
         );
         MenusPanelLayout.setVerticalGroup(
             MenusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(MenusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 0, -1, -1));
+        primalPGround.add(MenusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, -1));
 
-        DetalleCompraPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        regisProdPane.setBackground(new java.awt.Color(162, 70, 137));
 
+        regisProdLabel.setBackground(new java.awt.Color(162, 70, 137));
+        regisProdLabel.setForeground(new java.awt.Color(204, 204, 204));
+        regisProdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regisProdLabel.setText("Registrar Producto");
+        regisProdLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regisProdLabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout regisProdPaneLayout = new javax.swing.GroupLayout(regisProdPane);
+        regisProdPane.setLayout(regisProdPaneLayout);
+        regisProdPaneLayout.setHorizontalGroup(
+            regisProdPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(regisProdPaneLayout.createSequentialGroup()
+                .addComponent(regisProdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        regisProdPaneLayout.setVerticalGroup(
+            regisProdPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(regisProdLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        primalPGround.add(regisProdPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 140, 50));
+
+        DetalleCompraPanel.setBackground(new java.awt.Color(162, 70, 137));
+
+        DetalleCompraLabel.setBackground(new java.awt.Color(162, 70, 137));
+        DetalleCompraLabel.setForeground(new java.awt.Color(204, 204, 204));
         DetalleCompraLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         DetalleCompraLabel.setText("Detalle de la Compra");
         DetalleCompraLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,40 +108,64 @@ public class Menú extends javax.swing.JFrame {
         DetalleCompraPanel.setLayout(DetalleCompraPanelLayout);
         DetalleCompraPanelLayout.setHorizontalGroup(
             DetalleCompraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetalleCompraPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         DetalleCompraPanelLayout.setVerticalGroup(
             DetalleCompraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(DetalleCompraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        primalPGround.add(DetalleCompraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 140, 50));
+
+        escritorio.setPreferredSize(new java.awt.Dimension(800, 730));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGap(0, 810, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
         );
 
-        jPanel1.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1024, 729));
+        primalPGround.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 810, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 770));
+        getContentPane().add(primalPGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void DetalleCompraLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetalleCompraLabelMouseClicked
         DetalleCompraV detaC = new DetalleCompraV();
-        detaC.setVisible(true);
-        detaC.setLocationRelativeTo(this);
-        escritorio.add(detaC);
-       
+        detaC.setSize(800, 730);
+        
+        DetalleCompraPanel.setBorder(bord);
+        MenusPanel.setBorder(null);
+        regisProdPane.setBorder(null);
+        escritorio.removeAll();
+        escritorio.setLocation(0, 0);
+        escritorio.add(detaC, BorderLayout.CENTER);
+        escritorio.revalidate();
+        escritorio.repaint();
     }//GEN-LAST:event_DetalleCompraLabelMouseClicked
+
+    private void regisProdLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProdLabelMouseClicked
+        // TODO add your handling code here:
+        RegistrarProducto regProd = new RegistrarProducto();
+        regProd.setSize(800, 730);
+        regisProdPane.setBorder(bord);
+        MenusPanel.setBorder(null);
+        DetalleCompraPanel.setBorder(null);
+        escritorio.removeAll();
+        escritorio.setLocation(0, 0);
+        escritorio.add(regProd, BorderLayout.CENTER);
+        escritorio.revalidate();
+        escritorio.repaint();
+    }//GEN-LAST:event_regisProdLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -143,6 +207,8 @@ public class Menú extends javax.swing.JFrame {
     private javax.swing.JPanel DetalleCompraPanel;
     private javax.swing.JPanel MenusPanel;
     private javax.swing.JPanel escritorio;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel primalPGround;
+    private javax.swing.JLabel regisProdLabel;
+    private javax.swing.JPanel regisProdPane;
     // End of variables declaration//GEN-END:variables
 }

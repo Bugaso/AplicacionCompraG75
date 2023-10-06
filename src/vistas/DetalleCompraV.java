@@ -4,19 +4,30 @@
  */
 package vistas;
 
+import accesoADatos.ProveedorData;
+import entidades.Proveedor;
+
 /**
  *
  * @author Bugaso
  */
-public class DetalleCompraV extends javax.swing.JFrame {
+public class DetalleCompraV extends javax.swing.JPanel {
 
     /**
      * Creates new form DetalleCompra
      */
     public DetalleCompraV() {
         initComponents();
+        MostrarProveedor();
     }
-
+    public void MostrarProveedor(){
+        ProveedorData provD = new ProveedorData();
+        Proveedor prov = provD.buscarProveedor(1);
+        MostrarNoRLabel.setText(prov.getRazonSocial());
+        mostrarDLabel.setText(prov.getDomicilio());
+        mostarTelLabel.setText(prov.getTelefono());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,19 +52,22 @@ public class DetalleCompraV extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         detalleCompraTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(800, 730));
+        setPreferredSize(new java.awt.Dimension(800, 730));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        background.setPreferredSize(new java.awt.Dimension(800, 600));
+        background.setBackground(new java.awt.Color(153, 153, 153));
+        background.setMinimumSize(new java.awt.Dimension(800, 730));
+        background.setPreferredSize(new java.awt.Dimension(800, 730));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Datos_Proveedor.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Datos_Proveedor.setForeground(new java.awt.Color(102, 102, 102));
         Datos_Proveedor.setText("Datos de Proveedor");
         background.add(Datos_Proveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
         NombreRazonLabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        NombreRazonLabel.setForeground(new java.awt.Color(102, 102, 102));
         NombreRazonLabel.setText("Nombre o razón social:");
         background.add(NombreRazonLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 80, 180, -1));
 
@@ -65,6 +79,7 @@ public class DetalleCompraV extends javax.swing.JFrame {
         background.add(MostrarNoRLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 168, -1));
 
         direccionLabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        direccionLabel.setForeground(new java.awt.Color(102, 102, 102));
         direccionLabel.setText("Direccion:");
         background.add(direccionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 80, 20));
 
@@ -76,6 +91,7 @@ public class DetalleCompraV extends javax.swing.JFrame {
         background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 160, 10));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Telefono:");
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
@@ -143,9 +159,7 @@ public class DetalleCompraV extends javax.swing.JFrame {
 
         background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 700, 110));
 
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
-
-        pack();
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     /**

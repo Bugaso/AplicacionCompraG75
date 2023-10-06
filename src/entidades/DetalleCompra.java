@@ -1,7 +1,7 @@
 package entidades;
 
 public class DetalleCompra {
-	private int idDetalle;
+    private int idDetalle;
     private int cantidad;
     private double precioCosto;
     private Compra compra;
