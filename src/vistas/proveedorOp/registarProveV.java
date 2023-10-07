@@ -341,16 +341,29 @@ public class registarProveV extends javax.swing.JPanel {
     private void guardarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarlabelMouseClicked
         try{
             Integer.parseInt(cuittext.getText());
-            
+            tooltipcuit.setVisible(false);
         }catch(NumberFormatException e){
             tooltipcuit.setVisible(true);
             cuittext.setForeground(Color.RED);
         }try{
             Integer.parseInt(telefonotext.getText());
+            tooltiptelefono.setVisible(false);
         }catch(NumberFormatException e){
             tooltiptelefono.setVisible(true);
             telefonotext.setForeground(Color.red);
         }
+        
+       if(razonsocial.getForeground().equals(Color.LIGHT_GRAY)){
+           tooltipnombre.setVisible(true);
+       }else{
+           tooltipnombre.setVisible(false);
+       }
+       if(domiciliotext.getForeground().equals(Color.LIGHT_GRAY)){
+           tooltipdomicilio.setVisible(true);
+       }else{
+           tooltipdomicilio.setVisible(false);
+       }
+       
     }//GEN-LAST:event_guardarlabelMouseClicked
 
 
