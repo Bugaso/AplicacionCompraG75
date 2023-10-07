@@ -8,12 +8,12 @@ package vistas;
  *
  * @author Bugaso
  */
-public class RegistrarProducto extends javax.swing.JPanel {
+public class ProductoV extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistrarProducto
      */
-    public RegistrarProducto() {
+    public ProductoV() {
         initComponents();
     }
 
