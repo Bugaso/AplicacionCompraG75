@@ -4,6 +4,9 @@
  */
 package vistas;
 
+import java.awt.BorderLayout;
+import vistas.proveedorOp.registarProveV;
+
 /**
  *
  * @author Bugaso
@@ -36,6 +39,7 @@ public class ProveedorV extends javax.swing.JPanel {
         buscarProvePane = new javax.swing.JPanel();
         regProvLab = new javax.swing.JLabel();
         elimProvePane1 = new javax.swing.JPanel();
+        escritorioProve = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -75,6 +79,11 @@ public class ProveedorV extends javax.swing.JPanel {
         regisProveLab.setForeground(new java.awt.Color(255, 255, 255));
         regisProveLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         regisProveLab.setText("Registar Proveedor");
+        regisProveLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regisProveLabMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout regisProvePaneLayout = new javax.swing.GroupLayout(regisProvePane);
         regisProvePane.setLayout(regisProvePaneLayout);
@@ -148,9 +157,46 @@ public class ProveedorV extends javax.swing.JPanel {
 
         add(elimProvePane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
 
+        escritorioProve.setBackground(new java.awt.Color(255, 255, 255));
+        escritorioProve.setMaximumSize(new java.awt.Dimension(1024, 768));
+        escritorioProve.setMinimumSize(new java.awt.Dimension(790, 680));
+
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
-        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
+
+        javax.swing.GroupLayout escritorioProveLayout = new javax.swing.GroupLayout(escritorioProve);
+        escritorioProve.setLayout(escritorioProveLayout);
+        escritorioProveLayout.setHorizontalGroup(
+            escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 790, Short.MAX_VALUE)
+            .addGroup(escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(escritorioProveLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logolabel)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        escritorioProveLayout.setVerticalGroup(
+            escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(escritorioProveLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logolabel)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        add(escritorioProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void regisProveLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProveLabMouseClicked
+        registarProveV regisV = new registarProveV();
+        regisV.setVisible(true);
+        regisV.setSize(790, 680);
+        escritorioProve.removeAll();
+        escritorioProve.setLocation(0, 0);
+        escritorioProve.add(regisV,BorderLayout.CENTER);
+        escritorioProve.revalidate();
+        escritorioProve.repaint();
+    }//GEN-LAST:event_regisProveLabMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,6 +204,7 @@ public class ProveedorV extends javax.swing.JPanel {
     private javax.swing.JLabel elimProveLab;
     private javax.swing.JPanel elimProvePane;
     private javax.swing.JPanel elimProvePane1;
+    private javax.swing.JPanel escritorioProve;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel menuProvPane;
     private javax.swing.JLabel modProveLabe;

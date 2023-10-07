@@ -54,7 +54,6 @@ public class Menú extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(928, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(928, 768));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -243,7 +242,6 @@ public class Menú extends javax.swing.JFrame {
         );
 
         primalPGround.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, 720));
-        escritorio.getAccessibleContext().setAccessibleParent(null);
 
         getContentPane().add(primalPGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 770));
 
