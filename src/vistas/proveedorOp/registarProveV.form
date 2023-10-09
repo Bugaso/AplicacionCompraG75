@@ -368,7 +368,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/pregunta.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Ingrese solamente numeros en el cuit"/>
+        <Property name="toolTipText" type="java.lang.String" value="Porfabor ingrese correctamente los datos"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -381,7 +381,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/pregunta.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="El campo debe contener la informacion correcta"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese informacion a este campo!"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -394,7 +394,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/pregunta.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="El campo debe contener la informacion correcta"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese informacion a este campo!"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -407,7 +407,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/pregunta.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Ingrese solamente numeros en el telefono"/>
+        <Property name="toolTipText" type="java.lang.String" value="Porfabor ingrese correctamente los datos"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

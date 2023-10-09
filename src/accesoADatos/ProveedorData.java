@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import entidades.Proveedor;
 
 public class ProveedorData {
-	private Connection con = null;
+	private Connection con;
 	
 	
 	public ProveedorData() {
@@ -18,19 +18,19 @@ public class ProveedorData {
 		try {
 			PreparedStatement ps = this.con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
-            ps.setInt(1, proveedor.getCuit());
-			ps.setString(2, proveedor.getRazonSocial());
-            ps.setString(3, proveedor.getDomicilio());
-            ps.setString(4, proveedor.getTelefono());
-			ps.executeUpdate();
+                        ps.setInt(1, proveedor.getCuit());
+                        ps.setString(2, proveedor.getRazonSocial());
+                        ps.setString(3, proveedor.getDomicilio());
+                        ps.setString(4, proveedor.getTelefono());
+                        ps.executeUpdate();
 
-			ResultSet rs = ps.getGeneratedKeys();
+                        ResultSet rs = ps.getGeneratedKeys();
 
 			if (rs.next()) {
 				proveedor.setIdProveedor(rs.getInt(1));
 				JOptionPane.showMessageDialog(null, "Proveedor Guardado Exitosamente");
 			}
-			
+			ps.close();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedores");
 		}
@@ -66,9 +66,9 @@ public class ProveedorData {
 		return proveedor;
 	}
 
-	public Proveedor buscarProveedorPorcuil(int cuit) {
+	public Proveedor buscarProveedorPorcuit(int cuit) {
 		Proveedor proveedor = null;
-		String sql = "SELECT idProveedor, razonsocial, domicilio, telefono FROM proveedor " + "WHERE cuil = ?";
+		String sql = "SELECT idProveedor, razonsocial, domicilio, telefono FROM proveedor " + "WHERE cuit = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -78,11 +78,11 @@ public class ProveedorData {
 
 			if (rs.next()) {
 				proveedor = new Proveedor();
-				proveedor.setIdProveedor(rs.getInt("idProveedor"));
-                proveedor.setCuit(cuit);
-                 proveedor.setRazonSocial(rs.getString("razonsocial"));
-                proveedor.setDomicilio(rs.getString("domicilio"));
-                  proveedor.setTelefono(rs.getString("telefono"));
+                                proveedor.setIdProveedor(rs.getInt("idProveedor"));
+                                proveedor.setCuit(cuit);
+                                proveedor.setRazonSocial(rs.getString("razonsocial"));
+                                proveedor.setDomicilio(rs.getString("domicilio"));
+                                proveedor.setTelefono(rs.getString("telefono"));
 			} /*else {
 				JOptionPane.showMessageDialog(null, "No existe el proveedor con el CUIL = " + cuil);
 			}*/

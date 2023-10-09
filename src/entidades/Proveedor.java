@@ -1,8 +1,8 @@
 package entidades;
 
 public class Proveedor {
-	private int idProveedor;
-	private int cuit;
+    private int idProveedor;
+    private int cuit;
     private String razonSocial;
     private String domicilio;
     private String telefono;
@@ -30,7 +30,7 @@ public class Proveedor {
 
 	public void setIdProveedor(int idProveedor) {this.idProveedor = idProveedor;}
 	
-	public int getCuit() {return this.getCuit();}
+	public int getCuit() {return this.cuit;}
 	
 	public void setCuit(int cuit) {this.cuit = cuit;}
 

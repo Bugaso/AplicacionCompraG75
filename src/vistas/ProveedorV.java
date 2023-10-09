@@ -5,6 +5,7 @@
 package vistas;
 
 import java.awt.BorderLayout;
+import vistas.proveedorOp.modificarProveV;
 import vistas.proveedorOp.registarProveV;
 
 /**
@@ -105,6 +106,11 @@ public class ProveedorV extends javax.swing.JPanel {
         modProveLabe.setForeground(new java.awt.Color(255, 255, 255));
         modProveLabe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         modProveLabe.setText("Modificar Proveedor");
+        modProveLabe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modProveLabeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout modProvePaneLayout = new javax.swing.GroupLayout(modProvePane);
         modProvePane.setLayout(modProvePaneLayout);
@@ -197,6 +203,17 @@ public class ProveedorV extends javax.swing.JPanel {
         escritorioProve.revalidate();
         escritorioProve.repaint();
     }//GEN-LAST:event_regisProveLabMouseClicked
+
+    private void modProveLabeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProveLabeMouseClicked
+        modificarProveV modV = new modificarProveV();
+        modV.setVisible(true);
+        modV.setSize(790, 680);
+        escritorioProve.removeAll();
+        escritorioProve.setLocation(0,0);
+        escritorioProve.add(modV, BorderLayout.CENTER);
+        escritorioProve.revalidate();
+        escritorioProve.repaint();
+    }//GEN-LAST:event_modProveLabeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
