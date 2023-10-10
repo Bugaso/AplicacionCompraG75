@@ -41,17 +41,14 @@ public class modificarProveV extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Modificar Proveedores");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
 
         buscuitlabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        buscuitlabel.setForeground(new java.awt.Color(0, 0, 0));
         buscuitlabel.setText("Ingrese el cuit:");
         add(buscuitlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
-        buscarcuit.setBackground(new java.awt.Color(255, 255, 255));
         buscarcuit.setForeground(java.awt.Color.lightGray);
         buscarcuit.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         buscarcuit.setText("Cuit");
@@ -60,12 +57,11 @@ public class modificarProveV extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 230, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Razon social/Nombre:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("jTextField1");
+        jTextField1.setForeground(java.awt.Color.lightGray);
+        jTextField1.setText("Nombre");
         jTextField1.setBorder(null);
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 230, 20));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 172, 230, 10));
