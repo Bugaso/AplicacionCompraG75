@@ -77,22 +77,24 @@ public class ProductoData {
 		return producto;
 	}
         
-    public void ModificarProducto(Producto produc){
-    	String sql ="UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=?,estado=? WHERE idProducto=?";
+    public void modificarProducto(Producto producto){
+    	String sql ="UPDATE producto SET nombreProducto = ?, descripcion = ?, precioActual = ?, stock = ?,estado = ? "
+    			+ "WHERE idProducto = ?";
+    	
         try {
         	PreparedStatement ps = con.prepareStatement(sql);//prepara la sentencia sql para enviar a la base de datos
         	
-            ps.setString(1,produc.getNombreProducto());//trae el nombre del producto
-            ps.setString(2, produc.getDescripcion());//trae la descripcion
-            ps.setDouble(3,produc.getPrecioActual());//trae el precio actual
-            ps.setInt(4,produc.getStock());
-            ps.setBoolean(5, produc.isEstado());
-            ps.setInt(6,produc.getIdProducto());
+            ps.setString(1,producto.getNombreProducto());//trae el nombre del producto
+            ps.setString(2, producto.getDescripcion());//trae la descripcion
+            ps.setDouble(3,producto.getPrecioActual());//trae el precio actual
+            ps.setInt(4,producto.getStock());
+            ps.setBoolean(5, producto.isEstado());
+            ps.setInt(6,producto.getIdProducto());
                 
-            int exito=ps.executeUpdate();//envia el PreparedStatement a la base de datos y te regresa la cantidad de filas que se modificaron
+            int exito = ps.executeUpdate();//envia el PreparedStatement a la base de datos y te regresa la cantidad de filas que se modificaron
             
-            if (exito==1){
-            	JOptionPane.showMessageDialog(null, "Producto modicado exitosamente");
+            if (exito == 1){
+            	JOptionPane.showMessageDialog(null, "Producto modificado exitosamente");
             }
             
             ps.close();
@@ -103,25 +105,33 @@ public class ProductoData {
     }
     
     public ArrayList<Producto> ProductosDebajoDelStockMinimo(){
-    	String sql = "SELECT * FROM producto  WHERE stock<=?";
-        ArrayList<Producto> producto= new ArrayList<Producto>();
+    	ArrayList<Producto> productos = new ArrayList<Producto>();
+    	String sql = "SELECT * FROM producto  WHERE stock <= ? AND estado = 1";
              
         try {
         	PreparedStatement ps = con.prepareStatement(sql);
         	
             ps.setInt(1,30);
+            
             ResultSet rs= ps.executeQuery();//. en este caso te devuelve el productos si el stock esta debajo de 30
             
             while(rs.next()){
-            	
+            	Producto producto = new Producto();
+            	producto.setIdProducto(rs.getInt("idProducto"));
+            	producto.setNombreProducto(rs.getString("nombreProducto"));
+            	producto.setDescripcion(rs.getString("descripcion"));
+            	producto.setPrecioActual(rs.getDouble("precioActual"));
+            	producto.setStock(rs.getInt("stock"));
+            	producto.setEstado(rs.getBoolean("estado"));
+            	productos.add(producto);
             }
                     
             ps.close();
             
-        	} catch (Exception e) {
-        	  
+        	} catch (SQLException e) {
+        	  JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto");
         	}
         
-        return producto;
+        return productos;
     }     
 }
