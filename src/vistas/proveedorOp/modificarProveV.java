@@ -37,6 +37,7 @@ public class modificarProveV extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
+        setPreferredSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
