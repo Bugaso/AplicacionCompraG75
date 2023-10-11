@@ -95,6 +95,7 @@ public class registarProveV extends javax.swing.JPanel {
         tooltipnombre = new javax.swing.JLabel();
         tooltipdomicilio = new javax.swing.JLabel();
         tooltiptelefono = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         razonsocial1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         razonsocial1.setText("razon social");
@@ -280,6 +281,10 @@ public class registarProveV extends javax.swing.JPanel {
         tooltiptelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pregunta.png"))); // NOI18N
         tooltiptelefono.setToolTipText("Porfabor ingrese correctamente los datos");
         add(tooltiptelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        jLabel2.setText("@2023 TeamG75");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void borrarlabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrarlabelMouseEntered
@@ -428,6 +433,7 @@ public class registarProveV extends javax.swing.JPanel {
     private javax.swing.JPanel guardarPane;
     private javax.swing.JLabel guardarlabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
