@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package sistemas_de_compra;
-
+import vistas.Menú;
 /**
  *
  * @author User
@@ -15,7 +15,8 @@ public class Sistemas_de_compra {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+       Menú menu = new Menú();
+       menu.setVisible(true);
     }
     
 }

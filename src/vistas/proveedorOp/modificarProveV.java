@@ -4,9 +4,6 @@
  */
 package vistas.proveedorOp;
 
-import java.awt.Color;
-import javax.swing.text.AbstractDocument;
-
 /**
  *
  * @author Bugaso
@@ -18,12 +15,6 @@ public class modificarProveV extends javax.swing.JPanel {
      */
     public modificarProveV() {
         initComponents();
-        Estilo();
-    }
-    
-    public void Estilo(){
-        ((AbstractDocument) buscarcuit.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
-        ((AbstractDocument) telefonotext.getDocument()).setDocumentFilter(new DocumentSizeFilter(15));
     }
 
     /**
@@ -35,23 +26,13 @@ public class modificarProveV extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        titulolabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         buscuitlabel = new javax.swing.JLabel();
         buscarcuit = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        nombrelabel = new javax.swing.JLabel();
-        nombretext = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        domiciliolabel = new javax.swing.JLabel();
-        domiciliotext = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        telefonolabel = new javax.swing.JLabel();
-        telefonotext = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        Logolabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        buscarpane = new javax.swing.JPanel();
-        buscarlabelbtn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
@@ -59,152 +40,45 @@ public class modificarProveV extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        titulolabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        titulolabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulolabel.setText("Modificar Proveedores");
-        add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Modificar Proveedores");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
 
         buscuitlabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        buscuitlabel.setForeground(new java.awt.Color(0, 0, 0));
         buscuitlabel.setText("Ingrese el cuit:");
         add(buscuitlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
         buscarcuit.setBackground(new java.awt.Color(255, 255, 255));
         buscarcuit.setForeground(java.awt.Color.lightGray);
         buscarcuit.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        buscarcuit.setText("Ingrese el cuit a buscar");
+        buscarcuit.setText("Cuit");
         buscarcuit.setBorder(null);
-        buscarcuit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                buscarcuitFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                buscarcuitFocusLost(evt);
-            }
-        });
-        add(buscarcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 160, 20));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 160, 10));
+        add(buscarcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 230, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 230, -1));
 
-        nombrelabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        nombrelabel.setText("Razon social/Nombre:");
-        add(nombrelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Razon social/Nombre:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        nombretext.setEditable(false);
-        nombretext.setBackground(new java.awt.Color(255, 255, 255));
-        nombretext.setForeground(java.awt.Color.lightGray);
-        nombretext.setBorder(null);
-        add(nombretext, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 240, 20));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 172, 240, 10));
-
-        domiciliolabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        domiciliolabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        domiciliolabel.setText("Domicilio: ");
-        add(domiciliolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 170, -1));
-
-        domiciliotext.setEditable(false);
-        domiciliotext.setBackground(new java.awt.Color(255, 255, 255));
-        domiciliotext.setForeground(java.awt.Color.lightGray);
-        domiciliotext.setBorder(null);
-        add(domiciliotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 240, 20));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 240, 10));
-
-        telefonolabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        telefonolabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        telefonolabel.setText("Telefono: ");
-        add(telefonolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 170, -1));
-
-        telefonotext.setEditable(false);
-        telefonotext.setBackground(new java.awt.Color(255, 255, 255));
-        telefonotext.setForeground(java.awt.Color.lightGray);
-        telefonotext.setBorder(null);
-        add(telefonotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 240, 20));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 240, 10));
-
-        Logolabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
-        add(Logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-        jLabel1.setText("@2023 TeamG75");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 100, -1));
-
-        buscarpane.setBackground(new java.awt.Color(153, 153, 153));
-
-        buscarlabelbtn.setBackground(new java.awt.Color(0, 0, 0));
-        buscarlabelbtn.setForeground(new java.awt.Color(0, 0, 0));
-        buscarlabelbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buscarlabelbtn.setText("buscar");
-        buscarlabelbtn.setMaximumSize(new java.awt.Dimension(48, 26));
-        buscarlabelbtn.setMinimumSize(new java.awt.Dimension(48, 26));
-        buscarlabelbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarlabelbtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarlabelbtnMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout buscarpaneLayout = new javax.swing.GroupLayout(buscarpane);
-        buscarpane.setLayout(buscarpaneLayout);
-        buscarpaneLayout.setHorizontalGroup(
-            buscarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarlabelbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-        );
-        buscarpaneLayout.setVerticalGroup(
-            buscarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarlabelbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        add(buscarpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 70, 30));
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("jTextField1");
+        jTextField1.setBorder(null);
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 230, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 172, 230, 10));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buscarcuitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarcuitFocusGained
-        if(buscarcuit.getText().equals("Ingrese el cuit a buscar")){
-            buscarcuit.setText("");
-            buscarcuit.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_buscarcuitFocusGained
-
-    private void buscarcuitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarcuitFocusLost
-        if(buscarcuit.getText().equals("")){
-
-            buscarcuit.setText("Ingrese el cuit a buscar");
-            buscarcuit.setForeground(Color.LIGHT_GRAY);
-            
-        }
-    }//GEN-LAST:event_buscarcuitFocusLost
-
-    private void buscarlabelbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarlabelbtnMouseEntered
-        Color back = new Color(51,51,51);
-        buscarpane.setBackground(back);
-        buscarlabelbtn.setForeground(Color.white);
-    }//GEN-LAST:event_buscarlabelbtnMouseEntered
-
-    private void buscarlabelbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarlabelbtnMouseExited
-        Color back = new Color(153,153,153);
-       
-        buscarpane.setBackground(back);
-        buscarlabelbtn.setForeground(Color.BLACK);
-    }//GEN-LAST:event_buscarlabelbtnMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logolabel;
     private javax.swing.JTextField buscarcuit;
-    private javax.swing.JLabel buscarlabelbtn;
-    private javax.swing.JPanel buscarpane;
     private javax.swing.JLabel buscuitlabel;
-    private javax.swing.JLabel domiciliolabel;
-    private javax.swing.JTextField domiciliotext;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JLabel nombrelabel;
-    private javax.swing.JTextField nombretext;
-    private javax.swing.JLabel telefonolabel;
-    private javax.swing.JTextField telefonotext;
-    private javax.swing.JLabel titulolabel;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
