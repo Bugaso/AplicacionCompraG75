@@ -33,12 +33,14 @@ public class registarProveV extends javax.swing.JPanel {
         ((AbstractDocument) domiciliotext.getDocument()).setDocumentFilter(new DocumentSizeFilter(36));
         tooltipdomicilio.setVisible(false);
         
-        cuittext.setText("Ingrese el cuit");
+        
+        cuittext.setText("Añadir cuit");
         cuittext.setForeground(Color.LIGHT_GRAY);
         ((AbstractDocument) cuittext.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
         tooltipcuit.setVisible(false);
         
-        telefonotext.setText("Ingrese el telefono");
+        
+        telefonotext.setText("Añadir telefono");
         telefonotext.setForeground(Color.LIGHT_GRAY);
         ((AbstractDocument) telefonotext.getDocument()).setDocumentFilter(new DocumentSizeFilter(15));
         tooltiptelefono.setVisible(false);
@@ -335,7 +337,7 @@ public class registarProveV extends javax.swing.JPanel {
     }//GEN-LAST:event_domiciliotextFocusLost
 
     private void telefonotextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonotextFocusGained
-            if(telefonotext.getText().equals("Ingrese el telefono")){
+            if(telefonotext.getText().equals("Añadir telefono")){
                 telefonotext.setText("");
                 telefonotext.setForeground(Color.BLACK);
             }
@@ -343,13 +345,13 @@ public class registarProveV extends javax.swing.JPanel {
 
     private void telefonotextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonotextFocusLost
             if(telefonotext.getText().equals("")){
-                telefonotext.setText("Ingrese el telefono");
+                telefonotext.setText("Añadir telefono");
                 telefonotext.setForeground(Color.LIGHT_GRAY);
             }
     }//GEN-LAST:event_telefonotextFocusLost
 
     private void cuittextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusGained
-            if(cuittext.getText().equals("Ingrese el cuit")){
+            if(cuittext.getText().equals("Añadir cuit")){
                  cuittext.setText("");
                  cuittext.setForeground(Color.BLACK);
             }
@@ -357,7 +359,7 @@ public class registarProveV extends javax.swing.JPanel {
 
     private void cuittextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusLost
             if(cuittext.getText().equals("")){
-                cuittext.setText("Ingrese el cuit");
+                cuittext.setText("Añadir el cuit");
                 cuittext.setForeground(Color.LIGHT_GRAY);
             }
     }//GEN-LAST:event_cuittextFocusLost
@@ -372,7 +374,7 @@ public class registarProveV extends javax.swing.JPanel {
             cont++;
         }catch(NumberFormatException e){
             tooltipcuit.setVisible(true);
-            if(cuittext.getText().equals("")|| cuittext.getText().equals("Ingrese el cuit")){
+            if(cuittext.getText().equals("")|| cuittext.getText().equals("Añadir cuit")){
                 tooltipcuit.setToolTipText("Ingrese informacion a este campo!");
             }else{
                  tooltipcuit.setToolTipText("Solo debe ingresar numeros sin espacios!");
@@ -387,7 +389,7 @@ public class registarProveV extends javax.swing.JPanel {
             cont++;
         }catch(NumberFormatException e){
             tooltiptelefono.setVisible(true);
-            if(telefonotext.getText().equals("")||telefonotext.getText().equals("Ingrese el telefono")){
+            if(telefonotext.getText().equals("")||telefonotext.getText().equals("Añadir telefono")){
                 tooltiptelefono.setToolTipText("Ingrese informacion a este campo!");
             }else{
                 tooltiptelefono.setToolTipText("Solo debe ingresar numeros sin espacios!");

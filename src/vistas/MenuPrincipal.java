@@ -30,6 +30,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
     }
     private int x,y;
+    private Color selected = new Color(162,70,137);
     private BevelBorder bord = new BevelBorder(BevelBorder.RAISED, null, null, null, Color.LIGHT_GRAY);
  
     @SuppressWarnings("unchecked")
@@ -50,6 +51,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ProvLabel = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
+        paneproveprod = new javax.swing.JPanel();
+        labelproveprod = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(928, 768));
@@ -183,10 +186,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         DetalleCompraPanelLayout.setVerticalGroup(
             DetalleCompraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetalleCompraPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        primalPGround.add(DetalleCompraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 140, 50));
+        primalPGround.add(DetalleCompraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 140, 50));
 
         ProvePane.setBackground(new java.awt.Color(162, 70, 137));
 
@@ -243,6 +248,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         primalPGround.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, 720));
 
+        paneproveprod.setBackground(new java.awt.Color(162, 70, 137));
+        paneproveprod.setPreferredSize(new java.awt.Dimension(140, 50));
+
+        labelproveprod.setForeground(new java.awt.Color(255, 255, 255));
+        labelproveprod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelproveprod.setText("Admin Productos");
+        labelproveprod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelproveprodMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout paneproveprodLayout = new javax.swing.GroupLayout(paneproveprod);
+        paneproveprod.setLayout(paneproveprodLayout);
+        paneproveprodLayout.setHorizontalGroup(
+            paneproveprodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneproveprodLayout.createSequentialGroup()
+                .addComponent(labelproveprod, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+        paneproveprodLayout.setVerticalGroup(
+            paneproveprodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneproveprodLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelproveprod, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        primalPGround.add(paneproveprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+
         getContentPane().add(primalPGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 770));
 
         pack();
@@ -255,6 +289,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DetalleCompraPanel.setBorder(bord);
         ProdPane.setBorder(null);
         ProvePane.setBorder(null);
+        paneproveprod.setBorder(null);
         escritorio.removeAll();
         escritorio.setLocation(0, 0);
         escritorio.add(detaC, BorderLayout.CENTER);
@@ -269,6 +304,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ProdPane.setBorder(bord);
         ProvePane.setBorder(null);
         DetalleCompraPanel.setBorder(null);
+        paneproveprod.setBorder(null);
         
         escritorio.removeAll();
         escritorio.setLocation(0, 0);
@@ -296,17 +332,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void ProvLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProvLabelMouseClicked
         ProveedorV provPane = new ProveedorV ();
+        Color color = new Color(126,70,137);
+        
         provPane.setSize(790,730);
         
         ProdPane.setBorder(null);
         DetalleCompraPanel.setBorder(null);
         ProvePane.setBorder(bord);
+        //ProvePane.setBackground(color);
+        paneproveprod.setBorder(null);
+        
         escritorio.removeAll();
         escritorio.setLocation(0,0);
         escritorio.add(provPane,BorderLayout.CENTER);
         escritorio.revalidate();
         escritorio.repaint();
     }//GEN-LAST:event_ProvLabelMouseClicked
+
+    private void labelproveprodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelproveprodMouseClicked
+        ProdPane.setBorder(null);
+        ProvePane.setBorder(null);
+        DetalleCompraPanel.setBorder(null);
+        paneproveprod.setBorder(bord);
+    }//GEN-LAST:event_labelproveprodMouseClicked
 
     /**
      * @param args the command line arguments
@@ -355,9 +403,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel escritorio;
     private javax.swing.JLabel exitlabel;
     private javax.swing.JPanel exitpane;
+    private javax.swing.JLabel labelproveprod;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel minPane;
     private javax.swing.JLabel minlabel;
+    private javax.swing.JPanel paneproveprod;
     private javax.swing.JPanel primalPGround;
     // End of variables declaration//GEN-END:variables
 }
