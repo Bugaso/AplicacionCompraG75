@@ -148,7 +148,7 @@ public class ProveedorData {
 	}
 
 	public void eliminarProveedor(int idProveedor) {
-		String sql = "UPDATE proveedor SET activo = 0 WHERE idProveedor = ?";
+		String sql = "DELETE FROM proveedor WHERE idProveedor = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

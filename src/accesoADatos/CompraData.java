@@ -12,7 +12,7 @@ public class CompraData {
 	
 	
 	public CompraData() {
-		con = Conexion.getConexion();
+		this.con = Conexion.getConexion();
 		this.provData = new ProveedorData();
 	}
 	
@@ -63,9 +63,9 @@ public class CompraData {
 		}
 	}
 	
-	public ArrayList<Compra> ComprasDeUnProveedor(int idProveedor){
+	public ArrayList<Compra> ComprasAUnProveedor(int idProveedor){
 		ArrayList<Compra> compras = new ArrayList<Compra>();
-		String sql = "SELECT idCompra, idProveedor, fecha WHERE idProveedor = ?";
+		String sql = "SELECT idCompra, idProveedor, fecha FROM compra WHERE idProveedor = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

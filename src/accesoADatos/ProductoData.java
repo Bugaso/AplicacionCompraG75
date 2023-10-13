@@ -10,12 +10,12 @@ public class ProductoData {
 	
 	
 	public ProductoData() {
-		con = Conexion.getConexion();
+		this.con = Conexion.getConexion();
 	}
         
     public void guardarProducto(Producto producto) {//Este método se utiliza para insertar un nuevo alumno en la base de datos.
                                                  	//Toma un objeto Alumno como parámetro y utiliza una consulta SQL parametrizada para realizar la inserción.
-	String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, estado)" 
+	String sql = "INSERT INTO producto (nombreProducto, descripción, precioActual, stock, estado)" 
 				+ "VALUES(?, ?, ?, ?, ?)";
 		
 	try {
@@ -33,7 +33,7 @@ public class ProductoData {
 			
 		if(rs.next()) {
 			producto.setIdProducto(rs.getInt(1));
-			JOptionPane.showMessageDialog(null, "el producto ha sido Guardado exitosamente");// Muestra un mensaje de éxito o error en una ventana emergente utilizando `JOptionPane`
+			JOptionPane.showMessageDialog(null, "El producto ha sido guardado exitosamente");// Muestra un mensaje de éxito o error en una ventana emergente utilizando `JOptionPane`
 		}
 		
 		ps.close();
@@ -47,7 +47,7 @@ public class ProductoData {
                                             		//Toma un ID como parámetro y devuelve un objeto `Alumno` 
                                             		//si se encuentra o `null` si no se encuentra.
 	Producto producto = null;
-	String sql = "SELECT nombreProducto, descripcion, precioActual, stock FROM producto "
+	String sql = "SELECT nombreProducto, descripción, precioActual, stock FROM producto "
 				+ "WHERE idProducto = ? AND estado = 1";
 		
 	try {
@@ -60,7 +60,7 @@ public class ProductoData {
 			producto = new Producto();
 			producto.setIdProducto(idProducto);// cambia el valor del idproducto
 			producto.setNombreProducto(rs.getString("nombreProducto"));//cambia el nombre del producto
-			producto.setDescripcion(rs.getString("descripcion"));
+			producto.setDescripcion(rs.getString("descripción"));
 			producto.setPrecioActual(rs.getDouble("precioActual"));
 			producto.setStock(rs.getInt("stock"));
 			producto.setEstado(true);
@@ -78,7 +78,7 @@ public class ProductoData {
 	}
         
     public void modificarProducto(Producto producto){
-    	String sql ="UPDATE producto SET nombreProducto = ?, descripcion = ?, precioActual = ?, stock = ?,estado = ? "
+    	String sql ="UPDATE producto SET nombreProducto = ?, descripción = ?, precioActual = ?, stock = ?,estado = ? "
     			+ "WHERE idProducto = ?";
     	
         try {
@@ -119,7 +119,7 @@ public class ProductoData {
             	Producto producto = new Producto();
             	producto.setIdProducto(rs.getInt("idProducto"));
             	producto.setNombreProducto(rs.getString("nombreProducto"));
-            	producto.setDescripcion(rs.getString("descripcion"));
+            	producto.setDescripcion(rs.getString("descripción"));
             	producto.setPrecioActual(rs.getDouble("precioActual"));
             	producto.setStock(rs.getInt("stock"));
             	producto.setEstado(rs.getBoolean("estado"));

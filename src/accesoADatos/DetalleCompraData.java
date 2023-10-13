@@ -1,15 +1,21 @@
 package accesoADatos;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import entidades.DetalleCompra;
+import entidades.*;
 
 public class DetalleCompraData {
 	private Connection con = null;
+	private ProductoData prodData;
+	private ProveedorData provData;
 	
 	
 	public DetalleCompraData() {
-		con = Conexion.getConexion();
+		this.con = Conexion.getConexion();
+		this.prodData = new ProductoData();
+		this.provData = new ProveedorData();
 	}
 	
 	public void guardarDetalleCompra(DetalleCompra detCompra) {
@@ -36,5 +42,133 @@ public class DetalleCompraData {
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle de Compra");
 		}
+	}
+	
+	public ArrayList<Producto> productosDeUnaCompraDeUnaFecha(LocalDate fecha){
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		String sql = "SELECT c.idCompra, c.idProveedor, c.fecha, p.*, dc.cantidad"
+				+ "FROM compra c "
+				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
+				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
+				+ "WHERE c.fecha = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setDate(1, Date.valueOf(fecha));
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Producto producto = new Producto();
+				producto.setIdProducto(rs.getInt("p.idProducto"));
+				producto.setNombreProducto(rs.getString("p.nombreProducto"));
+				producto.setDescripcion(rs.getString("p.descripción"));
+				producto.setPrecioActual(rs.getDouble("p.precioActual"));
+				producto.setStock(rs.getInt("p.stock"));
+				producto.setEstado(rs.getBoolean("p.estado"));
+				productos.add(producto);
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra y/o Detalle Compra y/o Producto");
+		}
+		
+		return productos;
+	}
+	
+	public ArrayList<Producto> productosDeUnaCompra(int idCompra){
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		String sql = "SELECT c.idCompra, c.idProveedor, c.fecha, dc.idProducto, dc.cantidad "
+				+ "FROM compra c "
+				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
+				+ "WHERE c.idCompra = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idCompra);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Producto producto = prodData.buscarProducto(rs.getInt("dc.idProducto"));
+				productos.add(producto);
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra y/o Detalle Compra");
+		}
+		
+		return productos;
+	}
+	
+	public ArrayList<Proveedor> proveedoresQueProveenUnProducto(int idProducto){
+		ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
+		String sql = "SELECT c.idCompra, c.idProveedor, c.fecha, p.*"
+				+ "FROM compra c "
+				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
+				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
+				+ "WHERE p.idProducto = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idProducto);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Proveedor proveedor = provData.buscarProveedor(rs.getInt("c.idProveedor"));
+				proveedores.add(proveedor);
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra y/o Detalle Compra y/o Producto");
+		}
+		
+		return proveedores;
+	}
+	
+	public ArrayList<Producto> productosMasCompradosEntreDosFechas(LocalDate fecha1, LocalDate fecha2){
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		String sql = "SELECT c.idCompra, c.idPreveedor, c.fecha, p.*, dc.cantidad "
+				+ "FROM compra c "
+				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
+				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
+				+ "WHERE c.fecha BETWEEN ? AND ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setDate(1, Date.valueOf(fecha1));
+			ps.setDate(2, Date.valueOf(fecha2));
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Producto producto = new Producto();
+				producto.setIdProducto(rs.getInt("p.idProducto"));
+				producto.setNombreProducto(rs.getString("p.nombreProducto"));
+				producto.setDescripcion(rs.getString("p.descripción"));
+				producto.setPrecioActual(rs.getDouble("p.precioActual"));
+				producto.setStock(rs.getInt("p.stock"));
+				producto.setEstado(rs.getBoolean("p.estado"));
+				productos.add(producto);
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra y/o Detalle Compra y/o Producto");
+		}
+		
+		return productos;
 	}
 }
