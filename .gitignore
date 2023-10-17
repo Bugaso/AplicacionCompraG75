@@ -15,3 +15,7 @@ nbactions.xml
 
 
 /src/Main
+
+/.idea/
+SISTEMA_DE_COMPRAS.iml
+/out/

@@ -103,7 +103,6 @@ public class registarProveV extends javax.swing.JPanel {
         razonsocial1.setBorder(null);
 
         razonsociallabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        razonsociallabel1.setForeground(new java.awt.Color(0, 0, 0));
         razonsociallabel1.setText("Razon social / Nombre");
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -113,7 +112,6 @@ public class registarProveV extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro de Proveedor");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, 374, -1));
@@ -134,7 +132,6 @@ public class registarProveV extends javax.swing.JPanel {
         add(razonsocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 260, 20));
 
         razonsociallabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        razonsociallabel.setForeground(new java.awt.Color(0, 0, 0));
         razonsociallabel.setText("Razon social / Nombre");
         add(razonsociallabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 160, 40));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 260, 10));
@@ -154,7 +151,6 @@ public class registarProveV extends javax.swing.JPanel {
         add(cuittext, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 260, 20));
 
         cuitlabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        cuitlabel.setForeground(new java.awt.Color(0, 0, 0));
         cuitlabel.setText("Cuit");
         add(cuitlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 30, 40));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 260, 10));
@@ -174,7 +170,6 @@ public class registarProveV extends javax.swing.JPanel {
         add(domiciliotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 260, 20));
 
         domiciliolabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        domiciliolabel.setForeground(new java.awt.Color(0, 0, 0));
         domiciliolabel.setText("Domicilio");
         add(domiciliolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 70, 40));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 260, 10));
@@ -194,7 +189,6 @@ public class registarProveV extends javax.swing.JPanel {
         add(telefonotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 260, 20));
 
         telefonolabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        telefonolabel.setForeground(new java.awt.Color(0, 0, 0));
         telefonolabel.setText("Telefono");
         add(telefonolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 70, 40));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 260, 10));
