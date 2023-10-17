@@ -8,14 +8,16 @@ import entidades.*;
 
 public class DetalleCompraData {
 	private Connection con = null;
-	private ProductoData prodData;
+	private CompraData compraData;
 	private ProveedorData provData;
+	private ProductoData prodData;
 	
 	
 	public DetalleCompraData() {
 		this.con = Conexion.getConexion();
-		this.prodData = new ProductoData();
+		this.compraData = new CompraData();
 		this.provData = new ProveedorData();
+		this.prodData = new ProductoData();
 	}
 	
 	public void guardarDetalleCompra(DetalleCompra detCompra) {
@@ -46,7 +48,7 @@ public class DetalleCompraData {
 	
 	public ArrayList<Producto> productosDeUnaCompraDeUnaFecha(LocalDate fecha){
 		ArrayList<Producto> productos = new ArrayList<Producto>();
-		String sql = "SELECT c.idCompra, c.idProveedor, c.fecha, p.*, dc.cantidad"
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad"
 				+ "FROM compra c "
 				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
 				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
@@ -60,14 +62,21 @@ public class DetalleCompraData {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Producto producto = new Producto();
-				producto.setIdProducto(rs.getInt("p.idProducto"));
-				producto.setNombreProducto(rs.getString("p.nombreProducto"));
-				producto.setDescripcion(rs.getString("p.descripción"));
-				producto.setPrecioActual(rs.getDouble("p.precioActual"));
-				producto.setStock(rs.getInt("p.stock"));
-				producto.setEstado(rs.getBoolean("p.estado"));
-				productos.add(producto);
+//				Producto producto = new Producto();
+//				producto.setIdProducto(rs.getInt("p.idProducto"));
+//				producto.setNombreProducto(rs.getString("p.nombreProducto"));
+//				producto.setDescripcion(rs.getString("p.descripción"));
+//				producto.setPrecioActual(rs.getDouble("p.precioActual"));
+//				producto.setStock(rs.getInt("p.stock"));
+//				producto.setEstado(rs.getBoolean("p.estado"));
+//				productos.add(producto);
+				DetalleCompra detCompra = new DetalleCompra();
+				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
+				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
+				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProdcuto")));
+				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
+				detCompra.setCantidad(rs.getInt("dc.cantidad"));
+				productos.add(detCompra.getProducto());
 			}
 			
 			ps.close();
@@ -81,9 +90,10 @@ public class DetalleCompraData {
 	
 	public ArrayList<Producto> productosDeUnaCompra(int idCompra){
 		ArrayList<Producto> productos = new ArrayList<Producto>();
-		String sql = "SELECT c.idCompra, c.idProveedor, c.fecha, dc.idProducto, dc.cantidad "
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad "
 				+ "FROM compra c "
 				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
+				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
 				+ "WHERE c.idCompra = ?";
 		
 		try {
@@ -94,8 +104,15 @@ public class DetalleCompraData {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Producto producto = prodData.buscarProducto(rs.getInt("dc.idProducto"));
-				productos.add(producto);
+//				Producto producto = prodData.buscarProducto(rs.getInt("dc.idProducto"));
+//				productos.add(producto);
+				DetalleCompra detCompra = new DetalleCompra();
+				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
+				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
+				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
+				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
+				detCompra.setCantidad(rs.getInt("dc.cantidad"));
+				productos.add(detCompra.getProducto());
 			}
 			
 			ps.close();
@@ -109,11 +126,11 @@ public class DetalleCompraData {
 	
 	public ArrayList<Proveedor> proveedoresQueProveenUnProducto(int idProducto){
 		ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
-		String sql = "SELECT c.idCompra, c.idProveedor, c.fecha, p.*"
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad "
 				+ "FROM compra c "
 				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
 				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
-				+ "WHERE p.idProducto = ?";
+				+ "WHERE p.idCompra = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -123,8 +140,15 @@ public class DetalleCompraData {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Proveedor proveedor = provData.buscarProveedor(rs.getInt("c.idProveedor"));
-				proveedores.add(proveedor);
+//				Proveedor proveedor = provData.buscarProveedor(rs.getInt("c.idProveedor"));
+//				proveedores.add(proveedor);
+				DetalleCompra detCompra = new DetalleCompra();
+				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
+				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
+				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
+				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
+				detCompra.setCantidad(rs.getInt("dc.cantidad"));
+				proveedores.add(provData.buscarProveedor(rs.getInt("c.idProveedor")));
 			}
 			
 			ps.close();
@@ -138,7 +162,7 @@ public class DetalleCompraData {
 	
 	public ArrayList<Producto> productosMasCompradosEntreDosFechas(LocalDate fecha1, LocalDate fecha2){
 		ArrayList<Producto> productos = new ArrayList<Producto>();
-		String sql = "SELECT c.idCompra, c.idPreveedor, c.fecha, p.*, dc.cantidad "
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idPreveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad "
 				+ "FROM compra c "
 				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
 				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
@@ -153,14 +177,21 @@ public class DetalleCompraData {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Producto producto = new Producto();
-				producto.setIdProducto(rs.getInt("p.idProducto"));
-				producto.setNombreProducto(rs.getString("p.nombreProducto"));
-				producto.setDescripcion(rs.getString("p.descripción"));
-				producto.setPrecioActual(rs.getDouble("p.precioActual"));
-				producto.setStock(rs.getInt("p.stock"));
-				producto.setEstado(rs.getBoolean("p.estado"));
-				productos.add(producto);
+//				Producto producto = new Producto();
+//				producto.setIdProducto(rs.getInt("p.idProducto"));
+//				producto.setNombreProducto(rs.getString("p.nombreProducto"));
+//				producto.setDescripcion(rs.getString("p.descripción"));
+//				producto.setPrecioActual(rs.getDouble("p.precioActual"));
+//				producto.setStock(rs.getInt("p.stock"));
+//				producto.setEstado(rs.getBoolean("p.estado"));
+//				productos.add(producto);
+				DetalleCompra detCompra = new DetalleCompra();
+				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
+				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
+				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
+				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
+				detCompra.setCantidad(rs.getInt("dc.cantidad"));
+				productos.add(detCompra.getProducto());
 			}
 			
 			ps.close();

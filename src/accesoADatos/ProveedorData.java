@@ -131,11 +131,10 @@ public class ProveedorData {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			
 			ps.setString(1, proveedor.getRazonSocial());
-                        ps.setString(2, proveedor.getDomicilio());
-                        ps.setString(3, proveedor.getTelefono());
-                        ps.setInt(4, proveedor.getCuit());
+            ps.setString(2, proveedor.getDomicilio());
+            ps.setString(3, proveedor.getTelefono());
+            ps.setInt(4, proveedor.getCuit());
 
 			int exito = ps.executeUpdate();
 
@@ -147,13 +146,13 @@ public class ProveedorData {
 		}
 	}
 
-	public void eliminarProveedor(int idProveedor) {
-		String sql = "DELETE FROM proveedor WHERE idProveedor = ?";
+	public void eliminarProveedor(int cuit) {
+		String sql = "DELETE FROM proveedor WHERE cuit = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setInt(1, idProveedor);
+			ps.setInt(1, cuit);
 
 			int exito = ps.executeUpdate();
 

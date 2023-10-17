@@ -64,9 +64,9 @@ public class ProductoData {
 			producto.setPrecioActual(rs.getDouble("precioActual"));
 			producto.setStock(rs.getInt("stock"));
 			producto.setEstado(true);
-		}else {
+		}/*else {
 			JOptionPane.showMessageDialog(null, "No exite el producto con el ID = " + idProducto);
-		}
+		}*/
 		
 		ps.close();
 			
@@ -78,7 +78,7 @@ public class ProductoData {
 	}
         
     public void modificarProducto(Producto producto){
-    	String sql ="UPDATE producto SET nombreProducto = ?, descripción = ?, precioActual = ?, stock = ?,estado = ? "
+    	String sql = "UPDATE producto SET nombreProducto = ?, descripción = ?, precioActual = ?, stock = ?,estado = ? "
     			+ "WHERE idProducto = ?";
     	
         try {
@@ -94,7 +94,7 @@ public class ProductoData {
             int exito = ps.executeUpdate();//envia el PreparedStatement a la base de datos y te regresa la cantidad de filas que se modificaron
             
             if (exito == 1){
-            	JOptionPane.showMessageDialog(null, "Producto modificado exitosamente");
+            	JOptionPane.showMessageDialog(null, "Producto Modificado Exitosamente");
             }
             
             ps.close();
@@ -106,7 +106,7 @@ public class ProductoData {
     
     public ArrayList<Producto> ProductosDebajoDelStockMinimo(){
     	ArrayList<Producto> productos = new ArrayList<Producto>();
-    	String sql = "SELECT * FROM producto  WHERE stock <= ? AND estado = 1";
+    	String sql = "SELECT * FROM producto WHERE stock <= ? AND estado = 1";
              
         try {
         	PreparedStatement ps = con.prepareStatement(sql);
