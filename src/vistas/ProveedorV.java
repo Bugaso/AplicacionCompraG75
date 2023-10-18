@@ -5,6 +5,8 @@
 package vistas;
 
 import java.awt.BorderLayout;
+import vistas.proveedorOp.buscarProveV;
+import vistas.proveedorOp.eliminarProveV;
 import vistas.proveedorOp.modificarProveV;
 import vistas.proveedorOp.registarProveV;
 
@@ -59,6 +61,11 @@ public class ProveedorV extends javax.swing.JPanel {
         elimProveLab.setForeground(new java.awt.Color(255, 255, 255));
         elimProveLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         elimProveLab.setText("Eliminar Proveedor");
+        elimProveLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                elimProveLabMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout elimProvePaneLayout = new javax.swing.GroupLayout(elimProvePane);
         elimProvePane.setLayout(elimProvePaneLayout);
@@ -132,6 +139,11 @@ public class ProveedorV extends javax.swing.JPanel {
         regProvLab.setForeground(new java.awt.Color(255, 255, 255));
         regProvLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         regProvLab.setText("Buscar Proveedor");
+        regProvLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regProvLabMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout buscarProvePaneLayout = new javax.swing.GroupLayout(buscarProvePane);
         buscarProvePane.setLayout(buscarProvePaneLayout);
@@ -214,6 +226,26 @@ public class ProveedorV extends javax.swing.JPanel {
         escritorioProve.revalidate();
         escritorioProve.repaint();
     }//GEN-LAST:event_modProveLabeMouseClicked
+
+    private void elimProveLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elimProveLabMouseClicked
+        eliminarProveV delV = new eliminarProveV();
+        delV.setVisible(true);
+        delV.setSize(790,680);
+        escritorioProve.removeAll();
+        escritorioProve.add(delV, BorderLayout.CENTER);
+        escritorioProve.revalidate();
+        escritorioProve.repaint();
+    }//GEN-LAST:event_elimProveLabMouseClicked
+
+    private void regProvLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regProvLabMouseClicked
+        buscarProveV buscV = new buscarProveV();
+        buscV.setVisible(true);
+        buscV.setSize(790,680);
+        escritorioProve.removeAll();
+        escritorioProve.add(buscV, BorderLayout.CENTER);
+        escritorioProve.revalidate();
+        escritorioProve.repaint();
+    }//GEN-LAST:event_regProvLabMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

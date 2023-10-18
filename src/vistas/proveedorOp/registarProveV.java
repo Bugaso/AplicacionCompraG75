@@ -148,6 +148,11 @@ public class registarProveV extends javax.swing.JPanel {
                 cuittextFocusLost(evt);
             }
         });
+        cuittext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuittextActionPerformed(evt);
+            }
+        });
         add(cuittext, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 260, 20));
 
         cuitlabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -363,7 +368,7 @@ public class registarProveV extends javax.swing.JPanel {
         int cont = 0;
        
         try{
-            Integer.parseInt(cuittext.getText());
+            Long.parseLong(cuittext.getText());
             tooltipcuit.setVisible(false);
             cont++;
         }catch(NumberFormatException e){
@@ -378,7 +383,7 @@ public class registarProveV extends javax.swing.JPanel {
             cont = 0;
         }try{
 
-            Integer.parseInt(telefonotext.getText());
+            Long.parseLong(telefonotext.getText());
             tooltiptelefono.setVisible(false);
             cont++;
         }catch(NumberFormatException e){
@@ -413,6 +418,10 @@ public class registarProveV extends javax.swing.JPanel {
        
        
     }//GEN-LAST:event_guardarlabelMouseClicked
+
+    private void cuittextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuittextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cuittextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

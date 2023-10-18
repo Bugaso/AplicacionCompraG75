@@ -4,17 +4,57 @@
  */
 package vistas.proveedorOp;
 
+import accesoADatos.ProveedorData;
+import entidades.Proveedor;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author balta
  */
 public class eliminarProveV extends javax.swing.JPanel {
-
+    
+    private ProveedorData proveD = new ProveedorData();
     /**
      * Creates new form eliminarProveV
      */
     public eliminarProveV() {
         initComponents();
+        estilos();
+    }
+    public void estilos(){
+        buscarcuit.setText("Cuit");
+        buscarcuit.setForeground(Color.LIGHT_GRAY);
+        
+        tooltipcuit.setVisible(false);
+        nombretext.setText("");
+        domiciliotext.setText("");
+        telefonotext.setText("");
+        
+        nombretext.setForeground(Color.LIGHT_GRAY);
+        domiciliotext.setForeground(Color.LIGHT_GRAY);
+        telefonotext.setForeground(Color.LIGHT_GRAY);
+        
+        nombretext.setEditable(false);
+        domiciliotext.setEditable(false);
+        telefonotext.setEditable(false);
+    }
+    public void mostrarDatos(int cuit){
+        Proveedor prov = new Proveedor();
+        try{
+            prov = proveD.buscarProveedorPorcuit(cuit);
+            nombretext.setText(prov.getRazonSocial());
+            domiciliotext.setText(prov.getDomicilio());
+            telefonotext.setText(prov.getTelefono());
+            
+            nombretext.setForeground(Color.DARK_GRAY);
+            domiciliotext.setForeground(Color.DARK_GRAY);
+            telefonotext.setForeground(Color.DARK_GRAY);
+        }catch(NullPointerException E){
+            JOptionPane.showMessageDialog(null, "El cuit ingresado no existe!!!");
+        }
+        
     }
 
     /**
@@ -27,18 +67,220 @@ public class eliminarProveV extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        logolabel = new javax.swing.JLabel();
+        eliminarpan = new javax.swing.JPanel();
+        eliminarlabel = new javax.swing.JLabel();
+        limpiarpane = new javax.swing.JPanel();
+        refrescartext = new javax.swing.JLabel();
+        buscuitlabel = new javax.swing.JLabel();
+        buscarcuit = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        nombretext = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        labeldomicilio = new javax.swing.JLabel();
+        domiciliotext = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        telefonolabel = new javax.swing.JLabel();
+        telefonotext = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        tooltipcuit = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
+        setPreferredSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setText("Eliminar Proveedor");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
+
+        eliminarpan.setBackground(new java.awt.Color(102, 0, 0));
+
+        eliminarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminarlabel.setText("Eliminar Proveedor");
+        eliminarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarlabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eliminarpanLayout = new javax.swing.GroupLayout(eliminarpan);
+        eliminarpan.setLayout(eliminarpanLayout);
+        eliminarpanLayout.setHorizontalGroup(
+            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        eliminarpanLayout.setVerticalGroup(
+            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(eliminarpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 120, 30));
+
+        limpiarpane.setBackground(new java.awt.Color(0, 0, 102));
+
+        refrescartext.setForeground(new java.awt.Color(255, 255, 255));
+        refrescartext.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        refrescartext.setText("Refrescar campos");
+        refrescartext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refrescartextMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout limpiarpaneLayout = new javax.swing.GroupLayout(limpiarpane);
+        limpiarpane.setLayout(limpiarpaneLayout);
+        limpiarpaneLayout.setHorizontalGroup(
+            limpiarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(refrescartext, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        limpiarpaneLayout.setVerticalGroup(
+            limpiarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, limpiarpaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(refrescartext, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(limpiarpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 120, 30));
+
+        buscuitlabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        buscuitlabel.setText("Ingrese el cuit:");
+        add(buscuitlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
+
+        buscarcuit.setForeground(java.awt.Color.lightGray);
+        buscarcuit.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        buscarcuit.setText("Cuit");
+        buscarcuit.setBorder(null);
+        buscarcuit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscarcuitFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscarcuitFocusLost(evt);
+            }
+        });
+        add(buscarcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 230, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 230, -1));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel4.setText("Razon social/Nombre:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+
+        nombretext.setEditable(false);
+        nombretext.setBackground(new java.awt.Color(255, 255, 255));
+        nombretext.setForeground(java.awt.Color.lightGray);
+        nombretext.setText("Razon social/ Nombre");
+        nombretext.setBorder(null);
+        nombretext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombretextActionPerformed(evt);
+            }
+        });
+        add(nombretext, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 230, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 230, 10));
+
+        labeldomicilio.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        labeldomicilio.setText("Domicilio:");
+        add(labeldomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+
+        domiciliotext.setEditable(false);
+        domiciliotext.setBackground(new java.awt.Color(255, 255, 255));
+        domiciliotext.setForeground(java.awt.Color.lightGray);
+        domiciliotext.setText("Domicilio");
+        domiciliotext.setBorder(null);
+        add(domiciliotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 230, 20));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 230, 10));
+
+        telefonolabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        telefonolabel.setText("Telefono: ");
+        add(telefonolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
+
+        telefonotext.setEditable(false);
+        telefonotext.setBackground(new java.awt.Color(255, 255, 255));
+        telefonotext.setForeground(java.awt.Color.lightGray);
+        telefonotext.setText("Telefono");
+        telefonotext.setBorder(null);
+        add(telefonotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 230, 20));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 230, 10));
+
+        tooltipcuit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pregunta.png"))); // NOI18N
+        tooltipcuit.setToolTipText("Ingrese informacion a este campo!");
+        add(tooltipcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscarcuitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarcuitFocusGained
+        if(buscarcuit.getText().equals("Cuit")){
+            buscarcuit.setText("");
+            buscarcuit.setForeground(Color.black);
+            tooltipcuit.setVisible(false);
+        }
+    }//GEN-LAST:event_buscarcuitFocusGained
+
+    private void buscarcuitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarcuitFocusLost
+        if(buscarcuit.getText().equals("")){
+            
+            estilos();
+        }else{
+            try{
+                mostrarDatos(Integer.parseInt(buscarcuit.getText()));
+            }catch(NumberFormatException e){
+                tooltipcuit.setVisible(true);
+                tooltipcuit.setToolTipText("Ingrese solamente numeros");
+            }
+
+        }
+
+    }//GEN-LAST:event_buscarcuitFocusLost
+
+    private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
+        try{
+            proveD.eliminarProveedor(Integer.parseInt(buscarcuit.getText()));
+            tooltipcuit.setVisible(false);
+        }catch(NumberFormatException e){
+            tooltipcuit.setVisible(true);
+            tooltipcuit.setToolTipText("Ingrese solamente numeros");
+        }
+        
+    }//GEN-LAST:event_eliminarlabelMouseClicked
+
+    private void nombretextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombretextActionPerformed
+
+    private void refrescartextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescartextMouseClicked
+        estilos();
+    }//GEN-LAST:event_refrescartextMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscarcuit;
+    private javax.swing.JLabel buscuitlabel;
+    private javax.swing.JTextField domiciliotext;
+    private javax.swing.JLabel eliminarlabel;
+    private javax.swing.JPanel eliminarpan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JLabel labeldomicilio;
+    private javax.swing.JPanel limpiarpane;
+    private javax.swing.JLabel logolabel;
+    private javax.swing.JTextField nombretext;
+    private javax.swing.JLabel refrescartext;
+    private javax.swing.JLabel telefonolabel;
+    private javax.swing.JTextField telefonotext;
+    private javax.swing.JLabel tooltipcuit;
     // End of variables declaration//GEN-END:variables
 }

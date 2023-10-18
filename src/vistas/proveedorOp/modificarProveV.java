@@ -89,6 +89,7 @@ public class modificarProveV extends javax.swing.JPanel {
         labelmod = new javax.swing.JLabel();
         paneRefres = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        logolabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
@@ -97,17 +98,14 @@ public class modificarProveV extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Modificar Proveedores");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
         buscuitlabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        buscuitlabel.setForeground(new java.awt.Color(0, 0, 0));
         buscuitlabel.setText("Ingrese el cuit:");
         add(buscuitlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
-        buscarcuit.setBackground(new java.awt.Color(255, 255, 255));
         buscarcuit.setForeground(java.awt.Color.lightGray);
         buscarcuit.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         buscarcuit.setText("Cuit");
@@ -124,7 +122,6 @@ public class modificarProveV extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 230, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Razon social/Nombre:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
@@ -142,7 +139,6 @@ public class modificarProveV extends javax.swing.JPanel {
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 172, 230, 10));
 
         labeldomicilio.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        labeldomicilio.setForeground(new java.awt.Color(0, 0, 0));
         labeldomicilio.setText("Domicilio:");
         add(labeldomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
 
@@ -155,7 +151,6 @@ public class modificarProveV extends javax.swing.JPanel {
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 230, 10));
 
         telefonolabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        telefonolabel.setForeground(new java.awt.Color(0, 0, 0));
         telefonolabel.setText("Telefono: ");
         add(telefonolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
@@ -187,10 +182,10 @@ public class modificarProveV extends javax.swing.JPanel {
         );
         paneModLayout.setVerticalGroup(
             paneModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelmod, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(labelmod, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        add(paneMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 130, 40));
+        add(paneMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 130, 30));
 
         paneRefres.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -211,10 +206,13 @@ public class modificarProveV extends javax.swing.JPanel {
         );
         paneRefresLayout.setVerticalGroup(
             paneRefresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        add(paneRefres, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 90, 40));
+        add(paneRefres, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 90, 30));
+
+        logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarcuitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarcuitFocusGained
@@ -273,6 +271,7 @@ public class modificarProveV extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel labeldomicilio;
     private javax.swing.JLabel labelmod;
+    private javax.swing.JLabel logolabel;
     private javax.swing.JTextField nombretext;
     private javax.swing.JPanel paneMod;
     private javax.swing.JPanel paneRefres;
