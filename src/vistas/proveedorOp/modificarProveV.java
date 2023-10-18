@@ -22,10 +22,11 @@ public class modificarProveV extends javax.swing.JPanel {
     private ProveedorData proveD = new ProveedorData();
     public modificarProveV() {
         initComponents();
-        ((AbstractDocument) buscarcuit.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
+        Default();
     }
     
     public void Default(){
+        ((AbstractDocument) buscarcuit.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
         nombretext.setText("Razon social/ Nombre");
         nombretext.setEditable(false);
         
@@ -42,7 +43,7 @@ public class modificarProveV extends javax.swing.JPanel {
         telefonotext.setForeground(Color.LIGHT_GRAY);
     }
     
-    public void mostrarDatos(int cuit){
+    public void mostrarDatos(Long cuit){
         Proveedor prov = new Proveedor();
         try{
             prov = proveD.buscarProveedorPorcuit(cuit);
@@ -228,7 +229,7 @@ public class modificarProveV extends javax.swing.JPanel {
             buscarcuit.setForeground(Color.LIGHT_GRAY);
         }else{
             try{
-                mostrarDatos(Integer.parseInt(buscarcuit.getText()));
+                mostrarDatos(Long.parseLong(buscarcuit.getText()));
             }catch(NumberFormatException e){
                 
             }
@@ -240,7 +241,7 @@ public class modificarProveV extends javax.swing.JPanel {
     private void labelmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelmodMouseClicked
         
         Proveedor prove = new Proveedor();
-        prove.setCuit(Integer.parseInt(buscarcuit.getText()));
+        prove.setCuit(Long.parseLong(buscarcuit.getText()));
         prove.setRazonSocial(nombretext.getText());
         prove.setDomicilio(domiciliotext.getText());
         prove.setTelefono(telefonotext.getText());

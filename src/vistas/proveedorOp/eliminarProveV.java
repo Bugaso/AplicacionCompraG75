@@ -40,7 +40,7 @@ public class eliminarProveV extends javax.swing.JPanel {
         domiciliotext.setEditable(false);
         telefonotext.setEditable(false);
     }
-    public void mostrarDatos(int cuit){
+    public void mostrarDatos(Long cuit){
         Proveedor prov = new Proveedor();
         try{
             prov = proveD.buscarProveedorPorcuit(cuit);
@@ -232,7 +232,7 @@ public class eliminarProveV extends javax.swing.JPanel {
             estilos();
         }else{
             try{
-                mostrarDatos(Integer.parseInt(buscarcuit.getText()));
+                mostrarDatos(Long.parseLong(buscarcuit.getText()));
             }catch(NumberFormatException e){
                 tooltipcuit.setVisible(true);
                 tooltipcuit.setToolTipText("Ingrese solamente numeros");
@@ -244,7 +244,7 @@ public class eliminarProveV extends javax.swing.JPanel {
 
     private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
         try{
-            proveD.eliminarProveedor(Integer.parseInt(buscarcuit.getText()));
+            proveD.eliminarProveedor(Long.parseLong(buscarcuit.getText()));
             tooltipcuit.setVisible(false);
         }catch(NumberFormatException e){
             tooltipcuit.setVisible(true);

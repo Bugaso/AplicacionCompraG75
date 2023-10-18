@@ -28,8 +28,7 @@ public class buscarProveV extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
@@ -43,20 +42,17 @@ public class buscarProveV extends javax.swing.JPanel {
         jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Nombre", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setBorder(null);
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 230, -1));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 240, -1));
 
-        jLabel2.setText("Cuit");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 60, -1));
-
-        jLabel3.setText("Nombre/Razon social");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 120, -1));
+        jLabel4.setText("jLabel4");
+        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

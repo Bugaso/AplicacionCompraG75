@@ -52,8 +52,8 @@ public class registarProveV extends javax.swing.JPanel {
         provData = new ProveedorData();
         prov = new Proveedor();
         Proveedor provB = new Proveedor();
-        provB = provData.buscarProveedorPorcuit(Integer.parseInt(cuittext.getText()));
-        prov.setCuit(Integer.parseInt(cuittext.getText()));
+        provB = provData.buscarProveedorPorcuit(Long.parseLong(cuittext.getText()));
+        prov.setCuit(Long.valueOf(cuittext.getText()));
         prov.setDomicilio( domiciliotext.getText());
         prov.setRazonSocial(razonsocial.getText());
         prov.setTelefono(telefonotext.getText());

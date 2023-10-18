@@ -18,7 +18,7 @@ public class ProveedorData {
 		try {
 			PreparedStatement ps = this.con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
-                        ps.setInt(1, proveedor.getCuit());
+                        ps.setLong(1, proveedor.getCuit());
                         ps.setString(2, proveedor.getRazonSocial());
                         ps.setString(3, proveedor.getDomicilio());
                         ps.setString(4, proveedor.getTelefono());
@@ -49,7 +49,7 @@ public class ProveedorData {
 			if (rs.next()) {
 				proveedor = new Proveedor();
 				proveedor.setIdProveedor(idProveedor);
-                proveedor.setCuit(rs.getInt("cuit"));
+                proveedor.setCuit(rs.getLong("cuit"));
                 proveedor.setRazonSocial(rs.getString("razonsocial"));
                 proveedor.setDomicilio(rs.getString("domicilio"));
                 proveedor.setTelefono(rs.getString("telefono"));              
@@ -66,14 +66,14 @@ public class ProveedorData {
 		return proveedor;
 	}
 
-	public Proveedor buscarProveedorPorcuit(int cuit) {
+	public Proveedor buscarProveedorPorcuit(Long cuit) {
 		Proveedor proveedor = null;
 		String sql = "SELECT idProveedor, razonsocial, domicilio, telefono FROM proveedor " + "WHERE cuit = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1,cuit);
+			ps.setLong(1,cuit);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -134,7 +134,7 @@ public class ProveedorData {
 			ps.setString(1, proveedor.getRazonSocial());
             ps.setString(2, proveedor.getDomicilio());
             ps.setString(3, proveedor.getTelefono());
-            ps.setInt(4, proveedor.getCuit());
+            ps.setLong(4, proveedor.getCuit());
 
 			int exito = ps.executeUpdate();
 
@@ -146,13 +146,13 @@ public class ProveedorData {
 		}
 	}
 
-	public void eliminarProveedor(int cuit) {
+	public void eliminarProveedor(Long cuit) {
 		String sql = "DELETE FROM proveedor WHERE cuit = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setInt(1, cuit);
+			ps.setLong(1, cuit);
 
 			int exito = ps.executeUpdate();
 
