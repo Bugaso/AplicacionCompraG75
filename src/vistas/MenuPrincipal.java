@@ -253,7 +253,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         labelproveprod.setForeground(new java.awt.Color(255, 255, 255));
         labelproveprod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelproveprod.setText("Admin Productos");
+        labelproveprod.setText("Admin Compras");
         labelproveprod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelproveprodMouseClicked(evt);
