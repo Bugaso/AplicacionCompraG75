@@ -22,7 +22,8 @@ public class DetalleCompraV extends javax.swing.JPanel {
     }
     public void MostrarProveedor(){
         ProveedorData provD = new ProveedorData();
-        Proveedor prov = provD.buscarProveedor(1);
+        Proveedor prov;
+        prov = provD.buscarProveedorPorcuit(55555555555L);
         MostrarNoRLabel.setText(prov.getRazonSocial());
         mostrarDLabel.setText(prov.getDomicilio());
         mostarTelLabel.setText(prov.getTelefono());

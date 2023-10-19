@@ -176,7 +176,7 @@ public class ProveedorV extends javax.swing.JPanel {
         add(elimProvePane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
 
         escritorioProve.setBackground(new java.awt.Color(255, 255, 255));
-        escritorioProve.setMaximumSize(new java.awt.Dimension(1024, 768));
+        escritorioProve.setMaximumSize(new java.awt.Dimension(790, 680));
         escritorioProve.setMinimumSize(new java.awt.Dimension(790, 680));
 
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N

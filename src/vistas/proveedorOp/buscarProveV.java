@@ -35,11 +35,6 @@ public class buscarProveV extends javax.swing.JPanel {
     public void cargar(){
         ArrayList<Proveedor> provedores = proveD.listarProveedor();
         
-        Comparator<Proveedor> comparador;
-        comparador = Comparator.comparing(Proveedor::getCuit);
-        
-        Collections.sort(provedores, comparador);
-        
         for(Proveedor prov : provedores){
             buscarProv.addItem(prov.getCuit()+" / "+prov.getRazonSocial());
             System.out.println(prov.toString());
@@ -206,14 +201,21 @@ public class buscarProveV extends javax.swing.JPanel {
     }//GEN-LAST:event_cuittextFocusLost
 
     private void buscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProvActionPerformed
-        String item = buscarProv.getSelectedItem().toString();
-        
-        String cuit = "";
-        for(int i= 0 ; i<11;i++){
-            cuit += item.charAt(i);
+        if(!buscarProv.getSelectedItem().equals("Cuit / Nombre")){
+            String item = buscarProv.getSelectedItem().toString();
+            String cuit = "";
+                for(int i= 0 ; i<11;i++){
+                    cuit += item.charAt(i);
+                }
+            mostrar(Long.parseLong(cuit));
+        }else{
+            nombretext.setText("Razon social / Nombre");
+            domiciliotext.setText("Domicilio");
+            telefonotext.setText("Telefono");
+            cuittext.setText("Cuit");
+            idtext.setText("idProveedor");
         }
         
-        mostrar(Long.parseLong(cuit));
     }//GEN-LAST:event_buscarProvActionPerformed
 
     private void cuittextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuittextKeyReleased
