@@ -4,6 +4,11 @@
  */
 package vistas.proveedorOp;
 
+import accesoADatos.ProveedorData;
+import entidades.Proveedor;
+import java.awt.Color;
+import java.util.ArrayList;
+
 /**
  *
  * @author balta
@@ -15,8 +20,25 @@ public class buscarProveV extends javax.swing.JPanel {
      */
     public buscarProveV() {
         initComponents();
+        cargar();
     }
-
+    
+    private ProveedorData proveD = new ProveedorData();
+    public void cargar(){
+        ArrayList<Proveedor> provedores = proveD.cargarProveedores();
+        for(Proveedor prov : provedores){
+            buscarProv.addItem(prov.getCuit()+" / "+prov.getRazonSocial());
+            System.out.println(prov.toString());
+        }
+    }
+    public void mostrar(Long cuit){
+        Proveedor prove = proveD.buscarProveedorPorcuit(cuit);
+        nombretext.setText(prove.getRazonSocial());
+        domiciliotext.setText(prove.getDomicilio());
+        telefonotext.setText(prove.getTelefono());
+        idtext.setText(String.valueOf(prove.getIdProveedor()));
+        cuittext.setText(String.valueOf(prove.getCuit()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,8 +49,20 @@ public class buscarProveV extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        buscarProv = new javax.swing.JComboBox<>();
+        nombretext = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        domiciliotext = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        telefonotext = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        cuittext = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        logolabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        idtext = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
@@ -39,20 +73,121 @@ public class buscarProveV extends javax.swing.JPanel {
         jLabel1.setText("Buscar Proveedor");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Nombre", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 240, -1));
+        buscarProv.setBackground(new java.awt.Color(204, 204, 204));
+        buscarProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Nombre" }));
+        buscarProv.setBorder(null);
+        buscarProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProvActionPerformed(evt);
+            }
+        });
+        add(buscarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 240, -1));
 
-        jLabel4.setText("jLabel4");
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 230, -1));
+        nombretext.setEditable(false);
+        nombretext.setBackground(new java.awt.Color(255, 255, 255));
+        nombretext.setForeground(java.awt.Color.lightGray);
+        nombretext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nombretext.setText("Razon social / Nombre");
+        nombretext.setBorder(null);
+        add(nombretext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 240, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 240, 10));
+
+        domiciliotext.setEditable(false);
+        domiciliotext.setBackground(new java.awt.Color(255, 255, 255));
+        domiciliotext.setForeground(java.awt.Color.lightGray);
+        domiciliotext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        domiciliotext.setText("Domicilio");
+        domiciliotext.setBorder(null);
+        add(domiciliotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 240, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 240, 10));
+
+        telefonotext.setEditable(false);
+        telefonotext.setBackground(new java.awt.Color(255, 255, 255));
+        telefonotext.setForeground(java.awt.Color.lightGray);
+        telefonotext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        telefonotext.setText("Telefono");
+        telefonotext.setBorder(null);
+        add(telefonotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 240, 20));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 240, 10));
+
+        cuittext.setBackground(new java.awt.Color(255, 255, 255));
+        cuittext.setForeground(java.awt.Color.lightGray);
+        cuittext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        cuittext.setText("Cuit");
+        cuittext.setBorder(null);
+        cuittext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cuittextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cuittextFocusLost(evt);
+            }
+        });
+        add(cuittext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 240, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 240, 10));
+
+        logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setText("Seleccione el proveedor:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 190, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setText(" Buscar ingresando cuit:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 190, -1));
+
+        idtext.setEditable(false);
+        idtext.setBackground(new java.awt.Color(255, 255, 255));
+        idtext.setForeground(java.awt.Color.lightGray);
+        idtext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        idtext.setText("idProveedor");
+        idtext.setBorder(null);
+        add(idtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 240, 20));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 240, 10));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cuittextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusGained
+        if(cuittext.getText().equals("Cuit")){
+            cuittext.setText("");
+            cuittext.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_cuittextFocusGained
+
+    private void cuittextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusLost
+        if(cuittext.getText().equals("")){
+            cuittext.setText("Cuit");
+            cuittext.setForeground(Color.LIGHT_GRAY);
+        }else{
+            try{
+                mostrar(Long.parseLong(cuittext.getText()));
+            }catch(NumberFormatException e){
+                
+            }
+            
+        }
+    }//GEN-LAST:event_cuittextFocusLost
+
+    private void buscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProvActionPerformed
+        
+    }//GEN-LAST:event_buscarProvActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> buscarProv;
+    private javax.swing.JTextField cuittext;
+    private javax.swing.JTextField domiciliotext;
+    private javax.swing.JTextField idtext;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel logolabel;
+    private javax.swing.JTextField nombretext;
+    private javax.swing.JTextField telefonotext;
     // End of variables declaration//GEN-END:variables
 }

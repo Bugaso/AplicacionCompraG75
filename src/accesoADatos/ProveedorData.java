@@ -3,6 +3,8 @@ package accesoADatos;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import entidades.Proveedor;
+import java.awt.List;
+import java.util.ArrayList;
 
 public class ProveedorData {
 	private Connection con;
@@ -164,4 +166,31 @@ public class ProveedorData {
 			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor");
 		}
 	}
+        
+   
+    public ArrayList<Proveedor> cargarProveedores(){
+        ArrayList<Proveedor> provedores = new ArrayList();
+            Proveedor proveedor;
+            String sql = "select idProveedor,cuit, razonsocial, domicilio, telefono from proveedor";
+            try{
+                PreparedStatement ps = con.prepareStatement(sql);
+                
+                
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				proveedor = new Proveedor();
+                                proveedor.setIdProveedor(rs.getInt("idProveedor"));
+                                proveedor.setCuit(rs.getLong("cuit"));
+                                proveedor.setRazonSocial(rs.getString("razonsocial"));
+                                proveedor.setDomicilio(rs.getString("domicilio"));
+                                proveedor.setTelefono(rs.getString("telefono"));
+                                provedores.add(proveedor); 
+                        }
+                        ps.close();
+            }catch(SQLException e){
+                
+            }
+            return provedores;
+        }
 }
