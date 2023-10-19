@@ -98,9 +98,9 @@ public class ProveedorData {
 		return proveedor;
 	}
 	
-	/*public ArrayList<Proveedor> listarProveedor() {
+	public ArrayList<Proveedor> listarProveedor() {
 		ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
-		String sql = "SELECT idProveedor, cuil, apellido, nombre, inicioActividad FROM proveedor WHERE activo = 1";
+		String sql = "SELECT idProveedor, cuit, razonsocial, domicilio, telefono FROM proveedor ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -109,12 +109,11 @@ public class ProveedorData {
 			while (rs.next()) {
 				Proveedor proveedor = new Proveedor();
 				proveedor.setIdProveedor(rs.getInt("idProveedor"));
-				proveedor.setCuil(rs.getInt("cuil"));
-				proveedor.setApellido(rs.getString("apellido"));
-				proveedor.setNombre(rs.getString("nombre"));
-				proveedor.setInicioActividad(rs.getDate("Inicio de Actividad").toLocalDate());
-				proveedor.setActivo(true);
-				proveedor.add(proveedor);
+				proveedor.setCuit(rs.getLong("cuit"));
+				proveedor.setRazonSocial(rs.getString("razonsocial"));
+                                proveedor.setDomicilio(rs.getString("domicilio"));
+                                proveedor.setTelefono(rs.getString("telefono"));
+				proveedores.add(proveedor);
 			}
 
 			ps.close();
@@ -124,7 +123,7 @@ public class ProveedorData {
 		}
 
 		return proveedores;
-	}*/
+	}
     
 	public void modificarProveedor(Proveedor proveedor) {
 		String sql = "UPDATE proveedor SET razonsocial = ?, domicilio = ?, telefono = ? "
@@ -168,29 +167,5 @@ public class ProveedorData {
 	}
         
    
-    public ArrayList<Proveedor> cargarProveedores(){
-        ArrayList<Proveedor> provedores = new ArrayList();
-            Proveedor proveedor;
-            String sql = "select idProveedor,cuit, razonsocial, domicilio, telefono from proveedor";
-            try{
-                PreparedStatement ps = con.prepareStatement(sql);
-                
-                
-			ResultSet rs = ps.executeQuery();
 
-			if (rs.next()) {
-				proveedor = new Proveedor();
-                                proveedor.setIdProveedor(rs.getInt("idProveedor"));
-                                proveedor.setCuit(rs.getLong("cuit"));
-                                proveedor.setRazonSocial(rs.getString("razonsocial"));
-                                proveedor.setDomicilio(rs.getString("domicilio"));
-                                proveedor.setTelefono(rs.getString("telefono"));
-                                provedores.add(proveedor); 
-                        }
-                        ps.close();
-            }catch(SQLException e){
-                
-            }
-            return provedores;
-        }
 }

@@ -8,6 +8,10 @@ import accesoADatos.ProveedorData;
 import entidades.Proveedor;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import javax.swing.text.AbstractDocument;
+
 
 /**
  *
@@ -21,11 +25,21 @@ public class buscarProveV extends javax.swing.JPanel {
     public buscarProveV() {
         initComponents();
         cargar();
+        ((AbstractDocument) cuittext.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
+        tooltipcuit.setVisible(false);
     }
+    
+      
     
     private ProveedorData proveD = new ProveedorData();
     public void cargar(){
-        ArrayList<Proveedor> provedores = proveD.cargarProveedores();
+        ArrayList<Proveedor> provedores = proveD.listarProveedor();
+        
+        Comparator<Proveedor> comparador;
+        comparador = Comparator.comparing(Proveedor::getCuit);
+        
+        Collections.sort(provedores, comparador);
+        
         for(Proveedor prov : provedores){
             buscarProv.addItem(prov.getCuit()+" / "+prov.getRazonSocial());
             System.out.println(prov.toString());
@@ -63,10 +77,16 @@ public class buscarProveV extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         idtext = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tooltipcuit = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
+        setPreferredSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -110,7 +130,6 @@ public class buscarProveV extends javax.swing.JPanel {
         add(telefonotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 240, 20));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 240, 10));
 
-        cuittext.setBackground(new java.awt.Color(255, 255, 255));
         cuittext.setForeground(java.awt.Color.lightGray);
         cuittext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         cuittext.setText("Cuit");
@@ -121,6 +140,11 @@ public class buscarProveV extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cuittextFocusLost(evt);
+            }
+        });
+        cuittext.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cuittextKeyReleased(evt);
             }
         });
         add(cuittext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 240, -1));
@@ -134,8 +158,8 @@ public class buscarProveV extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel3.setText(" Buscar ingresando cuit:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 190, -1));
+        jLabel3.setText("idProveedor:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 100, -1));
 
         idtext.setEditable(false);
         idtext.setBackground(new java.awt.Color(255, 255, 255));
@@ -145,6 +169,26 @@ public class buscarProveV extends javax.swing.JPanel {
         idtext.setBorder(null);
         add(idtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 240, 20));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 240, 10));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel4.setText(" Buscar ingresando cuit:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 190, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel5.setText("  Razon social / Nombre:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 190, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel6.setText("Domicilio:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 80, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel7.setText("Telefono:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 80, -1));
+
+        tooltipcuit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pregunta.png"))); // NOI18N
+        tooltipcuit.setToolTipText("Ingrese informacion a este campo!");
+        add(tooltipcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cuittextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusGained
@@ -158,19 +202,37 @@ public class buscarProveV extends javax.swing.JPanel {
         if(cuittext.getText().equals("")){
             cuittext.setText("Cuit");
             cuittext.setForeground(Color.LIGHT_GRAY);
-        }else{
-            try{
-                mostrar(Long.parseLong(cuittext.getText()));
-            }catch(NumberFormatException e){
-                
-            }
-            
         }
     }//GEN-LAST:event_cuittextFocusLost
 
     private void buscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProvActionPerformed
+        String item = buscarProv.getSelectedItem().toString();
         
+        String cuit = "";
+        for(int i= 0 ; i<11;i++){
+            cuit += item.charAt(i);
+        }
+        
+        mostrar(Long.parseLong(cuit));
     }//GEN-LAST:event_buscarProvActionPerformed
+
+    private void cuittextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuittextKeyReleased
+        try{
+        if(cuittext.getText().length() == 11){
+             System.out.println(cuittext.getText());
+             buscarProv.setSelectedItem(proveD.buscarProveedorPorcuit(Long.parseLong(cuittext.getText())).getCuit()
+                     +" / "+
+                     proveD.buscarProveedorPorcuit(Long.parseLong(cuittext.getText())).getRazonSocial());
+             tooltipcuit.setVisible(false);
+        }
+        }catch(NullPointerException e){
+           tooltipcuit.setToolTipText("El cuit ingresado no existe");
+           tooltipcuit.setVisible(true);
+       }catch(NumberFormatException e){
+           tooltipcuit.setToolTipText("Ingrese solamente numeros!!!");
+           tooltipcuit.setVisible(true);
+       }
+    }//GEN-LAST:event_cuittextKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -181,6 +243,10 @@ public class buscarProveV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -189,5 +255,6 @@ public class buscarProveV extends javax.swing.JPanel {
     private javax.swing.JLabel logolabel;
     private javax.swing.JTextField nombretext;
     private javax.swing.JTextField telefonotext;
+    private javax.swing.JLabel tooltipcuit;
     // End of variables declaration//GEN-END:variables
 }
