@@ -4,6 +4,10 @@
  */
 package vistas.productoOp;
 
+import accesoADatos.ProductoData;
+import entidades.Producto;
+import java.awt.Color;
+
 /**
  *
  * @author balta
@@ -16,7 +20,34 @@ public class registrarProdV extends javax.swing.JPanel {
     public registrarProdV() {
         initComponents();
     }
-
+    private ProductoData prodD = new ProductoData();
+    private Color guardarbtn = new Color(0,101,101);
+    private Color guardarbtnD = new Color(0,51,51);
+    public boolean validar (String Nombre,String Descripcion,String precio,String stock){
+        int cont = 0;
+        try{
+            if(!Nombre.equals("") || !Nombre.equals("Nombre")){
+               cont++;
+            }
+            if(!Descripcion.equals("Descripcion") || !Descripcion.equals("")){
+                cont++;
+            }
+            if(Double.parseDouble(precio) > 0){
+                cont++;
+            }
+            if(Integer.parseInt(stock) > 0 ){
+                cont++;
+            }
+            if(cont == 4){
+                 return true;
+            }
+        }catch(NumberFormatException e){
+            stocktext.setForeground(Color.red);
+            preciotext.setForeground(Color.red);
+            
+        }
+        return false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,11 +57,260 @@ public class registrarProdV extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logolabel = new javax.swing.JLabel();
+        titulolabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        nombretext = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        descripciontext = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        preciotext = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        stocktext = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        guardarPane = new javax.swing.JPanel();
+        guardarlabel = new javax.swing.JLabel();
+        refrescarPane = new javax.swing.JPanel();
+        refrescarlabel = new javax.swing.JLabel();
+
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(790, 680));
+        setMinimumSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, -1, -1));
+
+        titulolabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        titulolabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulolabel.setText("registro de productos");
+        add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel1.setText("Nombre del Producto:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+
+        nombretext.setForeground(java.awt.Color.lightGray);
+        nombretext.setText("Nombre");
+        nombretext.setBorder(null);
+        nombretext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombretextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nombretextFocusLost(evt);
+            }
+        });
+        add(nombretext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 220, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 157, 220, 10));
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel2.setText("Descripcion:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+
+        descripciontext.setForeground(java.awt.Color.lightGray);
+        descripciontext.setText("Descripcion");
+        descripciontext.setBorder(null);
+        descripciontext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                descripciontextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                descripciontextFocusLost(evt);
+            }
+        });
+        add(descripciontext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 220, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 220, 10));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel3.setText("Precio Actual:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
+
+        preciotext.setForeground(java.awt.Color.lightGray);
+        preciotext.setText("Precio");
+        preciotext.setBorder(null);
+        preciotext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                preciotextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                preciotextFocusLost(evt);
+            }
+        });
+        add(preciotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 220, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 220, 10));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel4.setText("Stock:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+
+        stocktext.setForeground(java.awt.Color.lightGray);
+        stocktext.setText("Unidad");
+        stocktext.setBorder(null);
+        stocktext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                stocktextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                stocktextFocusLost(evt);
+            }
+        });
+        add(stocktext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 220, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 220, 10));
+
+        guardarPane.setBackground(new java.awt.Color(0, 51, 51));
+        guardarPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        guardarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        guardarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        guardarlabel.setText("Guardar");
+        guardarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarlabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                guardarlabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardarlabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout guardarPaneLayout = new javax.swing.GroupLayout(guardarPane);
+        guardarPane.setLayout(guardarPaneLayout);
+        guardarPaneLayout.setHorizontalGroup(
+            guardarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(guardarlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        guardarPaneLayout.setVerticalGroup(
+            guardarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(guardarlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+        );
+
+        add(guardarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, 30));
+
+        refrescarPane.setBackground(new java.awt.Color(102, 0, 51));
+        refrescarPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        refrescarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        refrescarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        refrescarlabel.setText("Refrescar");
+
+        javax.swing.GroupLayout refrescarPaneLayout = new javax.swing.GroupLayout(refrescarPane);
+        refrescarPane.setLayout(refrescarPaneLayout);
+        refrescarPaneLayout.setHorizontalGroup(
+            refrescarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(refrescarlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        refrescarPaneLayout.setVerticalGroup(
+            refrescarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(refrescarlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+        );
+
+        add(refrescarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombretextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombretextFocusGained
+        if(nombretext.getText().equals("Nombre")){
+            nombretext.setForeground(Color.BLACK);
+            nombretext.setText("");
+        }
+    }//GEN-LAST:event_nombretextFocusGained
+
+    private void nombretextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombretextFocusLost
+        if(nombretext.getText().equals("")){
+            nombretext.setText("Nombre");
+            nombretext.setForeground(Color.LIGHT_GRAY);
+        }
+    }//GEN-LAST:event_nombretextFocusLost
+
+    private void descripciontextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descripciontextFocusGained
+        if(descripciontext.getText().equals("Descripcion")){
+            descripciontext.setText("");
+            descripciontext.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_descripciontextFocusGained
+
+    private void descripciontextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descripciontextFocusLost
+        if(descripciontext.getText().equals("")){
+            descripciontext.setText("Descripcion");
+            descripciontext.setForeground(Color.LIGHT_GRAY);
+        }
+    }//GEN-LAST:event_descripciontextFocusLost
+
+    private void preciotextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_preciotextFocusGained
+        if(preciotext.getText().equals("Precio")){
+            preciotext.setText("");
+            preciotext.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_preciotextFocusGained
+
+    private void preciotextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_preciotextFocusLost
+        if(preciotext.getText().equals("")){
+            preciotext.setText("Precio");
+            preciotext.setForeground(Color.LIGHT_GRAY);
+        }
+    }//GEN-LAST:event_preciotextFocusLost
+
+    private void stocktextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stocktextFocusGained
+        if(stocktext.getText().equals("Unidad")){
+            stocktext.setText("");
+            stocktext.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_stocktextFocusGained
+
+    private void stocktextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_stocktextFocusLost
+        if(stocktext.getText().equals("")){
+            stocktext.setText("Unidad");
+            stocktext.setForeground(Color.lightGray);
+        }
+    }//GEN-LAST:event_stocktextFocusLost
+
+    private void guardarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarlabelMouseClicked
+        Producto prod = new Producto();
+        if(validar(nombretext.getText(),descripciontext.getText(),preciotext.getText(),stocktext.getText())){
+            prod.setNombreProducto(nombretext.getText());
+            prod.setDescripcion(descripciontext.getText());
+            prod.setPrecioActual(Double.parseDouble(preciotext.getText()));
+            prod.setStock(Integer.parseInt(stocktext.getText()));
+            prod.setEstado(true);
+            prodD.guardarProducto(prod);
+        }else{
+            System.out.println("TA MAAALLLLL");
+        }
+        
+    }//GEN-LAST:event_guardarlabelMouseClicked
+
+    private void guardarlabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarlabelMouseEntered
+        guardarPane.setBackground(guardarbtn);
+    }//GEN-LAST:event_guardarlabelMouseEntered
+
+    private void guardarlabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarlabelMouseExited
+        guardarPane.setBackground(guardarbtnD);
+    }//GEN-LAST:event_guardarlabelMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField descripciontext;
+    private javax.swing.JPanel guardarPane;
+    private javax.swing.JLabel guardarlabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel logolabel;
+    private javax.swing.JTextField nombretext;
+    private javax.swing.JTextField preciotext;
+    private javax.swing.JPanel refrescarPane;
+    private javax.swing.JLabel refrescarlabel;
+    private javax.swing.JTextField stocktext;
+    private javax.swing.JLabel titulolabel;
     // End of variables declaration//GEN-END:variables
 }

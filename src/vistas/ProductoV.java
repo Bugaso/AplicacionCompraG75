@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import java.awt.BorderLayout;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
+import vistas.productoOp.registrarProdV;
+
 /**
  *
  * @author Bugaso
@@ -33,9 +37,7 @@ public class ProductoV extends javax.swing.JPanel {
         regisProdLab = new javax.swing.JLabel();
         modProvePane = new javax.swing.JPanel();
         modProdLab = new javax.swing.JLabel();
-        buscarProvePane = new javax.swing.JPanel();
-        buscProdLab = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        escritorio = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -54,7 +56,7 @@ public class ProductoV extends javax.swing.JPanel {
         elimProdLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         elimProdLab.setForeground(new java.awt.Color(255, 255, 255));
         elimProdLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        elimProdLab.setText("Eliminar Producto");
+        elimProdLab.setText("Listar Productos Inactivos");
         elimProdLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 elimProdLabMouseClicked(evt);
@@ -65,18 +67,19 @@ public class ProductoV extends javax.swing.JPanel {
         elimProvePane.setLayout(elimProvePaneLayout);
         elimProvePaneLayout.setHorizontalGroup(
             elimProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(elimProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+            .addComponent(elimProdLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
         );
         elimProvePaneLayout.setVerticalGroup(
             elimProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(elimProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+            .addComponent(elimProdLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        menuProvPane.add(elimProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 150, 30));
+        menuProvPane.add(elimProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 200, 30));
 
         regisProvePane.setBackground(new java.awt.Color(152, 70, 137));
         regisProvePane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        regisProdLab.setBackground(new java.awt.Color(255, 255, 255));
         regisProdLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         regisProdLab.setForeground(new java.awt.Color(255, 255, 255));
         regisProdLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,14 +94,14 @@ public class ProductoV extends javax.swing.JPanel {
         regisProvePane.setLayout(regisProvePaneLayout);
         regisProvePaneLayout.setHorizontalGroup(
             regisProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(regisProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+            .addComponent(regisProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
         );
         regisProvePaneLayout.setVerticalGroup(
             regisProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(regisProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+            .addComponent(regisProdLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        menuProvPane.add(regisProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 30));
+        menuProvPane.add(regisProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 170, 30));
 
         modProvePane.setBackground(new java.awt.Color(152, 70, 137));
         modProvePane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -106,7 +109,7 @@ public class ProductoV extends javax.swing.JPanel {
         modProdLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         modProdLab.setForeground(new java.awt.Color(255, 255, 255));
         modProdLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        modProdLab.setText("Modificar Producto");
+        modProdLab.setText("Listar Productos Activos");
         modProdLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 modProdLabMouseClicked(evt);
@@ -117,71 +120,39 @@ public class ProductoV extends javax.swing.JPanel {
         modProvePane.setLayout(modProvePaneLayout);
         modProvePaneLayout.setHorizontalGroup(
             modProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(modProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+            .addComponent(modProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
         );
         modProvePaneLayout.setVerticalGroup(
             modProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(modProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+            .addComponent(modProdLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        menuProvPane.add(modProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 150, 30));
-
-        buscarProvePane.setBackground(new java.awt.Color(152, 70, 137));
-        buscarProvePane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        buscProdLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        buscProdLab.setForeground(new java.awt.Color(255, 255, 255));
-        buscProdLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buscProdLab.setText("Buscar Producto");
-        buscProdLab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscProdLabMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout buscarProvePaneLayout = new javax.swing.GroupLayout(buscarProvePane);
-        buscarProvePane.setLayout(buscarProvePaneLayout);
-        buscarProvePaneLayout.setHorizontalGroup(
-            buscarProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscProdLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-        );
-        buscarProvePaneLayout.setVerticalGroup(
-            buscarProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarProvePaneLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(buscProdLab, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        menuProvPane.add(buscarProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 170, 30));
+        menuProvPane.add(modProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 180, 30));
 
         add(menuProvPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 50));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        escritorio.setBackground(new java.awt.Color(255, 255, 255));
+        escritorio.setMaximumSize(new java.awt.Dimension(790, 680));
+        escritorio.setMinimumSize(new java.awt.Dimension(790, 680));
 
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logolabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(295, 295, 295)
+                .addComponent(logolabel))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logolabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addComponent(logolabel))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 790, 680));
+        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 790, 680));
     }// </editor-fold>//GEN-END:initComponents
 
     private void elimProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elimProdLabMouseClicked
@@ -189,6 +160,16 @@ public class ProductoV extends javax.swing.JPanel {
     }//GEN-LAST:event_elimProdLabMouseClicked
 
     private void regisProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProdLabMouseClicked
+        registrarProdV regP = new registrarProdV();
+        regP.setVisible(true);
+        regP.setSize(790, 680);
+        
+        escritorio.removeAll();
+        escritorio.setLocation(0, 0);
+        escritorio.add(regP,BorderLayout.CENTER);
+        
+        escritorio.repaint();
+        escritorio.revalidate();
         
     }//GEN-LAST:event_regisProdLabMouseClicked
 
@@ -196,17 +177,11 @@ public class ProductoV extends javax.swing.JPanel {
         
     }//GEN-LAST:event_modProdLabMouseClicked
 
-    private void buscProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscProdLabMouseClicked
-       
-    }//GEN-LAST:event_buscProdLabMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel buscProdLab;
-    private javax.swing.JPanel buscarProvePane;
     private javax.swing.JLabel elimProdLab;
     private javax.swing.JPanel elimProvePane;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel escritorio;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel menuProvPane;
     private javax.swing.JLabel modProdLab;
