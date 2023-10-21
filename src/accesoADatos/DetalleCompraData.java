@@ -169,7 +169,7 @@ public class DetalleCompraData {
 				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
 				+ "WHERE c.fecha BETWEEN ? AND ? "
 				+ "GROUP BY p.idProducto, p.nombreProducto, p.descripción "
-				+ "HAVING TOTAL >= 10 "
+				+ "HAVING TOTAL >= 5 "
 				+ "ORDER BY TOTAL ASC";
 		
 		try {

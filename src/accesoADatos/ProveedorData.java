@@ -3,7 +3,6 @@ package accesoADatos;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import entidades.Proveedor;
-import java.awt.List;
 import java.util.ArrayList;
 
 public class ProveedorData {
@@ -100,7 +99,8 @@ public class ProveedorData {
 	
 	public ArrayList<Proveedor> listarProveedor() {
 		ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
-		String sql = "SELECT idProveedor, cuit, razonsocial, domicilio, telefono FROM proveedor ORDER BY cuit";
+		String sql = "SELECT idProveedor, cuit, razonsocial, domicilio, telefono FROM proveedor "
+				+ "ORDER BY cuit";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -111,8 +111,8 @@ public class ProveedorData {
 				proveedor.setIdProveedor(rs.getInt("idProveedor"));
 				proveedor.setCuit(rs.getLong("cuit"));
 				proveedor.setRazonSocial(rs.getString("razonsocial"));
-                                proveedor.setDomicilio(rs.getString("domicilio"));
-                                proveedor.setTelefono(rs.getString("telefono"));
+                proveedor.setDomicilio(rs.getString("domicilio"));
+                proveedor.setTelefono(rs.getString("telefono"));
 				proveedores.add(proveedor);
 			}
 
@@ -165,7 +165,4 @@ public class ProveedorData {
 			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor");
 		}
 	}
-        
-   
-
 }
