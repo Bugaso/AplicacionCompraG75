@@ -5,6 +5,7 @@
 package vistas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import vistas.proveedorOp.buscarProveV;
 import vistas.proveedorOp.eliminarProveV;
 import vistas.proveedorOp.modificarProveV;
@@ -22,7 +23,8 @@ public class ProveedorV extends javax.swing.JPanel {
     public ProveedorV() {
         initComponents();
     }
-
+    private Color brillo = new Color(202,70,137);
+    private Color oscuro = new Color(152,70,137);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +42,7 @@ public class ProveedorV extends javax.swing.JPanel {
         modProvePane = new javax.swing.JPanel();
         modProveLabe = new javax.swing.JLabel();
         buscarProvePane = new javax.swing.JPanel();
-        regProvLab = new javax.swing.JLabel();
+        buscarProveLab = new javax.swing.JLabel();
         elimProvePane1 = new javax.swing.JPanel();
         escritorioProve = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
@@ -64,6 +66,12 @@ public class ProveedorV extends javax.swing.JPanel {
         elimProveLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 elimProveLabMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                elimProveLabMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                elimProveLabMouseExited(evt);
             }
         });
 
@@ -91,6 +99,12 @@ public class ProveedorV extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regisProveLabMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regisProveLabMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regisProveLabMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout regisProvePaneLayout = new javax.swing.GroupLayout(regisProvePane);
@@ -117,6 +131,12 @@ public class ProveedorV extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 modProveLabeMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modProveLabeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                modProveLabeMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout modProvePaneLayout = new javax.swing.GroupLayout(modProvePane);
@@ -135,13 +155,19 @@ public class ProveedorV extends javax.swing.JPanel {
         buscarProvePane.setBackground(new java.awt.Color(152, 70, 137));
         buscarProvePane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        regProvLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        regProvLab.setForeground(new java.awt.Color(255, 255, 255));
-        regProvLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regProvLab.setText("Buscar Proveedor");
-        regProvLab.addMouseListener(new java.awt.event.MouseAdapter() {
+        buscarProveLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        buscarProveLab.setForeground(new java.awt.Color(255, 255, 255));
+        buscarProveLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarProveLab.setText("Buscar Proveedor");
+        buscarProveLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regProvLabMouseClicked(evt);
+                buscarProveLabMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarProveLabMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarProveLabMouseExited(evt);
             }
         });
 
@@ -149,13 +175,13 @@ public class ProveedorV extends javax.swing.JPanel {
         buscarProvePane.setLayout(buscarProvePaneLayout);
         buscarProvePaneLayout.setHorizontalGroup(
             buscarProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(regProvLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+            .addComponent(buscarProveLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
         );
         buscarProvePaneLayout.setVerticalGroup(
             buscarProvePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarProvePaneLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(regProvLab, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buscarProveLab, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         menuProvPane.add(buscarProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 170, 30));
@@ -237,7 +263,7 @@ public class ProveedorV extends javax.swing.JPanel {
         escritorioProve.repaint();
     }//GEN-LAST:event_elimProveLabMouseClicked
 
-    private void regProvLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regProvLabMouseClicked
+    private void buscarProveLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarProveLabMouseClicked
         buscarProveV buscV = new buscarProveV();
         buscV.setVisible(true);
         buscV.setSize(790,680);
@@ -245,10 +271,43 @@ public class ProveedorV extends javax.swing.JPanel {
         escritorioProve.add(buscV, BorderLayout.CENTER);
         escritorioProve.revalidate();
         escritorioProve.repaint();
-    }//GEN-LAST:event_regProvLabMouseClicked
+    }//GEN-LAST:event_buscarProveLabMouseClicked
+
+    private void regisProveLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProveLabMouseEntered
+        regisProvePane.setBackground(brillo);
+    }//GEN-LAST:event_regisProveLabMouseEntered
+
+    private void regisProveLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProveLabMouseExited
+        regisProvePane.setBackground(oscuro);
+    }//GEN-LAST:event_regisProveLabMouseExited
+
+    private void modProveLabeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProveLabeMouseEntered
+        modProvePane.setBackground(brillo);
+    }//GEN-LAST:event_modProveLabeMouseEntered
+
+    private void modProveLabeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProveLabeMouseExited
+        modProvePane.setBackground(oscuro);
+    }//GEN-LAST:event_modProveLabeMouseExited
+
+    private void elimProveLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elimProveLabMouseEntered
+        elimProvePane.setBackground(brillo);
+    }//GEN-LAST:event_elimProveLabMouseEntered
+
+    private void elimProveLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elimProveLabMouseExited
+        elimProvePane.setBackground(oscuro);
+    }//GEN-LAST:event_elimProveLabMouseExited
+
+    private void buscarProveLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarProveLabMouseEntered
+        buscarProvePane.setBackground(brillo);
+    }//GEN-LAST:event_buscarProveLabMouseEntered
+
+    private void buscarProveLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarProveLabMouseExited
+        buscarProvePane.setBackground(oscuro);
+    }//GEN-LAST:event_buscarProveLabMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel buscarProveLab;
     private javax.swing.JPanel buscarProvePane;
     private javax.swing.JLabel elimProveLab;
     private javax.swing.JPanel elimProvePane;
@@ -258,7 +317,6 @@ public class ProveedorV extends javax.swing.JPanel {
     private javax.swing.JPanel menuProvPane;
     private javax.swing.JLabel modProveLabe;
     private javax.swing.JPanel modProvePane;
-    private javax.swing.JLabel regProvLab;
     private javax.swing.JLabel regisProveLab;
     private javax.swing.JPanel regisProvePane;
     // End of variables declaration//GEN-END:variables
