@@ -4,6 +4,12 @@
  */
 package vistas.productoOp;
 
+import accesoADatos.ProductoData;
+import entidades.Producto;
+import java.util.ArrayList;
+
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author balta
@@ -15,8 +21,14 @@ public class ListarProdV extends javax.swing.JPanel {
      */
     public ListarProdV() {
         initComponents();
+        cargarP();
     }
-
+    private ProductoData proD = new ProductoData();
+    public void cargarP(){
+        ArrayList<Producto> prod = proD.ListarProductos();
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +39,20 @@ public class ListarProdV extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        prodtable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        logolabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        idtext = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        buscarpane = new javax.swing.JPanel();
+        buscarlabel = new javax.swing.JLabel();
+        modpane = new javax.swing.JPanel();
+        modificarlabel = new javax.swing.JLabel();
+        elimpane = new javax.swing.JPanel();
+        eliminarlabel = new javax.swing.JLabel();
+        refrescarpane = new javax.swing.JPanel();
+        refrescarlabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
@@ -35,7 +60,7 @@ public class ListarProdV extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        prodtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -54,21 +79,142 @@ public class ListarProdV extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
+        prodtable.getTableHeader().setResizingAllowed(false);
+        prodtable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(prodtable);
+        if (prodtable.getColumnModel().getColumnCount() > 0) {
+            prodtable.getColumnModel().getColumn(0).setResizable(false);
+            prodtable.getColumnModel().getColumn(1).setResizable(false);
+            prodtable.getColumnModel().getColumn(2).setResizable(false);
+            prodtable.getColumnModel().getColumn(3).setResizable(false);
+            prodtable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 790, 132));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 770, 132));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel1.setText("Lista de Productos Activos");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+
+        logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setText("Buscador:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+
+        idtext.setForeground(java.awt.Color.lightGray);
+        idtext.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        idtext.setText("Ingrese idProducto");
+        idtext.setBorder(null);
+        add(idtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 170, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 170, 10));
+
+        buscarpane.setBackground(new java.awt.Color(0, 51, 51));
+
+        buscarlabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        buscarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        buscarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarlabel.setText("Buscar");
+
+        javax.swing.GroupLayout buscarpaneLayout = new javax.swing.GroupLayout(buscarpane);
+        buscarpane.setLayout(buscarpaneLayout);
+        buscarpaneLayout.setHorizontalGroup(
+            buscarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        buscarpaneLayout.setVerticalGroup(
+            buscarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        add(buscarpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 80, 30));
+
+        modpane.setBackground(new java.awt.Color(51, 0, 51));
+        modpane.setForeground(new java.awt.Color(51, 0, 102));
+
+        modificarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        modificarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        modificarlabel.setText("Modificar");
+
+        javax.swing.GroupLayout modpaneLayout = new javax.swing.GroupLayout(modpane);
+        modpane.setLayout(modpaneLayout);
+        modpaneLayout.setHorizontalGroup(
+            modpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(modificarlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+        );
+        modpaneLayout.setVerticalGroup(
+            modpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(modificarlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        add(modpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 110, 30));
+
+        elimpane.setBackground(new java.awt.Color(102, 0, 0));
+        elimpane.setPreferredSize(new java.awt.Dimension(110, 30));
+
+        eliminarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminarlabel.setText("Eliminar");
+
+        javax.swing.GroupLayout elimpaneLayout = new javax.swing.GroupLayout(elimpane);
+        elimpane.setLayout(elimpaneLayout);
+        elimpaneLayout.setHorizontalGroup(
+            elimpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, elimpaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        elimpaneLayout.setVerticalGroup(
+            elimpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, elimpaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(elimpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, -1, -1));
+
+        refrescarpane.setBackground(new java.awt.Color(0, 0, 102));
+        refrescarpane.setPreferredSize(new java.awt.Dimension(110, 30));
+
+        refrescarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        refrescarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        refrescarlabel.setText("Refrescar");
+
+        javax.swing.GroupLayout refrescarpaneLayout = new javax.swing.GroupLayout(refrescarpane);
+        refrescarpane.setLayout(refrescarpaneLayout);
+        refrescarpaneLayout.setHorizontalGroup(
+            refrescarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, refrescarpaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(refrescarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        refrescarpaneLayout.setVerticalGroup(
+            refrescarpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, refrescarpaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(refrescarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(refrescarpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel buscarlabel;
+    private javax.swing.JPanel buscarpane;
+    private javax.swing.JLabel eliminarlabel;
+    private javax.swing.JPanel elimpane;
+    private javax.swing.JTextField idtext;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel logolabel;
+    private javax.swing.JLabel modificarlabel;
+    private javax.swing.JPanel modpane;
+    private javax.swing.JTable prodtable;
+    private javax.swing.JLabel refrescarlabel;
+    private javax.swing.JPanel refrescarpane;
     // End of variables declaration//GEN-END:variables
 }

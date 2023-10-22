@@ -61,6 +61,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         primalPGround.setBackground(new java.awt.Color(105, 70, 137));
+        primalPGround.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         primalPGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenusPanel.setBackground(new java.awt.Color(162, 75, 137));

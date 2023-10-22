@@ -134,4 +134,35 @@ public class ProductoData {
         
         return productos;
     }     
+    
+    public ArrayList<Producto> ListarProductos(){
+    	ArrayList<Producto> productos = new ArrayList<Producto>();
+    	String sql = "SELECT idProducto,nombreProducto,descripción,precioActual,stock FROM producto WHERE estado = 1";
+             
+        try {
+        	PreparedStatement ps = con.prepareStatement(sql);
+        	
+            ps.setInt(1,0);
+            
+            ResultSet rs= ps.executeQuery();//. en este caso te devuelve el productos si el stock esta debajo de 30
+            
+            while(rs.next()){
+            	Producto producto = new Producto();
+            	producto.setIdProducto(rs.getInt("idProducto"));
+            	producto.setNombreProducto(rs.getString("nombreProducto"));
+            	producto.setDescripcion(rs.getString("descripción"));
+            	producto.setPrecioActual(rs.getDouble("precioActual"));
+            	producto.setStock(rs.getInt("stock"));
+            	
+            	productos.add(producto);
+            }
+                    
+            ps.close();
+            
+        	} catch (SQLException e) {
+        	  JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto");
+        	}
+        
+        return productos;
+    }     
 }

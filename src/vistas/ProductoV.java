@@ -6,6 +6,7 @@ package vistas;
 
 import java.awt.BorderLayout;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
+import vistas.productoOp.ListarProdV;
 import vistas.productoOp.registrarProdV;
 
 /**
@@ -134,6 +135,7 @@ public class ProductoV extends javax.swing.JPanel {
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
         escritorio.setMaximumSize(new java.awt.Dimension(790, 680));
         escritorio.setMinimumSize(new java.awt.Dimension(790, 680));
+        escritorio.setPreferredSize(new java.awt.Dimension(790, 680));
 
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
 
@@ -152,7 +154,7 @@ public class ProductoV extends javax.swing.JPanel {
                 .addComponent(logolabel))
         );
 
-        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 790, 680));
+        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void elimProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elimProdLabMouseClicked
@@ -174,7 +176,15 @@ public class ProductoV extends javax.swing.JPanel {
     }//GEN-LAST:event_regisProdLabMouseClicked
 
     private void modProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProdLabMouseClicked
+        ListarProdV listP = new ListarProdV();
+        listP.setVisible(true);
+        listP.setSize(790,680);
         
+        escritorio.removeAll();
+        escritorio.setLocation(0, 0);
+        escritorio.add(listP,BorderLayout.CENTER);
+        escritorio.repaint();
+        escritorio.revalidate();
     }//GEN-LAST:event_modProdLabMouseClicked
 
 
