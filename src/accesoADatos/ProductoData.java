@@ -111,9 +111,9 @@ public class ProductoData {
         try {
         	PreparedStatement ps = con.prepareStatement(sql);
         	
-            ps.setInt(1,30);
+            ps.setInt(1, 5);
             
-            ResultSet rs= ps.executeQuery();//. en este caso te devuelve el productos si el stock esta debajo de 30
+            ResultSet rs = ps.executeQuery();//. en este caso te devuelve el productos si el stock esta debajo de 30
             
             while(rs.next()){
             	Producto producto = new Producto();

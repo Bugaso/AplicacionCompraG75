@@ -2,7 +2,7 @@ package entidades;
 
 public class Proveedor {
     private int idProveedor;
-    private Long cuit;
+    private long cuit;
     private String razonSocial;
     private String domicilio;
     private String telefono;
@@ -11,7 +11,7 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int idProveedor, Long cuit, String razonSocial, String domicilio, String telefono) {
+    public Proveedor(int idProveedor, long cuit, String razonSocial, String domicilio, String telefono) {
         this.idProveedor = idProveedor;
         this.cuit = cuit;
         this.razonSocial = razonSocial;
@@ -19,7 +19,7 @@ public class Proveedor {
         this.telefono = telefono;
     }
     
-    public Proveedor(Long cuit, String razonSocial, String domicilio, String telefono) {
+    public Proveedor(long cuit, String razonSocial, String domicilio, String telefono) {
         this.cuit = cuit;
     	this.razonSocial = razonSocial;
         this.domicilio = domicilio;
@@ -30,9 +30,9 @@ public class Proveedor {
 
 	public void setIdProveedor(int idProveedor) {this.idProveedor = idProveedor;}
 	
-	public Long getCuit() {return this.cuit;}
+	public long getCuit() {return this.cuit;}
 	
-	public void setCuit(Long cuit) {this.cuit = cuit;}
+	public void setCuit(long cuit) {this.cuit = cuit;}
 
 	public String getRazonSocial() {return this.razonSocial;}
 
