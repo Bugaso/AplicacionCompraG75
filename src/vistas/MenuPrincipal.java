@@ -355,6 +355,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ProvePane.setBorder(null);
         DetalleCompraPanel.setBorder(null);
         paneproveprod.setBorder(bord);
+        
     }//GEN-LAST:event_labelproveprodMouseClicked
 
     /**
