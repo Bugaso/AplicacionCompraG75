@@ -45,8 +45,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         minlabel = new javax.swing.JLabel();
         ProdPane = new javax.swing.JPanel();
         ProdLabel = new javax.swing.JLabel();
-        DetalleCompraPanel = new javax.swing.JPanel();
-        DetalleCompraLabel = new javax.swing.JLabel();
         ProvePane = new javax.swing.JPanel();
         ProvLabel = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
@@ -165,35 +163,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         primalPGround.add(ProdPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 50));
 
-        DetalleCompraPanel.setBackground(new java.awt.Color(162, 70, 137));
-
-        DetalleCompraLabel.setBackground(new java.awt.Color(162, 70, 137));
-        DetalleCompraLabel.setForeground(new java.awt.Color(255, 255, 255));
-        DetalleCompraLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        DetalleCompraLabel.setText("Detalle de la Compra");
-        DetalleCompraLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DetalleCompraLabelMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout DetalleCompraPanelLayout = new javax.swing.GroupLayout(DetalleCompraPanel);
-        DetalleCompraPanel.setLayout(DetalleCompraPanelLayout);
-        DetalleCompraPanelLayout.setHorizontalGroup(
-            DetalleCompraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetalleCompraPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        DetalleCompraPanelLayout.setVerticalGroup(
-            DetalleCompraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetalleCompraPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(DetalleCompraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        primalPGround.add(DetalleCompraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 140, 50));
-
         ProvePane.setBackground(new java.awt.Color(162, 70, 137));
 
         ProvLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,28 +252,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DetalleCompraLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetalleCompraLabelMouseClicked
-        DetalleCompraV detaC = new DetalleCompraV();
-        detaC.setSize(790, 730);
-        
-        DetalleCompraPanel.setBorder(bord);
-        ProdPane.setBorder(null);
-        ProvePane.setBorder(null);
-        paneproveprod.setBorder(null);
-        escritorio.removeAll();
-        escritorio.setLocation(0, 0);
-        escritorio.add(detaC, BorderLayout.CENTER);
-        escritorio.revalidate();
-        escritorio.repaint();
-    }//GEN-LAST:event_DetalleCompraLabelMouseClicked
-
     private void ProdLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdLabelMouseClicked
         // TODO add your handling code here:
         ProductoV regProd = new ProductoV();
         regProd.setSize(790, 730);
         ProdPane.setBorder(bord);
         ProvePane.setBorder(null);
-        DetalleCompraPanel.setBorder(null);
+        
         paneproveprod.setBorder(null);
         
         escritorio.removeAll();
@@ -338,7 +292,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         provPane.setSize(790,730);
         
         ProdPane.setBorder(null);
-        DetalleCompraPanel.setBorder(null);
+        
         ProvePane.setBorder(bord);
         //ProvePane.setBackground(color);
         paneproveprod.setBorder(null);
@@ -353,7 +307,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void labelproveprodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelproveprodMouseClicked
         ProdPane.setBorder(null);
         ProvePane.setBorder(null);
-        DetalleCompraPanel.setBorder(null);
+        
         paneproveprod.setBorder(bord);
         
     }//GEN-LAST:event_labelproveprodMouseClicked
@@ -395,8 +349,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DetalleCompraLabel;
-    private javax.swing.JPanel DetalleCompraPanel;
     private javax.swing.JPanel MenusPanel;
     private javax.swing.JLabel ProdLabel;
     private javax.swing.JPanel ProdPane;

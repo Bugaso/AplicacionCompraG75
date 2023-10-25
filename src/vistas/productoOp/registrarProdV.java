@@ -101,8 +101,8 @@ public class registrarProdV extends javax.swing.JPanel {
 
         titulolabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         titulolabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulolabel.setText("registro de productos");
-        add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
+        titulolabel.setText("Registro de Productos");
+        add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel1.setText("Nombre del Producto:");

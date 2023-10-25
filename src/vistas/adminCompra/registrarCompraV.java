@@ -38,6 +38,7 @@ public class registrarCompraV extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
+        setPreferredSize(new java.awt.Dimension(790, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
