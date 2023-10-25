@@ -15,7 +15,7 @@ import entidades.Proveedor;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
 import vistas.proveedorOp.DocumentSizeFilter;
@@ -37,10 +37,84 @@ public class ListarProdV extends javax.swing.JPanel {
         cargarProv();
         ((AbstractDocument) idtext.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
     }
+    
     private DetalleCompraData detaCD = new DetalleCompraData();
     private ProveedorData proveD = new ProveedorData();
     private ProductoData proD = new ProductoData();
     private CompraData compraD = new CompraData();
+    
+    public void realizarCompra(){
+        int cant = 0;
+        int stock = 0;
+        int[] filas;
+        filas = prodtable.getSelectedRows();
+            System.out.println("Cantidad de filas seleccionadas: "+prodtable.getSelectedRowCount());
+            Compra compra[] = new Compra[prodtable.getSelectedRowCount()];
+            DetalleCompra detaC = new DetalleCompra();
+            Producto prod[] = new Producto [prodtable.getSelectedRowCount()];
+            try{
+            
+                for (int i = 0; i<=prodtable.getSelectedRowCount();i++){
+                    System.out.println("Valor de la fila: "+filas[i]);
+                    cant = (int) prodtable.getValueAt(filas[i], 5);
+                    stock = (int) prodtable.getValueAt(filas[i], 4);
+                    if(cant > 0){
+                        compra[i] = new Compra();
+                        prod[i] = new Producto();
+                        if( cant <= stock){
+                            compra[i].setProveedor(proveD.buscarProveedorPorcuit(Long.valueOf(idtext.getText())));
+                            compra[i].setFecha(LocalDate.now());
+                            compraD.guardarCompra(compra[i]);
+                            detaC.setCantidad((int) prodtable.getValueAt(filas[i], 4));
+                            detaC.setCompra(compra[i]);
+                            detaC.setPrecioCosto((double)prodtable.getValueAt(filas[i], 3));
+                            prod[i] = proD.buscarProducto((int) prodtable.getValueAt(filas[i], 0));
+                            detaC.setProducto(prod[i]);
+                            detaCD.guardarDetalleCompra(detaC);
+                            prod[i].setStock(stock-cant);               
+                            proD.modificarProducto(prod[i]);                    
+                            cargarP();
+                        }
+                    }else{
+                        System.out.println("Ingrese algo en la compra");
+                    }
+                }
+            
+            }catch(NumberFormatException e){
+                System.out.println("Esta mal");
+            }
+    }
+    
+    public void realizarModificacion(){
+        int cant = 0;
+        int stock = 0;
+        int[] filas;
+        filas = prodtable.getSelectedRows();
+            System.out.println("Cantidad de filas seleccionadas: "+prodtable.getSelectedRowCount());
+            Producto prod[] = new Producto [prodtable.getSelectedRowCount()];
+            try{
+            
+                for (int i = 0; i<=prodtable.getSelectedRowCount();i++){
+                    System.out.println("Valor de la fila: "+filas[i]);
+                    cant = (int) prodtable.getValueAt(filas[i], 5);
+                    stock = (int) prodtable.getValueAt(filas[i], 4);
+                    if(cant > 0){
+                        
+                        prod[i] = new Producto();
+                        prod[i] = proD.buscarProducto((int) prodtable.getValueAt(filas[i], 0));            
+                        proD.modificarProducto(prod[i]);                    
+                        cargarP();
+                        
+                    }else{
+                        System.out.println("Ingrese algo en la compra");
+                    }
+                }
+            
+            }catch(NumberFormatException e){
+                System.out.println("Esta mal");
+            }
+    }
+    
     public void cargarProv(){
         ArrayList<Proveedor> proveedores = proveD.listarProveedor();
         for(Proveedor prov : proveedores){
@@ -106,7 +180,7 @@ public class ListarProdV extends javax.swing.JPanel {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -189,6 +263,11 @@ public class ListarProdV extends javax.swing.JPanel {
         modificarlabel.setForeground(new java.awt.Color(255, 255, 255));
         modificarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         modificarlabel.setText("Modificar");
+        modificarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarlabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout modpaneLayout = new javax.swing.GroupLayout(modpane);
         modpane.setLayout(modpaneLayout);
@@ -326,51 +405,18 @@ public class ListarProdV extends javax.swing.JPanel {
     }//GEN-LAST:event_provboxActionPerformed
 
     private void comprarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarlabelMouseClicked
-        
-        int stock = 0;
-        int cant = 0;
-        int[] filas;
-        
+
         if(prodtable.getSelectedRowCount() >0){
-            filas = prodtable.getSelectedRows();
-            System.out.println("Cantidad de filas seleccionadas: "+prodtable.getSelectedRowCount());
-            Compra compra[] = new Compra[prodtable.getSelectedRowCount()];
-            DetalleCompra detaC = new DetalleCompra();
-            Producto prod[] = new Producto [prodtable.getSelectedRowCount()];
-            try{
-            
-                for (int i = 0; i<=prodtable.getSelectedRowCount();i++){
-                    System.out.println("Valor de la fila: "+filas[i]);
-                    cant = (int) prodtable.getValueAt(filas[i], 5);
-                    stock = (int) prodtable.getValueAt(filas[i], 4);
-                    if(cant > 0){
-                        compra[i] = new Compra();
-                        prod[i] = new Producto();
-                        if( cant <= stock){
-                            compra[i].setProveedor(proveD.buscarProveedorPorcuit(Long.valueOf(idtext.getText())));
-                            compra[i].setFecha(LocalDate.now());
-                            compraD.guardarCompra(compra[i]);
-                            detaC.setCantidad((int) prodtable.getValueAt(filas[i], 4));
-                            detaC.setCompra(compra[i]);
-                            detaC.setPrecioCosto((double)prodtable.getValueAt(filas[i], 3));
-                            prod[i] = proD.buscarProducto((int) prodtable.getValueAt(filas[i], 0));
-                            detaC.setProducto(prod[i]);
-                            detaCD.guardarDetalleCompra(detaC);
-                            prod[i].setStock(stock-cant);               
-                            proD.modificarProducto(prod[i]);                    
-                            cargarP();
-                        }
-                    }else{
-                        System.out.println("Ingrese algo en la compra");
-                    }
-                }
-            
-        }catch(NumberFormatException e){
-            System.out.println("Esta mal");
-        }
+            realizarCompra();
         }
         
     }//GEN-LAST:event_comprarlabelMouseClicked
+
+    private void modificarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarlabelMouseClicked
+        if(prodtable.getSelectedRowCount() > 0){
+            realizarModificacion();
+        }
+    }//GEN-LAST:event_modificarlabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

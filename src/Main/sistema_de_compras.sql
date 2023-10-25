@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-10-2023 a las 01:43:28
+-- Tiempo de generación: 26-10-2023 a las 00:16:33
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistema_de_compras`
 --
+CREATE DATABASE IF NOT EXISTS `sistema_de_compras` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `sistema_de_compras`;
 
 -- --------------------------------------------------------
 
@@ -32,6 +34,17 @@ CREATE TABLE `compra` (
   `idProveedor` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`idCompra`, `idProveedor`, `fecha`) VALUES
+(25, 7, '2023-10-24'),
+(26, 8, '2023-10-24'),
+(27, 8, '2023-10-24'),
+(28, 6, '2023-10-25'),
+(29, 6, '2023-10-25');
 
 -- --------------------------------------------------------
 
@@ -46,6 +59,17 @@ CREATE TABLE `detallecompra` (
   `idCompra` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detallecompra`
+--
+
+INSERT INTO `detallecompra` (`idDetalle`, `cantidad`, `precioCosto`, `idCompra`, `idProducto`) VALUES
+(14, 2, 32100, 25, 3),
+(15, 5, 135000.99, 26, 4),
+(16, 3, 135000.99, 27, 4),
+(17, 2, 135000.99, 28, 4),
+(18, 45, 3232141, 29, 5);
 
 -- --------------------------------------------------------
 
@@ -62,6 +86,17 @@ CREATE TABLE `producto` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`idProducto`, `nombreProducto`, `descripción`, `precioActual`, `stock`, `estado`) VALUES
+(1, 'Motorola G31', 'Moto G', 230000, 0, 1),
+(2, 'Samsung S21', 'Alta Gama', 250000, 1, 1),
+(3, 'Lavarropas T100', 'Ultra durable', 32100, 1, 1),
+(4, 'Heladera moderna', 'Samsung', 135000.99, 1, 1),
+(5, '32131', 'adwada', 3232141, 40, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -70,10 +105,21 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `proveedor` (
   `idProveedor` int(11) NOT NULL,
+  `cuit` bigint(11) NOT NULL,
   `razonSocial` varchar(60) NOT NULL,
   `domicilio` varchar(150) NOT NULL,
   `telefono` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`idProveedor`, `cuit`, `razonSocial`, `domicilio`, `telefono`) VALUES
+(5, 32432143256, 'hablo takataka', 'abcd 43', '123456789101112'),
+(6, 19284383829, 'Baltasar SRL', 'Domingo palacios 324', '3856114778'),
+(7, 48373218438, 'Juan Cruz Box', 'Aeropuerto 585', '584737232243244'),
+(8, 55555555555, 'Angelo Industrias 404', 'Salta 3200', '384736234123545');
 
 --
 -- Índices para tablas volcadas
@@ -114,25 +160,25 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `detallecompra`
 --
 ALTER TABLE `detallecompra`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
