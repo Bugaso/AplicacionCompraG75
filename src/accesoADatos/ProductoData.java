@@ -137,14 +137,14 @@ public class ProductoData {
     
     public ArrayList<Producto> ListarProductos(){
     	ArrayList<Producto> productos = new ArrayList<Producto>();
-    	String sql = "SELECT idProducto,nombreProducto,descripción,precioActual,stock FROM producto WHERE estado = 1";
+    	String sql = "SELECT idProducto, nombreProducto, descripción, precioActual, stock FROM producto WHERE estado = 1";
              
         try {
         	PreparedStatement ps = con.prepareStatement(sql);
         	
             ps.setInt(1,0);
             
-            ResultSet rs= ps.executeQuery();//. en este caso te devuelve el productos si el stock esta debajo de 30
+            ResultSet rs= ps.executeQuery();
             
             while(rs.next()){
             	Producto producto = new Producto();
