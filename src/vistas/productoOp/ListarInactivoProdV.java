@@ -5,6 +5,16 @@
  */
 package vistas.productoOp;
 
+import accesoADatos.CompraData;
+import accesoADatos.DetalleCompraData;
+import accesoADatos.ProductoData;
+import accesoADatos.ProveedorData;
+import entidades.Compra;
+import entidades.DetalleCompra;
+import entidades.Producto;
+import java.awt.Color;
+import java.time.LocalDate;
+
 /**
  *
  * @author compu
@@ -17,7 +27,7 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
     public ListarInactivoProdV() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +54,7 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         comprarlabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idtext = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(790, 680));
@@ -210,10 +220,11 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
         });
         add(comprarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jTextField1.setText("Ingrese cuit del Proveedor");
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 160, -1));
+        idtext.setText("Ingrese cuit del Proveedor");
+        idtext.setBorder(null);
+        add(idtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void provboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provboxActionPerformed
         String cuit = "";
         try{
@@ -226,7 +237,10 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_provboxActionPerformed
-
+    private DetalleCompraData detaCD = new DetalleCompraData();
+    private CompraData compraD = new CompraData();
+    private ProveedorData proveD = new ProveedorData();
+    private ProductoData proD = new ProductoData(); 
     private void comprarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarlabelMouseClicked
 
         int stock = 0;
@@ -260,7 +274,7 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
                             detaCD.guardarDetalleCompra(detaC);
                             prod[i].setStock(stock-cant);
                             proD.modificarProducto(prod[i]);
-                            cargarP();
+                            
                         }
                     }else{
                         System.out.println("Ingrese algo en la compra");
@@ -277,6 +291,7 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel comprarlabel;
+    private javax.swing.JTextField idtext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -291,7 +306,6 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable prodtable;
     private javax.swing.JComboBox<String> provbox;
     // End of variables declaration//GEN-END:variables
