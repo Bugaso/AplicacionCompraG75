@@ -153,7 +153,6 @@ public class ProductoV extends javax.swing.JPanel {
         add(menuProvPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 50));
 
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
-        escritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escritorio.setMaximumSize(new java.awt.Dimension(790, 680));
         escritorio.setMinimumSize(new java.awt.Dimension(790, 680));
         escritorio.setPreferredSize(new java.awt.Dimension(790, 680));
@@ -175,7 +174,7 @@ public class ProductoV extends javax.swing.JPanel {
                 .addComponent(logolabel))
         );
 
-        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 670));
+        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void prodInaclabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodInaclabMouseClicked
@@ -185,7 +184,7 @@ public class ProductoV extends javax.swing.JPanel {
     private void regisProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProdLabMouseClicked
         registrarProdV regP = new registrarProdV();
         regP.setVisible(true);
-        regP.setSize(790, 670);
+        regP.setSize(790, 680);
         
         escritorio.removeAll();
         escritorio.setLocation(0, 0);
@@ -199,7 +198,7 @@ public class ProductoV extends javax.swing.JPanel {
     private void modProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProdLabMouseClicked
         ListarProdV listP = new ListarProdV();
         listP.setVisible(true);
-        listP.setSize(790,670);
+        listP.setSize(790,680);
         
         escritorio.removeAll();
         escritorio.setLocation(0, 0);

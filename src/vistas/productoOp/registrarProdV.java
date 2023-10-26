@@ -23,20 +23,6 @@ public class registrarProdV extends javax.swing.JPanel {
     private ProductoData prodD = new ProductoData();
     private Color guardarbtn = new Color(0,101,101);
     private Color guardarbtnD = new Color(0,51,51);
-    private Color refrescar = new Color(162,0,0);
-    private Color refrescarE = new Color(102,0,51);
-    
-    
-    public void defecto(){
-        nombretext.setText("Nombre");
-        nombretext.setForeground(Color.lightGray);
-        descripciontext.setText("Descripcion");
-        descripciontext.setForeground(Color.lightGray);
-        preciotext.setText("Precio");
-        preciotext.setForeground(Color.LIGHT_GRAY);
-        stocktext.setText("Stock");
-        stocktext.setForeground(Color.LIGHT_GRAY);
-    }
     public boolean validar (String Nombre,String Descripcion,String precio,String stock){
         int cont = 0;
         try{
@@ -91,7 +77,6 @@ public class registrarProdV extends javax.swing.JPanel {
         refrescarlabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
         setPreferredSize(new java.awt.Dimension(790, 680));
@@ -102,8 +87,8 @@ public class registrarProdV extends javax.swing.JPanel {
 
         titulolabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         titulolabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulolabel.setText("Registro de Productos");
-        add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+        titulolabel.setText("registro de productos");
+        add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel1.setText("Nombre del Producto:");
@@ -214,17 +199,6 @@ public class registrarProdV extends javax.swing.JPanel {
         refrescarlabel.setForeground(new java.awt.Color(255, 255, 255));
         refrescarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         refrescarlabel.setText("Refrescar");
-        refrescarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                refrescarlabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                refrescarlabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                refrescarlabelMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout refrescarPaneLayout = new javax.swing.GroupLayout(refrescarPane);
         refrescarPane.setLayout(refrescarPaneLayout);
@@ -318,18 +292,6 @@ public class registrarProdV extends javax.swing.JPanel {
     private void guardarlabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarlabelMouseExited
         guardarPane.setBackground(guardarbtnD);
     }//GEN-LAST:event_guardarlabelMouseExited
-
-    private void refrescarlabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarlabelMouseEntered
-        refrescarPane.setBackground(refrescar);
-    }//GEN-LAST:event_refrescarlabelMouseEntered
-
-    private void refrescarlabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarlabelMouseExited
-        refrescarPane.setBackground(refrescarE);
-    }//GEN-LAST:event_refrescarlabelMouseExited
-
-    private void refrescarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarlabelMouseClicked
-       defecto();
-    }//GEN-LAST:event_refrescarlabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

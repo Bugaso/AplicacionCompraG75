@@ -57,6 +57,7 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
         idtext = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
         setPreferredSize(new java.awt.Dimension(790, 680));
