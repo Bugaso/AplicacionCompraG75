@@ -135,7 +135,7 @@ public class ProductoData {
         return productos;
     }     
     
-    public ArrayList<Producto> ListarProductos(){
+    public ArrayList<Producto> listarProductos(){
     	ArrayList<Producto> productos = new ArrayList<Producto>();
     	String sql = "SELECT idProducto, nombreProducto, descripción, precioActual, stock FROM producto WHERE estado = 1";
              
@@ -164,5 +164,36 @@ public class ProductoData {
         	}
         
         return productos;
-    }     
+    }
+    
+    public ArrayList<Producto> listarProductosInactivos(){
+    	ArrayList<Producto> productos = new ArrayList<Producto>();
+    	String sql = "SELECT idProducto, nombreProducto, descripción, precioActual, stock FROM producto WHERE estado = 0";
+             
+        try {
+        	PreparedStatement ps = con.prepareStatement(sql);
+        	
+            ps.setInt(1,0);
+            
+            ResultSet rs= ps.executeQuery();
+            
+            while(rs.next()){
+            	Producto producto = new Producto();
+            	producto.setIdProducto(rs.getInt("idProducto"));
+            	producto.setNombreProducto(rs.getString("nombreProducto"));
+            	producto.setDescripcion(rs.getString("descripción"));
+            	producto.setPrecioActual(rs.getDouble("precioActual"));
+            	producto.setStock(rs.getInt("stock"));
+            	
+            	productos.add(producto);
+            }
+                    
+            ps.close();
+            
+        	} catch (SQLException e) {
+        	  JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto");
+        	}
+        
+        return productos;
+    }
 }
