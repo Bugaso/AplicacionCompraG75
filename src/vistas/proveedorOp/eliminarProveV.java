@@ -8,6 +8,7 @@ import accesoADatos.ProveedorData;
 import entidades.Proveedor;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
 
 /**
  *
@@ -16,12 +17,11 @@ import javax.swing.JOptionPane;
 public class eliminarProveV extends javax.swing.JPanel {
     
     private ProveedorData proveD = new ProveedorData();
-    /**
-     * Creates new form eliminarProveV
-     */
+    
     public eliminarProveV() {
         initComponents();
         estilos();
+        ((AbstractDocument) buscarcuit.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
     }
     public void estilos(){
         buscarcuit.setText("Cuit");
@@ -169,6 +169,11 @@ public class eliminarProveV extends javax.swing.JPanel {
                 buscarcuitFocusLost(evt);
             }
         });
+        buscarcuit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                buscarcuitKeyReleased(evt);
+            }
+        });
         add(buscarcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 230, 20));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 230, -1));
 
@@ -227,8 +232,7 @@ public class eliminarProveV extends javax.swing.JPanel {
     }//GEN-LAST:event_buscarcuitFocusGained
 
     private void buscarcuitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarcuitFocusLost
-        if(buscarcuit.getText().equals("")){
-            
+        if(buscarcuit.getText().equals("")){   
             estilos();
         }else{
             try{
@@ -237,7 +241,6 @@ public class eliminarProveV extends javax.swing.JPanel {
                 tooltipcuit.setVisible(true);
                 tooltipcuit.setToolTipText("Ingrese solamente numeros");
             }
-
         }
 
     }//GEN-LAST:event_buscarcuitFocusLost
@@ -260,6 +263,22 @@ public class eliminarProveV extends javax.swing.JPanel {
     private void refrescartextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescartextMouseClicked
         estilos();
     }//GEN-LAST:event_refrescartextMouseClicked
+
+    private void buscarcuitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarcuitKeyReleased
+        try{
+        if(buscarcuit.getText().length() == 11){
+            System.out.println(buscarcuit.getText());
+            tooltipcuit.setVisible(false);
+            mostrarDatos(Long.parseLong(buscarcuit.getText()));
+        }
+        }catch(NullPointerException e){
+           tooltipcuit.setToolTipText("El cuit ingresado no existe");
+           tooltipcuit.setVisible(true);
+       }catch(NumberFormatException e){
+           tooltipcuit.setToolTipText("Ingrese solamente numeros!!!");
+           tooltipcuit.setVisible(true);
+       }
+    }//GEN-LAST:event_buscarcuitKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

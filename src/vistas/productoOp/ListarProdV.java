@@ -159,6 +159,7 @@ public class ListarProdV extends javax.swing.JPanel {
         elimpane = new javax.swing.JPanel();
         eliminarlabel = new javax.swing.JLabel();
         comprarPane = new javax.swing.JPanel();
+        compraLab = new javax.swing.JLabel();
         provbox = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -269,7 +270,7 @@ public class ListarProdV extends javax.swing.JPanel {
             .addComponent(modificarlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        add(modpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 110, 30));
+        add(modpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 110, 30));
 
         elimpane.setBackground(new java.awt.Color(102, 0, 0));
         elimpane.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -293,23 +294,32 @@ public class ListarProdV extends javax.swing.JPanel {
                 .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(elimpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, -1, -1));
+        add(elimpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, -1));
 
         comprarPane.setBackground(new java.awt.Color(0, 0, 102));
         comprarPane.setPreferredSize(new java.awt.Dimension(110, 30));
+
+        compraLab.setForeground(new java.awt.Color(255, 255, 255));
+        compraLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        compraLab.setText("Comprar");
+        compraLab.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                compraLabKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout comprarPaneLayout = new javax.swing.GroupLayout(comprarPane);
         comprarPane.setLayout(comprarPaneLayout);
         comprarPaneLayout.setHorizontalGroup(
             comprarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
+            .addComponent(compraLab, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
         );
         comprarPaneLayout.setVerticalGroup(
             comprarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addComponent(compraLab, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        add(comprarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, -1, -1));
+        add(comprarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
 
         provbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Razon Social" }));
         provbox.setBorder(null);
@@ -344,12 +354,17 @@ public class ListarProdV extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_idtextFocusLost
 
+    private void compraLabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_compraLabKeyPressed
+        
+    }//GEN-LAST:event_compraLabKeyPressed
+
               
        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buscarlabel;
     private javax.swing.JPanel buscarpane;
+    private javax.swing.JLabel compraLab;
     private javax.swing.JPanel comprarPane;
     private javax.swing.JLabel eliminarlabel;
     private javax.swing.JPanel elimpane;
