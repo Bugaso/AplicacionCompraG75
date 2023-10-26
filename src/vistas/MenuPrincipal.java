@@ -190,6 +190,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         primalPGround.add(ProvePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 140, 50));
 
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
+        escritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escritorio.setForeground(new java.awt.Color(204, 204, 204));
         escritorio.setPreferredSize(new java.awt.Dimension(790, 730));
 
@@ -206,14 +207,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(270, 270, 270)
                 .addComponent(logolabel, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(218, 218, 218)
                 .addComponent(logolabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(409, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
 
         primalPGround.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, 720));
@@ -223,7 +224,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         labelproveprod.setForeground(new java.awt.Color(255, 255, 255));
         labelproveprod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelproveprod.setText("Admin Compras");
+        labelproveprod.setText("Admin Ventas");
         labelproveprod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelproveprodMouseClicked(evt);
