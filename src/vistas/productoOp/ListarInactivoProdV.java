@@ -38,9 +38,6 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        provbox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         prodtable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -49,12 +46,9 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         comprarlabel = new javax.swing.JLabel();
-        idtext = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -67,20 +61,6 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Productos Inactivos");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 65, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setText("Buscar Proveedor:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 208, 194, -1));
-
-        provbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Razon social" }));
-        provbox.setBorder(null);
-        provbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                provboxActionPerformed(evt);
-            }
-        });
-        add(provbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 210, 30));
 
         prodtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,26 +150,6 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
 
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, 30));
 
-        jPanel6.setBackground(new java.awt.Color(102, 102, 102));
-
-        jLabel6.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Buscar");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 110, 30));
-
         jPanel7.setBackground(new java.awt.Color(0, 102, 102));
         jPanel7.setMinimumSize(new java.awt.Dimension(110, 30));
         jPanel7.setPreferredSize(new java.awt.Dimension(41, 14));
@@ -220,94 +180,29 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
             }
         });
         add(comprarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        idtext.setText("Ingrese cuit del Proveedor");
-        idtext.setBorder(null);
-        add(idtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void provboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provboxActionPerformed
-        String cuit = "";
-        try{
-            for(int i= 0;i<11;i++){
-                cuit+= provbox.getSelectedItem().toString().charAt(i);
-            }
-            idtext.setText(cuit);
-            idtext.setForeground(Color.BLACK);
-        }catch(NumberFormatException e){
-
-        }
-    }//GEN-LAST:event_provboxActionPerformed
-    private DetalleCompraData detaCD = new DetalleCompraData();
+        private DetalleCompraData detaCD = new DetalleCompraData();
     private CompraData compraD = new CompraData();
     private ProveedorData proveD = new ProveedorData();
     private ProductoData proD = new ProductoData(); 
     private void comprarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarlabelMouseClicked
 
-        int stock = 0;
-        int cant = 0;
-        int[] filas;
-
-        if(prodtable.getSelectedRowCount() >0){
-            filas = prodtable.getSelectedRows();
-            System.out.println("Cantidad de filas seleccionadas: "+prodtable.getSelectedRowCount());
-            Compra compra[] = new Compra[prodtable.getSelectedRowCount()];
-            DetalleCompra detaC = new DetalleCompra();
-            Producto prod[] = new Producto [prodtable.getSelectedRowCount()];
-            try{
-
-                for (int i = 0; i<=prodtable.getSelectedRowCount();i++){
-                    System.out.println("Valor de la fila: "+filas[i]);
-                    cant = (int) prodtable.getValueAt(filas[i], 5);
-                    stock = (int) prodtable.getValueAt(filas[i], 4);
-                    if(cant > 0){
-                        compra[i] = new Compra();
-                        prod[i] = new Producto();
-                        if( cant <= stock){
-                            compra[i].setProveedor(proveD.buscarProveedorPorcuit(Long.valueOf(idtext.getText())));
-                            compra[i].setFecha(LocalDate.now());
-                            compraD.guardarCompra(compra[i]);
-                            detaC.setCantidad((int) prodtable.getValueAt(filas[i], 4));
-                            detaC.setCompra(compra[i]);
-                            detaC.setPrecioCosto((double)prodtable.getValueAt(filas[i], 3));
-                            prod[i] = proD.buscarProducto((int) prodtable.getValueAt(filas[i], 0));
-                            detaC.setProducto(prod[i]);
-                            detaCD.guardarDetalleCompra(detaC);
-                            prod[i].setStock(stock-cant);
-                            proD.modificarProducto(prod[i]);
-                            
-                        }
-                    }else{
-                        System.out.println("Ingrese algo en la compra");
-                    }
-                }
-
-            }catch(NumberFormatException e){
-                System.out.println("Esta mal");
-            }
-        }
-
+       
     }//GEN-LAST:event_comprarlabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel comprarlabel;
-    private javax.swing.JTextField idtext;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable prodtable;
-    private javax.swing.JComboBox<String> provbox;
     // End of variables declaration//GEN-END:variables
 }

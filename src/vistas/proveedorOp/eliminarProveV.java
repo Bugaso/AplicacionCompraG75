@@ -87,6 +87,7 @@ public class eliminarProveV extends javax.swing.JPanel {
         tooltipcuit = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
         setPreferredSize(new java.awt.Dimension(790, 680));

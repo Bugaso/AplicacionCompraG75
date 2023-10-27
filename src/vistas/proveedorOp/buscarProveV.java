@@ -62,7 +62,6 @@ public class buscarProveV extends javax.swing.JPanel {
         nombretext = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         domiciliotext = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
         telefonotext = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         cuittext = new javax.swing.JTextField();
@@ -77,8 +76,14 @@ public class buscarProveV extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tooltipcuit = new javax.swing.JLabel();
+        paneMod = new javax.swing.JPanel();
+        labelmod = new javax.swing.JLabel();
+        eliminarpan = new javax.swing.JPanel();
+        eliminarlabel = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(790, 680));
         setMinimumSize(new java.awt.Dimension(790, 680));
         setPreferredSize(new java.awt.Dimension(790, 680));
@@ -114,7 +119,6 @@ public class buscarProveV extends javax.swing.JPanel {
         domiciliotext.setText("Domicilio");
         domiciliotext.setBorder(null);
         add(domiciliotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 240, 20));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 240, 10));
 
         telefonotext.setEditable(false);
         telefonotext.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,7 +150,7 @@ public class buscarProveV extends javax.swing.JPanel {
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 240, 10));
 
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
-        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setText("Seleccione el proveedor:");
@@ -184,6 +188,64 @@ public class buscarProveV extends javax.swing.JPanel {
         tooltipcuit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pregunta.png"))); // NOI18N
         tooltipcuit.setToolTipText("Ingrese informacion a este campo!");
         add(tooltipcuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, -1));
+
+        paneMod.setBackground(new java.awt.Color(51, 0, 102));
+
+        labelmod.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelmod.setForeground(new java.awt.Color(255, 255, 255));
+        labelmod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelmod.setText("Guardar modificacion");
+        labelmod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelmodMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout paneModLayout = new javax.swing.GroupLayout(paneMod);
+        paneMod.setLayout(paneModLayout);
+        paneModLayout.setHorizontalGroup(
+            paneModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneModLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelmod, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        paneModLayout.setVerticalGroup(
+            paneModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneModLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelmod, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(paneMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 130, 30));
+
+        eliminarpan.setBackground(new java.awt.Color(102, 0, 0));
+
+        eliminarlabel.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminarlabel.setText("Eliminar Proveedor");
+        eliminarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarlabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eliminarpanLayout = new javax.swing.GroupLayout(eliminarpan);
+        eliminarpan.setLayout(eliminarpanLayout);
+        eliminarpanLayout.setHorizontalGroup(
+            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eliminarpanLayout.createSequentialGroup()
+                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        eliminarpanLayout.setVerticalGroup(
+            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(eliminarpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 120, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 240, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cuittextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusGained
@@ -202,6 +264,13 @@ public class buscarProveV extends javax.swing.JPanel {
 
     private void buscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProvActionPerformed
         if(!buscarProv.getSelectedItem().equals("Cuit / Nombre")){
+            nombretext.setEditable(true);
+            domiciliotext.setEditable(true);
+            telefonotext.setEditable(true);
+            
+            nombretext.setForeground(Color.BLACK);
+            domiciliotext.setForeground(Color.BLACK);
+            telefonotext.setForeground(Color.BLACK);
             String item = buscarProv.getSelectedItem().toString();
             String cuit = "";
                 for(int i= 0 ; i<11;i++){
@@ -236,11 +305,36 @@ public class buscarProveV extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_cuittextKeyReleased
 
+    private void labelmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelmodMouseClicked
+
+        Proveedor prove = new Proveedor();
+        prove.setCuit(Long.parseLong(cuittext.getText()));
+        prove.setRazonSocial(nombretext.getText());
+        prove.setDomicilio(domiciliotext.getText());
+        prove.setTelefono(telefonotext.getText());
+
+        proveD.modificarProveedor(prove);
+        cargar();
+    }//GEN-LAST:event_labelmodMouseClicked
+
+    private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
+        try{
+            proveD.eliminarProveedor(Long.parseLong(cuittext.getText()));
+            tooltipcuit.setVisible(false);
+        }catch(NumberFormatException e){
+            tooltipcuit.setVisible(true);
+            tooltipcuit.setToolTipText("Ingrese solamente numeros");
+        }
+
+    }//GEN-LAST:event_eliminarlabelMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> buscarProv;
     private javax.swing.JTextField cuittext;
     private javax.swing.JTextField domiciliotext;
+    private javax.swing.JLabel eliminarlabel;
+    private javax.swing.JPanel eliminarpan;
     private javax.swing.JTextField idtext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -254,8 +348,10 @@ public class buscarProveV extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel labelmod;
     private javax.swing.JLabel logolabel;
     private javax.swing.JTextField nombretext;
+    private javax.swing.JPanel paneMod;
     private javax.swing.JTextField telefonotext;
     private javax.swing.JLabel tooltipcuit;
     // End of variables declaration//GEN-END:variables

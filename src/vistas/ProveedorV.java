@@ -202,6 +202,7 @@ public class ProveedorV extends javax.swing.JPanel {
         add(elimProvePane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
 
         escritorioProve.setBackground(new java.awt.Color(255, 255, 255));
+        escritorioProve.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escritorioProve.setMaximumSize(new java.awt.Dimension(790, 680));
         escritorioProve.setMinimumSize(new java.awt.Dimension(790, 680));
 
@@ -211,7 +212,7 @@ public class ProveedorV extends javax.swing.JPanel {
         escritorioProve.setLayout(escritorioProveLayout);
         escritorioProveLayout.setHorizontalGroup(
             escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
+            .addGap(0, 786, Short.MAX_VALUE)
             .addGroup(escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(escritorioProveLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -220,7 +221,7 @@ public class ProveedorV extends javax.swing.JPanel {
         );
         escritorioProveLayout.setVerticalGroup(
             escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGap(0, 676, Short.MAX_VALUE)
             .addGroup(escritorioProveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(escritorioProveLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -234,7 +235,7 @@ public class ProveedorV extends javax.swing.JPanel {
     private void regisProveLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProveLabMouseClicked
         registarProveV regisV = new registarProveV();
         regisV.setVisible(true);
-        regisV.setSize(790, 680);
+        regisV.setSize(790, 670);
         escritorioProve.removeAll();
         escritorioProve.setLocation(0, 0);
         escritorioProve.add(regisV,BorderLayout.CENTER);

@@ -40,6 +40,32 @@ public class CompraData {
 		}
 	}
 	
+        public ArrayList<Compra> listarPorFecha(LocalDate fecha){
+            ArrayList<Compra> compras = new ArrayList();
+            Compra compra= null;
+            String sql = "SELECT `idCompra`, `idProveedor`, `fecha` FROM `compra` where fecha = ?";
+            
+            //java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
+            try{
+                PreparedStatement ps = con.prepareStatement(sql);
+                
+                ps.setDate(1, Date.valueOf(fecha));
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    compra = new Compra();
+                    compra.setIdCompra(rs.getInt("idCompra"));
+                    compra.setProveedor(provData.buscarProveedor(rs.getInt("idProveedor")));
+                    compra.setFecha(fecha);
+                    compras.add(compra);
+                }
+                
+                ps.close();
+            }catch(SQLException e){
+                
+            }
+            return compras;
+        }
+        
 	public void modificarFechaCompra(int idCompra, int idProveedor, LocalDate fecha) {
 		String sql = "UPDATE compra SET fecha = ? WHERE idCompra = ? AND idProveedor = ?";
 		
