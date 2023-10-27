@@ -5,8 +5,10 @@
 package vistas.adminCompra;
 
 import accesoADatos.CompraData;
+import accesoADatos.DetalleCompraData;
 import accesoADatos.ProductoData;
 import entidades.Compra;
+import entidades.DetalleCompra;
 import entidades.Producto;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -30,7 +32,7 @@ public class ListaComprasV extends javax.swing.JPanel {
     }
     ProductoData proD = new ProductoData();
     private CompraData compraD = new CompraData();
-    
+    private DetalleCompraData detaD = new DetalleCompraData();
     public void CargarC(){
         ArrayList<Compra> compraL = compraD.listarCompras();
         
@@ -45,15 +47,15 @@ public class ListaComprasV extends javax.swing.JPanel {
     }
     
     public void CargarCF (LocalDate fecha){
-        ArrayList<Compra> compraL = compraD.listarPorFecha( fecha);
+        ArrayList<DetalleCompra> compraL = detaD.productosDeUnaCompraDeUnaFecha(fecha);
         
         DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
         
         for(int i = def.getRowCount()-1;i>=0; i--){
             def.removeRow(i);
         }
-        for(Compra compra : compraL){
-            def.addRow(new Object[] {compra.getIdCompra(),compra.getProveedor().getIdProveedor(),compra.getProveedor().getRazonSocial(),compra.getFecha()});
+        for(DetalleCompra compra : compraL){
+            def.addRow(new Object[] {compra.getCompra().getIdCompra(),compra.getCompra().getProveedor().getIdProveedor(),compra.getCompra().getProveedor().getRazonSocial(),compra.getCompra().getIdCompra()});
         }
     }
     

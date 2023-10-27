@@ -4,6 +4,7 @@
  */
 package vistas.proveedorOp;
 
+import accesoADatos.CompraData;
 import accesoADatos.ProveedorData;
 import entidades.Proveedor;
 import java.awt.Color;
@@ -32,6 +33,19 @@ public class buscarProveV extends javax.swing.JPanel {
       
     
     private ProveedorData proveD = new ProveedorData();
+    
+    public void Default(){
+        nombretext.setText("Razon social / Nombre");
+        nombretext.setForeground(Color.lightGray);
+        domiciliotext.setText("Domicilio");
+        domiciliotext.setForeground(Color.lightGray);
+        telefonotext.setText("Telefono");
+        telefonotext.setForeground(Color.lightGray);
+        cuittext.setText("Cuit");
+        cuittext.setForeground(Color.lightGray);
+        idtext.setText("idProveedor");
+        idtext.setForeground(Color.lightGray);
+    }
     public void cargar(){
         ArrayList<Proveedor> provedores = proveD.listarProveedor();
         
@@ -222,7 +236,7 @@ public class buscarProveV extends javax.swing.JPanel {
 
         eliminarlabel.setForeground(new java.awt.Color(255, 255, 255));
         eliminarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarlabel.setText("Eliminar Proveedor");
+        eliminarlabel.setText("Refrescar");
         eliminarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 eliminarlabelMouseClicked(evt);
@@ -278,11 +292,7 @@ public class buscarProveV extends javax.swing.JPanel {
                 }
             mostrar(Long.parseLong(cuit));
         }else{
-            nombretext.setText("Razon social / Nombre");
-            domiciliotext.setText("Domicilio");
-            telefonotext.setText("Telefono");
-            cuittext.setText("Cuit");
-            idtext.setText("idProveedor");
+            Default();
         }
         
     }//GEN-LAST:event_buscarProvActionPerformed
@@ -318,14 +328,7 @@ public class buscarProveV extends javax.swing.JPanel {
     }//GEN-LAST:event_labelmodMouseClicked
 
     private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
-        try{
-            proveD.eliminarProveedor(Long.parseLong(cuittext.getText()));
-            tooltipcuit.setVisible(false);
-        }catch(NumberFormatException e){
-            tooltipcuit.setVisible(true);
-            tooltipcuit.setToolTipText("Ingrese solamente numeros");
-        }
-
+        Default();
     }//GEN-LAST:event_eliminarlabelMouseClicked
 
 

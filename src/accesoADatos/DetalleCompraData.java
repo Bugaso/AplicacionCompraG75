@@ -46,13 +46,16 @@ public class DetalleCompraData {
 		}
 	}
 	
-	public ArrayList<Producto> productosDeUnaCompraDeUnaFecha(LocalDate fecha){
-		ArrayList<Producto> productos = new ArrayList<Producto>();
-		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad"
-				+ "FROM compra c "
-				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
-				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
-				+ "WHERE c.fecha = ?";
+        
+        
+        
+        
+	public ArrayList<DetalleCompra> productosDeUnaCompraDeUnaFecha(LocalDate fecha){
+		ArrayList<DetalleCompra> productos = new ArrayList<DetalleCompra>();
+		String sql = "SELECT detallecompra.idDetalle, compra.idCompra, compra.idProveedor, compra.fecha, producto.*, detallecompra.precioCosto, detallecompra.cantidad"
+				+ "FROM compra JOIN detallecompra ON detallecompra.idCompra = compra.idCompra"
+				+ "JOIN producto ON detallecompra.idProducto = producto.idProducto "
+				+ "WHERE compra.fecha = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -76,7 +79,7 @@ public class DetalleCompraData {
 				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProdcuto")));
 				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
 				detCompra.setCantidad(rs.getInt("dc.cantidad"));
-				productos.add(detCompra.getProducto());
+				productos.add(detCompra);
 			}
 			
 			ps.close();
@@ -116,7 +119,6 @@ public class DetalleCompraData {
 			}
 			
 			ps.close();
-			
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Compra y/o Detalle Compra");
 		}
