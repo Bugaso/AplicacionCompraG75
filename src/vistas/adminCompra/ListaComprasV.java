@@ -5,12 +5,14 @@
 package vistas.adminCompra;
 
 import accesoADatos.CompraData;
+import accesoADatos.ProductoData;
 import entidades.Compra;
 import entidades.Producto;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +26,22 @@ public class ListaComprasV extends javax.swing.JPanel {
      */
     public ListaComprasV() {
         initComponents();
+        CargarC();
+    }
+    ProductoData proD = new ProductoData();
+    private CompraData compraD = new CompraData();
+    
+    public void CargarC(){
+        ArrayList<Compra> compraL = compraD.listarCompras();
+        
+        DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
+        
+        for(int i = def.getRowCount()-1;i>=0; i--){
+            def.removeRow(i);
+        }
+        for(Compra compra : compraL){
+            def.addRow(new Object[] {compra.getIdCompra(),compra.getProveedor().getIdProveedor(),compra.getProveedor().getRazonSocial(),compra.getFecha()});
+        }
     }
     
     public void CargarCF (LocalDate fecha){
@@ -38,7 +56,7 @@ public class ListaComprasV extends javax.swing.JPanel {
             def.addRow(new Object[] {compra.getIdCompra(),compra.getProveedor().getIdProveedor(),compra.getProveedor().getRazonSocial(),compra.getFecha()});
         }
     }
-    private CompraData compraD = new CompraData();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +80,10 @@ public class ListaComprasV extends javax.swing.JPanel {
         eliminarlabel = new javax.swing.JLabel();
         limpiarPane = new javax.swing.JPanel();
         limpiarLab = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        detalleCompra = new javax.swing.JList<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -104,6 +126,7 @@ public class ListaComprasV extends javax.swing.JPanel {
             compraTab.getColumnModel().getColumn(0).setResizable(false);
             compraTab.getColumnModel().getColumn(0).setPreferredWidth(10);
             compraTab.getColumnModel().getColumn(1).setResizable(false);
+            compraTab.getColumnModel().getColumn(1).setPreferredWidth(10);
             compraTab.getColumnModel().getColumn(2).setResizable(false);
             compraTab.getColumnModel().getColumn(3).setResizable(false);
         }
@@ -153,6 +176,11 @@ public class ListaComprasV extends javax.swing.JPanel {
         mostrarLab.setForeground(new java.awt.Color(255, 255, 255));
         mostrarLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mostrarLab.setText("Mostrar Detalle");
+        mostrarLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarLabMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout mostrarPaneLayout = new javax.swing.GroupLayout(mostrarPane);
         mostrarPane.setLayout(mostrarPaneLayout);
@@ -213,6 +241,31 @@ public class ListaComprasV extends javax.swing.JPanel {
         );
 
         add(limpiarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Detalle de Compra Seleccionada");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 240, 30));
+
+        detalleCompra.setToolTipText("");
+        jScrollPane3.setViewportView(detalleCompra);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 240, 280));
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
@@ -222,17 +275,26 @@ public class ListaComprasV extends javax.swing.JPanel {
     private void listarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarLabMouseClicked
         LocalDate fecha = listarFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         CargarCF(fecha);
-        
     }//GEN-LAST:event_listarLabMouseClicked
+
+    private void mostrarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarLabMouseClicked
+        DefaultListModel<String> listModel = (DefaultListModel<String>) detalleCompra.getModel();
+        
+        
+    }//GEN-LAST:event_mostrarLabMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable compraTab;
+    private javax.swing.JList<String> detalleCompra;
     private javax.swing.JLabel eliminarlabel;
     private javax.swing.JPanel eliminarpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel limpiarLab;
     private javax.swing.JPanel limpiarPane;
     private com.toedter.calendar.JDateChooser listarFecha;

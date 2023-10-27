@@ -40,6 +40,32 @@ public class CompraData {
 		}
 	}
 	
+        
+        public ArrayList<Compra> listarCompras(){
+            ArrayList<Compra> compras = new ArrayList();
+            Compra compra= null;
+            String sql = "SELECT `idCompra`, `idProveedor`, `fecha` FROM `compra`";
+            
+            //java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
+            try{
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    compra = new Compra();
+                    compra.setIdCompra(rs.getInt("idCompra"));
+                    compra.setProveedor(provData.buscarProveedor(rs.getInt("idProveedor")));
+                    compra.setFecha(rs.getDate("fecha").toLocalDate());
+                    compras.add(compra);
+                }
+                
+                ps.close();
+            }catch(SQLException e){
+                
+            }
+            return compras;
+        }
+        
+        
         public ArrayList<Compra> listarPorFecha(LocalDate fecha){
             ArrayList<Compra> compras = new ArrayList();
             Compra compra= null;
