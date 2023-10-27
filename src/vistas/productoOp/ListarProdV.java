@@ -126,7 +126,7 @@ public class ListarProdV extends javax.swing.JPanel {
         }
     }
     public void cargarP(){
-        ArrayList<Producto> prod = proD.ListarProductos();
+        ArrayList<Producto> prod = proD.listarProductos();
         
         DefaultTableModel def = (DefaultTableModel) prodtable.getModel();
         
