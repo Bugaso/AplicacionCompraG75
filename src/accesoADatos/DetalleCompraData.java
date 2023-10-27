@@ -52,12 +52,12 @@ public class DetalleCompraData {
         
 	public ArrayList<DetalleCompra> productosDeUnaCompraDeUnaFecha(LocalDate fecha){
 		ArrayList<DetalleCompra> productos = new ArrayList<DetalleCompra>();
-		String sql = "SELECT detallecompra.idDetalle, compra.idCompra, compra.idProveedor, compra.fecha, producto.*, detallecompra.precioCosto, detallecompra.cantidad"
-				+ "FROM compra JOIN detallecompra ON detallecompra.idCompra = compra.idCompra"
-				+ "JOIN producto ON detallecompra.idProducto = producto.idProducto "
-				+ "WHERE compra.fecha = ?";
-		
-		try {
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad "
+				+ "FROM compra c JOIN detallecompra dc ON (dc.idCompra = c.idCompra) "
+				+ "JOIN producto p ON (dc.idProducto = p.idProducto) "
+				+ "WHERE c.fecha = ?";
+		DetalleCompra detCompra = null;
+                try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setDate(1, Date.valueOf(fecha));
@@ -73,10 +73,10 @@ public class DetalleCompraData {
 //				producto.setStock(rs.getInt("p.stock"));
 //				producto.setEstado(rs.getBoolean("p.estado"));
 //				productos.add(producto);
-				DetalleCompra detCompra = new DetalleCompra();
+				detCompra = new DetalleCompra();
 				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
 				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
-				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProdcuto")));
+				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
 				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
 				detCompra.setCantidad(rs.getInt("dc.cantidad"));
 				productos.add(detCompra);

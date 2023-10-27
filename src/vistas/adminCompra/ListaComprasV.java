@@ -55,7 +55,7 @@ public class ListaComprasV extends javax.swing.JPanel {
             def.removeRow(i);
         }
         for(DetalleCompra compra : compraL){
-            def.addRow(new Object[] {compra.getCompra().getIdCompra(),compra.getCompra().getProveedor().getIdProveedor(),compra.getCompra().getProveedor().getRazonSocial(),compra.getCompra().getIdCompra()});
+            def.addRow(new Object[] {compra.getCompra().getIdCompra(),compra.getCompra().getProveedor().getIdProveedor(),compra.getCompra().getProveedor().getRazonSocial(),compra.getCompra().getFecha()});
         }
     }
     

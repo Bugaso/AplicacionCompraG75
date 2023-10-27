@@ -127,7 +127,7 @@ public class CompraData {
 			
 			if(rs.next()) {
 				compra = new Compra();
-				compra.setIdCompra(rs.getInt(idCompra));
+				compra.setIdCompra(idCompra);
 				compra.setProveedor(provData.buscarProveedor(rs.getInt("idProveedor")));
 				compra.setFecha(rs.getDate("fecha").toLocalDate());
 			}

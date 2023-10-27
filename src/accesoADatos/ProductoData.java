@@ -46,7 +46,7 @@ public class ProductoData {
     public Producto buscarProducto(int idProducto) {//Este método busca un producto en la base de datos por su ID.
                                             		//Toma un ID como parámetro y devuelve un objeto `Alumno` 
                                             		//si se encuentra o `null` si no se encuentra.
-	Producto producto = null;
+	Producto producto = new Producto();
 	String sql = "SELECT nombreProducto, descripción, precioActual, stock FROM producto "
 				+ "WHERE idProducto = ? AND estado = 1";
 		
@@ -57,7 +57,7 @@ public class ProductoData {
 		ResultSet rs = ps.executeQuery();
 			
 		if(rs.next()) {
-			producto = new Producto();
+			
 			producto.setIdProducto(idProducto);// cambia el valor del idproducto
 			producto.setNombreProducto(rs.getString("nombreProducto"));//cambia el nombre del producto
 			producto.setDescripcion(rs.getString("descripción"));
