@@ -9,14 +9,12 @@ import entidades.DetalleCompra;
 
 public class CompraData {
 	private Connection con = null;
-	private CompraData compraData;
 	private ProveedorData provData;
 	private ProductoData prodData;
 	
 	
 	public CompraData() {
 		this.con = Conexion.getConexion();
-		this.compraData = new CompraData();
 		this.provData = new ProveedorData();
 		this.prodData = new ProductoData();
 	}
