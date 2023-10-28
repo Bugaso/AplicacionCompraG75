@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemas_de_compra;
+package main;
 import accesoADatos.CompraData;
 import accesoADatos.DetalleCompraData;
 import entidades.Compra;
@@ -18,7 +18,7 @@ import vistas.MenuPrincipal;
  *
  * @author User
  */
-public class Sistemas_de_compra {
+public class Main {
 
     /**
      * @param args the command line arguments
