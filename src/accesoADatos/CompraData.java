@@ -168,7 +168,7 @@ public class CompraData {
 //				compras.add(compra);
 				DetalleCompra detCompra = new DetalleCompra();
 				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
-				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
+				detCompra.setCompra(buscarCompra(rs.getInt("c.idCompra")));
 				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
 				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
 				detCompra.setCantidad(rs.getInt("dc.cantidad"));
