@@ -44,6 +44,7 @@ public class ProductoV extends javax.swing.JPanel {
         logolabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(790, 730));
         setMinimumSize(new java.awt.Dimension(790, 730));
         setPreferredSize(new java.awt.Dimension(790, 730));
@@ -153,6 +154,7 @@ public class ProductoV extends javax.swing.JPanel {
         add(menuProvPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 50));
 
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
+        escritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escritorio.setMaximumSize(new java.awt.Dimension(790, 680));
         escritorio.setMinimumSize(new java.awt.Dimension(790, 680));
         escritorio.setPreferredSize(new java.awt.Dimension(790, 680));
@@ -174,7 +176,7 @@ public class ProductoV extends javax.swing.JPanel {
                 .addComponent(logolabel))
         );
 
-        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 670));
     }// </editor-fold>//GEN-END:initComponents
 
     private void prodInaclabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodInaclabMouseClicked

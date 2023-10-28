@@ -91,8 +91,8 @@ public class DetalleCompraData {
 		return productos;
 	}
 	
-	public ArrayList<Producto> productosDeUnaCompra(int idCompra){
-		ArrayList<Producto> productos = new ArrayList<Producto>();
+	public ArrayList<DetalleCompra> productosDeUnaCompra(int idCompra){
+		ArrayList<DetalleCompra> productos = new ArrayList<DetalleCompra>();
 		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad "
 				+ "FROM compra c "
 				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
@@ -115,7 +115,7 @@ public class DetalleCompraData {
 				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
 				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
 				detCompra.setCantidad(rs.getInt("dc.cantidad"));
-				productos.add(detCompra.getProducto());
+				productos.add(detCompra);
 			}
 			
 			ps.close();

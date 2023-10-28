@@ -48,7 +48,7 @@ public class ProductoData {
                                             		//si se encuentra o `null` si no se encuentra.
 	Producto producto = new Producto();
 	String sql = "SELECT nombreProducto, descripción, precioActual, stock FROM producto "
-				+ "WHERE idProducto = ? AND estado = 1";
+				+ "WHERE idProducto = ? ";
 		
 	try {
 		PreparedStatement ps = con.prepareStatement(sql);

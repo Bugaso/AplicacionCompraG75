@@ -6,6 +6,7 @@ package vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import vistas.adminCompra.ListaComprasProv;
 import vistas.adminCompra.ListaComprasV;
 import vistas.productoOp.ListarInactivoProdV;
 import vistas.productoOp.ListarProdV;
@@ -35,16 +36,15 @@ public class ComprasV extends javax.swing.JPanel {
     private void initComponents() {
 
         menuProvPane = new javax.swing.JPanel();
-        prodInaPane = new javax.swing.JPanel();
-        prodInaclab = new javax.swing.JLabel();
-        listarCompraPane = new javax.swing.JPanel();
-        listarCompraLab = new javax.swing.JLabel();
+        ListaComprasPane = new javax.swing.JPanel();
+        ListaComprasLab = new javax.swing.JLabel();
         modProdPane = new javax.swing.JPanel();
         modProdLab = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(790, 730));
         setMinimumSize(new java.awt.Dimension(790, 730));
         setPreferredSize(new java.awt.Dimension(790, 730));
@@ -54,67 +54,38 @@ public class ComprasV extends javax.swing.JPanel {
         menuProvPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         menuProvPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        prodInaPane.setBackground(new java.awt.Color(152, 70, 137));
-        prodInaPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListaComprasPane.setBackground(new java.awt.Color(152, 70, 137));
+        ListaComprasPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        prodInaclab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        prodInaclab.setForeground(new java.awt.Color(255, 255, 255));
-        prodInaclab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        prodInaclab.setText("Listar Productos Inactivos");
-        prodInaclab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                prodInaclabMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                prodInaclabMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout prodInaPaneLayout = new javax.swing.GroupLayout(prodInaPane);
-        prodInaPane.setLayout(prodInaPaneLayout);
-        prodInaPaneLayout.setHorizontalGroup(
-            prodInaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(prodInaclab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-        );
-        prodInaPaneLayout.setVerticalGroup(
-            prodInaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(prodInaclab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-        );
-
-        menuProvPane.add(prodInaPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 180, 30));
-
-        listarCompraPane.setBackground(new java.awt.Color(152, 70, 137));
-        listarCompraPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        listarCompraLab.setBackground(new java.awt.Color(255, 255, 255));
-        listarCompraLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        listarCompraLab.setForeground(new java.awt.Color(255, 255, 255));
-        listarCompraLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        listarCompraLab.setText("Listar Compras");
-        listarCompraLab.addMouseListener(new java.awt.event.MouseAdapter() {
+        ListaComprasLab.setBackground(new java.awt.Color(255, 255, 255));
+        ListaComprasLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        ListaComprasLab.setForeground(new java.awt.Color(255, 255, 255));
+        ListaComprasLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ListaComprasLab.setText("Lista de Compras");
+        ListaComprasLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listarCompraLabMouseClicked(evt);
+                ListaComprasLabMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                listarCompraLabMouseEntered(evt);
+                ListaComprasLabMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                listarCompraLabMouseExited(evt);
+                ListaComprasLabMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout listarCompraPaneLayout = new javax.swing.GroupLayout(listarCompraPane);
-        listarCompraPane.setLayout(listarCompraPaneLayout);
-        listarCompraPaneLayout.setHorizontalGroup(
-            listarCompraPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(listarCompraLab, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+        javax.swing.GroupLayout ListaComprasPaneLayout = new javax.swing.GroupLayout(ListaComprasPane);
+        ListaComprasPane.setLayout(ListaComprasPaneLayout);
+        ListaComprasPaneLayout.setHorizontalGroup(
+            ListaComprasPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ListaComprasLab, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
         );
-        listarCompraPaneLayout.setVerticalGroup(
-            listarCompraPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(listarCompraLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+        ListaComprasPaneLayout.setVerticalGroup(
+            ListaComprasPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ListaComprasLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        menuProvPane.add(listarCompraPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 170, 30));
+        menuProvPane.add(ListaComprasPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 170, 30));
 
         modProdPane.setBackground(new java.awt.Color(152, 70, 137));
         modProdPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -122,8 +93,11 @@ public class ComprasV extends javax.swing.JPanel {
         modProdLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         modProdLab.setForeground(new java.awt.Color(255, 255, 255));
         modProdLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        modProdLab.setText("Listar Productos Activos");
+        modProdLab.setText("Lista de Compras a Proveedor");
         modProdLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modProdLabMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 modProdLabMouseEntered(evt);
             }
@@ -136,18 +110,23 @@ public class ComprasV extends javax.swing.JPanel {
         modProdPane.setLayout(modProdPaneLayout);
         modProdPaneLayout.setHorizontalGroup(
             modProdPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(modProdLab, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modProdPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(modProdLab, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         modProdPaneLayout.setVerticalGroup(
             modProdPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(modProdLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modProdPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(modProdLab, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuProvPane.add(modProdPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 180, 30));
+        menuProvPane.add(modProdPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 230, 30));
 
         add(menuProvPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 50));
 
         escritorio.setBackground(new java.awt.Color(255, 255, 255));
+        escritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escritorio.setMaximumSize(new java.awt.Dimension(790, 680));
         escritorio.setMinimumSize(new java.awt.Dimension(790, 680));
         escritorio.setPreferredSize(new java.awt.Dimension(790, 680));
@@ -169,30 +148,41 @@ public class ComprasV extends javax.swing.JPanel {
                 .addComponent(logolabel))
         );
 
-        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 670));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listarCompraLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarCompraLabMouseClicked
-        ListaComprasV listaC = new ListaComprasV();
-        listaC.setVisible(true);
-        listaC.setSize(790, 670);
+    private void ListaComprasLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaComprasLabMouseClicked
+        ListaComprasV listC = new ListaComprasV();
+        listC.setVisible(true);
+        listC.setSize(790,670);
         
         escritorio.removeAll();
         escritorio.setLocation(0, 0);
-        escritorio.add(listaC,BorderLayout.CENTER);
-        
+        escritorio.add(listC,BorderLayout.CENTER);
         escritorio.repaint();
         escritorio.revalidate();
         
-    }//GEN-LAST:event_listarCompraLabMouseClicked
+    }//GEN-LAST:event_ListaComprasLabMouseClicked
 
-    private void listarCompraLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarCompraLabMouseEntered
-        listarCompraPane.setBackground(brillo);
-    }//GEN-LAST:event_listarCompraLabMouseEntered
+    private void modProdLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProdLabMouseClicked
+        ListaComprasProv listCP = new ListaComprasProv();
+        listCP.setVisible(true);
+        listCP.setSize(790,670);
+        
+        escritorio.removeAll();
+        escritorio.setLocation(0, 0);
+        escritorio.add(listCP,BorderLayout.CENTER);
+        escritorio.repaint();
+        escritorio.revalidate();
+    }//GEN-LAST:event_modProdLabMouseClicked
 
-    private void listarCompraLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarCompraLabMouseExited
-        listarCompraPane.setBackground(oscuro);
-    }//GEN-LAST:event_listarCompraLabMouseExited
+    private void ListaComprasLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaComprasLabMouseEntered
+        ListaComprasPane.setBackground(brillo);
+    }//GEN-LAST:event_ListaComprasLabMouseEntered
+
+    private void ListaComprasLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaComprasLabMouseExited
+        ListaComprasPane.setBackground(oscuro);
+    }//GEN-LAST:event_ListaComprasLabMouseExited
 
     private void modProdLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modProdLabMouseEntered
         modProdPane.setBackground(brillo);
@@ -202,24 +192,14 @@ public class ComprasV extends javax.swing.JPanel {
         modProdPane.setBackground(oscuro);
     }//GEN-LAST:event_modProdLabMouseExited
 
-    private void prodInaclabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodInaclabMouseEntered
-        prodInaPane.setBackground(brillo);
-    }//GEN-LAST:event_prodInaclabMouseEntered
-
-    private void prodInaclabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodInaclabMouseExited
-       prodInaPane.setBackground(oscuro);
-    }//GEN-LAST:event_prodInaclabMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ListaComprasLab;
+    private javax.swing.JPanel ListaComprasPane;
     private javax.swing.JPanel escritorio;
-    private javax.swing.JLabel listarCompraLab;
-    private javax.swing.JPanel listarCompraPane;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel menuProvPane;
     private javax.swing.JLabel modProdLab;
     private javax.swing.JPanel modProdPane;
-    private javax.swing.JPanel prodInaPane;
-    private javax.swing.JLabel prodInaclab;
     // End of variables declaration//GEN-END:variables
 }

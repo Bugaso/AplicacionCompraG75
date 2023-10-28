@@ -167,7 +167,7 @@ public class ProveedorV extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        add(escritorioProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        add(escritorioProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 670));
     }// </editor-fold>//GEN-END:initComponents
 
     private void regisProveLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisProveLabMouseClicked

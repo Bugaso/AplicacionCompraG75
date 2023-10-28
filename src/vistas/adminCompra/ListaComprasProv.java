@@ -21,42 +21,36 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author balta
  */
-public class ListaComprasV extends javax.swing.JPanel {
+public class ListaComprasProv extends javax.swing.JPanel {
 
     /**
      * Creates new form ListaComprasV
      */
-    public ListaComprasV() {
+    public ListaComprasProv() {
         initComponents();
-        CargarC();
+        
     }
     ProductoData proD = new ProductoData();
     private CompraData compraD = new CompraData();
     private DetalleCompraData detaD = new DetalleCompraData();
-    public void CargarC(){
-        ArrayList<Compra> compraL = compraD.listarCompras();
-        
+    
+    public void LimpiarTable(){
         DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
         
         for(int i = def.getRowCount()-1;i>=0; i--){
             def.removeRow(i);
         }
-        for(Compra compra : compraL){
-            def.addRow(new Object[] {compra.getIdCompra(),compra.getProveedor().getIdProveedor(),compra.getProveedor().getRazonSocial(),compra.getFecha()});
-        }
     }
+    
+    
     
     public void CargarCF (LocalDate fecha){
         ArrayList<DetalleCompra> compraL = detaD.productosDeUnaCompraDeUnaFecha(fecha);
         
         DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
         
-        for(int i = def.getRowCount()-1;i>=0; i--){
-            def.removeRow(i);
-        }
-        for(DetalleCompra compra : compraL){
-            def.addRow(new Object[] {compra.getCompra().getIdCompra(),compra.getCompra().getProveedor().getIdProveedor(),compra.getCompra().getProveedor().getRazonSocial(),compra.getCompra().getFecha()});
-        }
+        LimpiarTable();
+        
     }
     
     /**
@@ -73,7 +67,6 @@ public class ListaComprasV extends javax.swing.JPanel {
         compraTab = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        listarFecha = new com.toedter.calendar.JDateChooser();
         listarPane = new javax.swing.JPanel();
         listarLab = new javax.swing.JLabel();
         mostrarPane = new javax.swing.JPanel();
@@ -84,6 +77,7 @@ public class ListaComprasV extends javax.swing.JPanel {
         limpiarLab = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         detalleTab = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -135,13 +129,12 @@ public class ListaComprasV extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Lista de Compras");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
+        jLabel1.setText("Lista de Compras a un Proveedor");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setText("Listar por fecha:");
+        jLabel2.setText("Buscar Proveedor:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
-        add(listarFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, -1));
 
         listarPane.setBackground(new java.awt.Color(102, 0, 102));
 
@@ -268,6 +261,10 @@ public class ListaComprasV extends javax.swing.JPanel {
         }
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 310, 310));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBorder(null);
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
@@ -275,8 +272,7 @@ public class ListaComprasV extends javax.swing.JPanel {
     }//GEN-LAST:event_eliminarlabelMouseClicked
 
     private void listarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarLabMouseClicked
-        LocalDate fecha = listarFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        CargarCF(fecha);
+        
     }//GEN-LAST:event_listarLabMouseClicked
 
     private void mostrarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarLabMouseClicked
@@ -303,13 +299,13 @@ public class ListaComprasV extends javax.swing.JPanel {
     private javax.swing.JTable detalleTab;
     private javax.swing.JLabel eliminarlabel;
     private javax.swing.JPanel eliminarpan;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel limpiarLab;
     private javax.swing.JPanel limpiarPane;
-    private com.toedter.calendar.JDateChooser listarFecha;
     private javax.swing.JLabel listarLab;
     private javax.swing.JPanel listarPane;
     private javax.swing.JLabel logolabel;
