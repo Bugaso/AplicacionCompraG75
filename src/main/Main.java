@@ -24,8 +24,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //MenuPrincipal menu = new MenuPrincipal();
-       //menu.setVisible(true);
+       MenuPrincipal menu = new MenuPrincipal();
+       menu.setVisible(true);
        /*
        DetalleCompraData detaCD = new DetalleCompraData();
        
@@ -36,9 +36,9 @@ public class Main {
        }
         */
        
-       CompraData compraD = new CompraData();
-       Compra compra = compraD.buscarCompra(54);
-       System.out.println(compra.toString());
+       //CompraData compraD = new CompraData();
+       //Compra compra = compraD.buscarCompra(54);
+       //System.out.println(compra.toString());
     }
     
 }
