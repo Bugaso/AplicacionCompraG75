@@ -23,6 +23,8 @@ public class registrarProdV extends javax.swing.JPanel {
     private ProductoData prodD = new ProductoData();
     private Color guardarbtn = new Color(0,101,101);
     private Color guardarbtnD = new Color(0,51,51);
+    private Color refrescarB = new Color(152,0,51);
+    private Color refrescarD = new Color(102,0,51);
     public boolean validar (String Nombre,String Descripcion,String precio,String stock){
         int cont = 0;
         try{
@@ -88,7 +90,7 @@ public class registrarProdV extends javax.swing.JPanel {
 
         titulolabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         titulolabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulolabel.setText("registro de productos");
+        titulolabel.setText("Registro de Productos");
         add(titulolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -204,6 +206,12 @@ public class registrarProdV extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 refrescarlabelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                refrescarlabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                refrescarlabelMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout refrescarPaneLayout = new javax.swing.GroupLayout(refrescarPane);
@@ -310,6 +318,14 @@ public class registrarProdV extends javax.swing.JPanel {
         stocktext.setText("Unidad");
         stocktext.setForeground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_refrescarlabelMouseClicked
+
+    private void refrescarlabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarlabelMouseEntered
+        refrescarPane.setBackground(refrescarB);
+    }//GEN-LAST:event_refrescarlabelMouseEntered
+
+    private void refrescarlabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarlabelMouseExited
+        refrescarPane.setBackground(refrescarD);
+    }//GEN-LAST:event_refrescarlabelMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

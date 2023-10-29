@@ -369,9 +369,14 @@ public class registarProveV extends javax.swing.JPanel {
         int cont = 0;
        
         try{
-            Long.parseLong(cuittext.getText());
+            if(cuittext.getText().length() ==11){
+                Long.parseLong(cuittext.getText());
             tooltipcuit.setVisible(false);
             cont++;
+            }else{
+                JOptionPane.showMessageDialog(null, "Ingrese un cuit de 11 digitos");
+            }
+            
         }catch(NumberFormatException e){
             tooltipcuit.setVisible(true);
             if(cuittext.getText().equals("")|| cuittext.getText().equals("Añadir cuit")){

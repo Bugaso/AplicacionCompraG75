@@ -440,8 +440,14 @@ public class ListarProdV extends javax.swing.JPanel {
     private void provboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provboxActionPerformed
         String str = (String)provbox.getSelectedItem();
         String cuit = "";
-        for(int i = 0; i<11;i++){
-            cuit += str.charAt(i);
+        int i = 0;
+        while(i<11){
+            if(str.charAt(i) == ' '){
+                i=11;
+            }else{
+                cuit += str.charAt(i);
+                i++;
+            }
         }
         idtext.setText("");
         idtext.setForeground(Color.BLACK);
@@ -449,7 +455,13 @@ public class ListarProdV extends javax.swing.JPanel {
     }//GEN-LAST:event_provboxActionPerformed
 
     private void compraLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compraLabMouseClicked
-        realizarCompraAngelo();
+        try{
+            Long.parseLong(idtext.getText());
+            realizarCompraAngelo();
+        }catch(NumberFormatException e){
+            
+        }
+        
     }//GEN-LAST:event_compraLabMouseClicked
 
     private void modificarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarlabelMouseClicked
