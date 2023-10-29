@@ -200,6 +200,11 @@ public class registrarProdV extends javax.swing.JPanel {
         refrescarlabel.setForeground(new java.awt.Color(255, 255, 255));
         refrescarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         refrescarlabel.setText("Refrescar");
+        refrescarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                refrescarlabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout refrescarPaneLayout = new javax.swing.GroupLayout(refrescarPane);
         refrescarPane.setLayout(refrescarPaneLayout);
@@ -293,6 +298,18 @@ public class registrarProdV extends javax.swing.JPanel {
     private void guardarlabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarlabelMouseExited
         guardarPane.setBackground(guardarbtnD);
     }//GEN-LAST:event_guardarlabelMouseExited
+
+    private void refrescarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarlabelMouseClicked
+        
+        nombretext.setText("Nombre");
+        nombretext.setForeground(Color.LIGHT_GRAY);
+        descripciontext.setText("Descripcion");
+        descripciontext.setForeground(Color.LIGHT_GRAY);
+        preciotext.setText("Precio");
+        preciotext.setForeground(Color.LIGHT_GRAY);
+        stocktext.setText("Unidad");
+        stocktext.setForeground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_refrescarlabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
