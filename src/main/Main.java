@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemas_de_compra;
+package main;
 import accesoADatos.CompraData;
 import accesoADatos.DetalleCompraData;
 import entidades.Compra;
@@ -18,14 +18,14 @@ import vistas.MenuPrincipal;
  *
  * @author User
  */
-public class Sistemas_de_compra {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //MenuPrincipal menu = new MenuPrincipal();
-       //menu.setVisible(true);
+       MenuPrincipal menu = new MenuPrincipal();
+       menu.setVisible(true);
        /*
        DetalleCompraData detaCD = new DetalleCompraData();
        
@@ -36,9 +36,9 @@ public class Sistemas_de_compra {
        }
         */
        
-       CompraData compraD = new CompraData();
-       Compra compra = compraD.buscarCompra(54);
-       System.out.println(compra.toString());
+       //CompraData compraD = new CompraData();
+       //Compra compra = compraD.buscarCompra(54);
+       //System.out.println(compra.toString());
     }
     
 }

@@ -58,6 +58,47 @@ public class ListarProdV extends javax.swing.JPanel {
     private Color modD = new Color(51,0,51);
     private Color eliminarD = new Color(102,0,0);
     
+    private void realizarCompraAngelo(){
+        
+        if(prodtable.getSelectedRow() > 0){
+            try {
+                boolean banderaCompra = false;
+                Compra compra = new Compra();
+                compra.setProveedor(proveD.buscarProveedorPorcuit(Long.valueOf(idtext.getText())));
+                compra.setFecha(LocalDate.now());
+            
+                int[] filasSelec = new int[prodtable.getSelectedRowCount()];
+            
+                for(int i=0; i<filasSelec.length; i++){
+                    int stock = (int)prodtable.getValueAt(filasSelec[i], 4);
+                    int cant = (int)prodtable.getValueAt(filasSelec[i], 5);
+
+                    if(cant > 0 && cant <= stock){
+                        banderaCompra = true;
+                        DetalleCompra detCompra = new DetalleCompra();
+                        Producto producto = proD.buscarProducto((int)prodtable.getValueAt(filasSelec[i], 0));
+                        detCompra.setCompra(compra);
+                        detCompra.setProducto(producto);
+                        detCompra.setPrecioCosto((double)prodtable.getValueAt(filasSelec[i], 3));
+                        detCompra.setCantidad(cant);
+                        detaCD.guardarDetalleCompra(detCompra);
+                        producto.setStock(stock + cant);
+                        proD.modificarProducto(producto);
+                    }
+                }
+                
+                if(banderaCompra){
+                 compraD.guardarCompra(compra);
+                    cargarP();
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "En la columna Cantidad solo debe colocar números positivos sin punto ni coma");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un producto para comprar");
+        }
+    }
     
     public void realizarCompra(){
             int stock;

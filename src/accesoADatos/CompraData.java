@@ -5,15 +5,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import entidades.Compra;
+import entidades.DetalleCompra;
 
 public class CompraData {
 	private Connection con = null;
 	private ProveedorData provData;
+	private ProductoData prodData;
 	
 	
 	public CompraData() {
 		this.con = Conexion.getConexion();
 		this.provData = new ProveedorData();
+		this.prodData = new ProductoData();
 	}
 	
 	public void guardarCompra(Compra compra) {
@@ -42,7 +45,7 @@ public class CompraData {
 	
         
         public ArrayList<Compra> listarCompras(){
-            ArrayList<Compra> compras = new ArrayList();
+            ArrayList<Compra> compras = new ArrayList<Compra>();
             Compra compra= null;
             String sql = "SELECT `idCompra`, `idProveedor`, `fecha` FROM `compra`";
             
@@ -67,7 +70,7 @@ public class CompraData {
         
         
         public ArrayList<Compra> listarPorFecha(LocalDate fecha){
-            ArrayList<Compra> compras = new ArrayList();
+            ArrayList<Compra> compras = new ArrayList<Compra>();
             Compra compra= null;
             String sql = "SELECT `idCompra`, `idProveedor`, `fecha` FROM `compra` where fecha = ?";
             
@@ -141,9 +144,14 @@ public class CompraData {
 		return compra;
 	}
 	
-	public ArrayList<Compra> ComprasAUnProveedor(int idProveedor){
-		ArrayList<Compra> compras = new ArrayList<Compra>();
-		String sql = "SELECT idCompra, idProveedor, fecha FROM compra WHERE idProveedor = ?";
+	public ArrayList<DetalleCompra> ComprasAUnProveedor(int idProveedor){
+		ArrayList<DetalleCompra> compras = new ArrayList<DetalleCompra>();
+//		String sql = "SELECT idCompra, idProveedor, fecha FROM compra WHERE idProveedor = ?";
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad "
+				+ "FROM compra c "
+				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
+				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "
+				+ "WHERE c.idProveedor = ?";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -153,11 +161,18 @@ public class CompraData {
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				Compra compra = new Compra();
-				compra.setIdCompra(rs.getInt("idCompra"));
-				compra.setProveedor(provData.buscarProveedor(idProveedor));
-				compra.setFecha(rs.getDate("fecha").toLocalDate());
-				compras.add(compra);
+//				Compra compra = new Compra();
+//				compra.setIdCompra(rs.getInt("idCompra"));
+//				compra.setProveedor(provData.buscarProveedor(idProveedor));
+//				compra.setFecha(rs.getDate("fecha").toLocalDate());
+//				compras.add(compra);
+				DetalleCompra detCompra = new DetalleCompra();
+				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
+				detCompra.setCompra(buscarCompra(rs.getInt("c.idCompra")));
+				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
+				detCompra.setPrecioCosto(rs.getDouble("dc.precioCosto"));
+				detCompra.setCantidad(rs.getInt("dc.cantidad"));
+				compras.add(detCompra);
 			}
 			
 			ps.close();

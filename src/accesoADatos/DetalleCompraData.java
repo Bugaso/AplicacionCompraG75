@@ -56,7 +56,6 @@ public class DetalleCompraData {
 				+ "FROM compra c JOIN detallecompra dc ON (dc.idCompra = c.idCompra) "
 				+ "JOIN producto p ON (dc.idProducto = p.idProducto) "
 				+ "WHERE c.fecha = ?";
-		DetalleCompra detCompra = null;
                 try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			
@@ -73,7 +72,7 @@ public class DetalleCompraData {
 //				producto.setStock(rs.getInt("p.stock"));
 //				producto.setEstado(rs.getBoolean("p.estado"));
 //				productos.add(producto);
-				detCompra = new DetalleCompra();
+				DetalleCompra detCompra = new DetalleCompra();
 				detCompra.setIdDetalle(rs.getInt("dc.idDetalle"));
 				detCompra.setCompra(compraData.buscarCompra(rs.getInt("c.idCompra")));
 				detCompra.setProducto(prodData.buscarProducto(rs.getInt("p.idProducto")));
