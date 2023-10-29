@@ -73,7 +73,7 @@ public class ListarProdV extends javax.swing.JPanel {
                     int stock = (int)prodtable.getValueAt(filasSelec[i], 4);
                     int cant = (int)prodtable.getValueAt(filasSelec[i], 5);
 
-                    if(cant > 0 && cant <= stock){
+                    if(cant > 0){
                         banderaCompra = true;
                         DetalleCompra detCompra = new DetalleCompra();
                         Producto producto = proD.buscarProducto((int)prodtable.getValueAt(filasSelec[i], 0));
@@ -100,44 +100,44 @@ public class ListarProdV extends javax.swing.JPanel {
         }
     }
     
-    public void realizarCompra(){
-            int stock;
-            int cant;
-                Compra compra = new Compra();
-                DetalleCompra detaC = new DetalleCompra();
-                ArrayList<Producto> prod = new ArrayList();
-                int aux = 0;
-                try{
-                    for (int i = prodtable.getRowCount()-1; i>=0 ;i--){
-                        System.out.println("Valor de la fila: " + i);
-                        cant = (int) prodtable.getValueAt(i, 5);
-                        System.out.println("cantidad: " + cant);
-                        stock = (int) prodtable.getValueAt(i, 4);
-                        System.out.println("stock: " + stock);
-                        if(cant > 0){
-                                compra.setProveedor(proveD.buscarProveedorPorcuit(Long.valueOf(idtext.getText())));
-                                compra.setFecha(LocalDate.now());
-                                compraD.guardarCompra(compra);
-                                detaC.setCantidad(stock);
-                                detaC.setCompra(compra);
-                                detaC.setPrecioCosto((double)prodtable.getValueAt(i, 3));
-                                prod.add(proD.buscarProducto((int) prodtable.getValueAt(i, 0)));
-                                detaC.setProducto(prod.get(aux));
-                                detaCD.guardarDetalleCompra(detaC);
-                                prod.get(aux).setStock(stock+cant);               
-                                proD.modificarProducto(prod.get(aux++)); 
-                                System.out.println("compra: " + compra.toString());
-                                System.out.println("compraD: " + compraD.toString());
-                                System.out.println("detaC: " + detaC.toString()); 
-                            }else{
-                            JOptionPane.showMessageDialog(null, "Ingrese una cantidad a comprar!!!");
-                        }
-                    }
-                }catch(NumberFormatException e){
-                System.out.println("Esta mal");
-                }
-        cargarP();
-    }
+//    public void realizarCompra(){
+//            int stock;
+//            int cant;
+//                Compra compra = new Compra();
+//                DetalleCompra detaC = new DetalleCompra();
+//                ArrayList<Producto> prod = new ArrayList();
+//                int aux = 0;
+//                try{
+//                    for (int i = prodtable.getRowCount()-1; i>=0 ;i--){
+//                        System.out.println("Valor de la fila: " + i);
+//                        cant = (int) prodtable.getValueAt(i, 5);
+//                        System.out.println("cantidad: " + cant);
+//                        stock = (int) prodtable.getValueAt(i, 4);
+//                        System.out.println("stock: " + stock);
+//                        if(cant > 0){
+//                                compra.setProveedor(proveD.buscarProveedorPorcuit(Long.valueOf(idtext.getText())));
+//                                compra.setFecha(LocalDate.now());
+//                                compraD.guardarCompra(compra);
+//                                detaC.setCantidad(stock);
+//                                detaC.setCompra(compra);
+//                                detaC.setPrecioCosto((double)prodtable.getValueAt(i, 3));
+//                                prod.add(proD.buscarProducto((int) prodtable.getValueAt(i, 0)));
+//                                detaC.setProducto(prod.get(aux));
+//                                detaCD.guardarDetalleCompra(detaC);
+//                                prod.get(aux).setStock(stock+cant);               
+//                                proD.modificarProducto(prod.get(aux++)); 
+//                                System.out.println("compra: " + compra.toString());
+//                                System.out.println("compraD: " + compraD.toString());
+//                                System.out.println("detaC: " + detaC.toString()); 
+//                            }else{
+//                            JOptionPane.showMessageDialog(null, "Ingrese una cantidad a comprar!!!");
+//                        }
+//                    }
+//                }catch(NumberFormatException e){
+//                System.out.println("Esta mal");
+//                }
+//        cargarP();
+//    }
     
     public void realizarModificacion(){
         
@@ -449,7 +449,7 @@ public class ListarProdV extends javax.swing.JPanel {
     }//GEN-LAST:event_provboxActionPerformed
 
     private void compraLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compraLabMouseClicked
-        realizarCompra();
+        realizarCompraAngelo();
     }//GEN-LAST:event_compraLabMouseClicked
 
     private void modificarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarlabelMouseClicked
