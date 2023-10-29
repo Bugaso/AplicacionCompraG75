@@ -46,9 +46,15 @@ public class buscarProveV extends javax.swing.JPanel {
         idtext.setText("idProveedor");
         idtext.setForeground(Color.lightGray);
     }
+    public void limpiar(){
+        for(int i= buscarProv.getItemCount()-1;i>0;i--){
+            buscarProv.removeItemAt(i);
+        }
+    }
     public void cargar(){
+        limpiar();
         ArrayList<Proveedor> provedores = proveD.listarProveedor();
-        
+
         for(Proveedor prov : provedores){
             buscarProv.addItem(prov.getCuit()+" / "+prov.getRazonSocial());
             System.out.println(prov.toString());
@@ -277,7 +283,7 @@ public class buscarProveV extends javax.swing.JPanel {
     }//GEN-LAST:event_cuittextFocusLost
 
     private void buscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProvActionPerformed
-        if(!buscarProv.getSelectedItem().equals("Cuit / Nombre")){
+        if(!buscarProv.getSelectedItem().equals("Cuit / Nombre") && buscarProv.getSelectedItem() != null){
             nombretext.setEditable(true);
             domiciliotext.setEditable(true);
             telefonotext.setEditable(true);
@@ -324,11 +330,13 @@ public class buscarProveV extends javax.swing.JPanel {
         prove.setTelefono(telefonotext.getText());
 
         proveD.modificarProveedor(prove);
+        
         cargar();
     }//GEN-LAST:event_labelmodMouseClicked
 
     private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
         Default();
+        
     }//GEN-LAST:event_eliminarlabelMouseClicked
 
 
