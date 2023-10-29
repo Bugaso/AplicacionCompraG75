@@ -60,7 +60,7 @@ public class ListarProdV extends javax.swing.JPanel {
     
     private void realizarCompraAngelo(){
         
-        if(prodtable.getSelectedRow() > 0){
+        if(prodtable.getSelectedRow() > -1){
             try {
                 boolean banderaCompra = false;
                 Compra compra = new Compra();
