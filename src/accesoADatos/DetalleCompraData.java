@@ -163,8 +163,8 @@ public class DetalleCompraData {
 	
 	public ArrayList<Producto> productosMasCompradosEntreDosFechas(LocalDate fecha1, LocalDate fecha2){
 		ArrayList<Producto> productos = new ArrayList<Producto>();
-		String sql = "SELECT dc.idDetalle, c.idCompra, c.idPreveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad, "
-				+ "SUM(dc.cantidad) AS TOTAL"
+		String sql = "SELECT dc.idDetalle, c.idCompra, c.idProveedor, c.fecha, p.*, dc.precioCosto, dc.cantidad, "
+				+ "SUM(dc.cantidad) AS TOTAL "
 				+ "FROM compra c "
 				+ "INNER JOIN detallecompra dc ON (c.idCompra = dc.idCompra) "
 				+ "INNER JOIN producto p ON (dc.idProducto = p.idProducto) "

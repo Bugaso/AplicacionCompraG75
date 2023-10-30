@@ -148,7 +148,7 @@ public class ListarInactivoProdV extends javax.swing.JPanel {
     }
     
     private void altaLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_altaLabMouseClicked
-       if(prodtable.getSelectedRow() > 0 ){
+       if(prodtable.getSelectedRow() >= 0 ){
             int[] filasSelec = prodtable.getSelectedRows();
             
             for(int i=0; i<filasSelec.length; i++){

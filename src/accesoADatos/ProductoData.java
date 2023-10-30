@@ -104,14 +104,14 @@ public class ProductoData {
             }
     }
     
-    public ArrayList<Producto> ProductosDebajoDelStockMinimo(){
+    public ArrayList<Producto> ProductosDebajoDelStockMinimo(int stockMinimo){
     	ArrayList<Producto> productos = new ArrayList<Producto>();
     	String sql = "SELECT * FROM producto WHERE stock <= ? AND estado = 1";
              
         try {
         	PreparedStatement ps = con.prepareStatement(sql);
         	
-            ps.setInt(1, 5);
+            ps.setInt(1, stockMinimo);
             
             ResultSet rs = ps.executeQuery();//. en este caso te devuelve el productos si el stock esta debajo de 30
             

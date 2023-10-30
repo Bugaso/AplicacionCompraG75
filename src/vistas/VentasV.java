@@ -7,6 +7,7 @@ package vistas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
+import vistas.adminVenta.ListarProdProvV;
 import vistas.productoOp.ListarProdV;
 import vistas.productoOp.registrarProdV;
 
@@ -34,12 +35,8 @@ public class VentasV extends javax.swing.JPanel {
     private void initComponents() {
 
         menuProvPane = new javax.swing.JPanel();
-        ventaFechaPane = new javax.swing.JPanel();
-        ventasFechalab = new javax.swing.JLabel();
         regisVentaPane = new javax.swing.JPanel();
         regisVentaLab = new javax.swing.JLabel();
-        listarVentaPane = new javax.swing.JPanel();
-        listarVentaLab = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
 
@@ -53,38 +50,6 @@ public class VentasV extends javax.swing.JPanel {
         menuProvPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         menuProvPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ventaFechaPane.setBackground(new java.awt.Color(152, 70, 137));
-        ventaFechaPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        ventasFechalab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        ventasFechalab.setForeground(new java.awt.Color(255, 255, 255));
-        ventasFechalab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ventasFechalab.setText("Listar Ventas por Fecha");
-        ventasFechalab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ventasFechalabMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ventasFechalabMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ventasFechalabMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ventaFechaPaneLayout = new javax.swing.GroupLayout(ventaFechaPane);
-        ventaFechaPane.setLayout(ventaFechaPaneLayout);
-        ventaFechaPaneLayout.setHorizontalGroup(
-            ventaFechaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ventasFechalab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-        );
-        ventaFechaPaneLayout.setVerticalGroup(
-            ventaFechaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ventasFechalab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-        );
-
-        menuProvPane.add(ventaFechaPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 200, 30));
-
         regisVentaPane.setBackground(new java.awt.Color(152, 70, 137));
         regisVentaPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -92,7 +57,7 @@ public class VentasV extends javax.swing.JPanel {
         regisVentaLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         regisVentaLab.setForeground(new java.awt.Color(255, 255, 255));
         regisVentaLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regisVentaLab.setText("Registrar Venta");
+        regisVentaLab.setText("Venta de productos");
         regisVentaLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regisVentaLabMouseClicked(evt);
@@ -117,38 +82,6 @@ public class VentasV extends javax.swing.JPanel {
         );
 
         menuProvPane.add(regisVentaPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 170, 30));
-
-        listarVentaPane.setBackground(new java.awt.Color(152, 70, 137));
-        listarVentaPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        listarVentaLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        listarVentaLab.setForeground(new java.awt.Color(255, 255, 255));
-        listarVentaLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        listarVentaLab.setText("Listar Ventas");
-        listarVentaLab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listarVentaLabMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                listarVentaLabMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                listarVentaLabMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout listarVentaPaneLayout = new javax.swing.GroupLayout(listarVentaPane);
-        listarVentaPane.setLayout(listarVentaPaneLayout);
-        listarVentaPaneLayout.setHorizontalGroup(
-            listarVentaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(listarVentaLab, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-        );
-        listarVentaPaneLayout.setVerticalGroup(
-            listarVentaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(listarVentaLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-        );
-
-        menuProvPane.add(listarVentaPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 180, 30));
 
         add(menuProvPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 50));
 
@@ -178,35 +111,18 @@ public class VentasV extends javax.swing.JPanel {
         add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 670));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ventasFechalabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasFechalabMouseClicked
-        
-    }//GEN-LAST:event_ventasFechalabMouseClicked
-
     private void regisVentaLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisVentaLabMouseClicked
-        registrarProdV regP = new registrarProdV();
-        regP.setVisible(true);
-        regP.setSize(790, 670);
+        
+        ListarProdProvV listaVentas = new ListarProdProvV();
+        listaVentas.setSize(790, 670);
+        listaVentas.setVisible(true);
         
         escritorio.removeAll();
         escritorio.setLocation(0, 0);
-        escritorio.add(regP,BorderLayout.CENTER);
-        
+        escritorio.add(listaVentas,BorderLayout.CENTER);
         escritorio.repaint();
         escritorio.revalidate();
-        
     }//GEN-LAST:event_regisVentaLabMouseClicked
-
-    private void listarVentaLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarVentaLabMouseClicked
-        ListarProdV listP = new ListarProdV();
-        listP.setVisible(true);
-        listP.setSize(790,670);
-        
-        escritorio.removeAll();
-        escritorio.setLocation(0, 0);
-        escritorio.add(listP,BorderLayout.CENTER);
-        escritorio.repaint();
-        escritorio.revalidate();
-    }//GEN-LAST:event_listarVentaLabMouseClicked
 
     private void regisVentaLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisVentaLabMouseEntered
         regisVentaPane.setBackground(brillo);
@@ -216,32 +132,12 @@ public class VentasV extends javax.swing.JPanel {
         regisVentaPane.setBackground(oscuro);
     }//GEN-LAST:event_regisVentaLabMouseExited
 
-    private void listarVentaLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarVentaLabMouseEntered
-        listarVentaPane.setBackground(brillo);
-    }//GEN-LAST:event_listarVentaLabMouseEntered
-
-    private void listarVentaLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarVentaLabMouseExited
-        listarVentaPane.setBackground(oscuro);
-    }//GEN-LAST:event_listarVentaLabMouseExited
-
-    private void ventasFechalabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasFechalabMouseEntered
-        ventaFechaPane.setBackground(brillo);
-    }//GEN-LAST:event_ventasFechalabMouseEntered
-
-    private void ventasFechalabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasFechalabMouseExited
-       ventaFechaPane.setBackground(oscuro);
-    }//GEN-LAST:event_ventasFechalabMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel escritorio;
-    private javax.swing.JLabel listarVentaLab;
-    private javax.swing.JPanel listarVentaPane;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel menuProvPane;
     private javax.swing.JLabel regisVentaLab;
     private javax.swing.JPanel regisVentaPane;
-    private javax.swing.JPanel ventaFechaPane;
-    private javax.swing.JLabel ventasFechalab;
     // End of variables declaration//GEN-END:variables
 }

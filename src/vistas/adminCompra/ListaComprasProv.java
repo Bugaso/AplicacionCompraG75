@@ -7,15 +7,22 @@ package vistas.adminCompra;
 import accesoADatos.CompraData;
 import accesoADatos.DetalleCompraData;
 import accesoADatos.ProductoData;
+import accesoADatos.ProveedorData;
 import entidades.Compra;
 import entidades.DetalleCompra;
 import entidades.Producto;
+import entidades.Proveedor;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
+import vistas.proveedorOp.DocumentSizeFilter;
 
 /**
  *
@@ -28,11 +35,42 @@ public class ListaComprasProv extends javax.swing.JPanel {
      */
     public ListaComprasProv() {
         initComponents();
+        cargarBox();
+        CargarTablaC();
+        ((AbstractDocument) cuittext.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
         
+        compraTab.setRowSelectionAllowed(true);
+	compraTab.setColumnSelectionAllowed(false);
+        compraTab.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    ProductoData proD = new ProductoData();
+    
+    private ProductoData proD = new ProductoData();
     private CompraData compraD = new CompraData();
     private DetalleCompraData detaD = new DetalleCompraData();
+    private ProveedorData proveD = new ProveedorData();
+    
+    public void CargarTablaC(){
+        ArrayList<Compra> compraL = compraD.listarCompras();
+        LimpiarDetaT();
+        DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
+        
+        for(int i = def.getRowCount()-1;i>=0; i--){
+            def.removeRow(i);
+        }
+        for(Compra compra : compraL){
+            def.addRow(new Object[] {compra.getIdCompra(),compra.getProveedor().getIdProveedor(),compra.getProveedor().getRazonSocial(),compra.getFecha()});
+        }
+    }
+    
+    public void cargarBox(){
+        
+        ArrayList<Proveedor> provedores = proveD.listarProveedor();
+        
+        for(Proveedor prov : provedores){
+            proveBox.addItem(prov.getCuit()+" / "+prov.getRazonSocial());
+            System.out.println(prov.toString());
+        }
+    }
     
     public void LimpiarTable(){
         DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
@@ -42,15 +80,24 @@ public class ListaComprasProv extends javax.swing.JPanel {
         }
     }
     
-    
-    
-    public void CargarCF (LocalDate fecha){
-        ArrayList<DetalleCompra> compraL = detaD.productosDeUnaCompraDeUnaFecha(fecha);
+    public void LimpiarDetaT(){
+         DefaultTableModel def = (DefaultTableModel) detalleTab.getModel();
+        
+        for(int i = def.getRowCount()-1;i>=0; i--){
+            def.removeRow(i);
+        }
+    }
+    public void CargarCP (ArrayList<DetalleCompra> compraL){
+        
         
         DefaultTableModel def = (DefaultTableModel) compraTab.getModel();
         
         LimpiarTable();
-        
+        LimpiarDetaT();
+        for(DetalleCompra detaC : compraL){
+            detaC.getCompra().toString();
+            def.addRow(new Object[]{detaC.getCompra().getIdCompra(),detaC.getCompra().getProveedor().getIdProveedor(),detaC.getCompra().getProveedor().getRazonSocial(),detaC.getCompra().getFecha()});
+        }
     }
     
     /**
@@ -71,13 +118,12 @@ public class ListaComprasProv extends javax.swing.JPanel {
         listarLab = new javax.swing.JLabel();
         mostrarPane = new javax.swing.JPanel();
         mostrarLab = new javax.swing.JLabel();
-        eliminarpan = new javax.swing.JPanel();
-        eliminarlabel = new javax.swing.JLabel();
-        limpiarPane = new javax.swing.JPanel();
-        limpiarLab = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         detalleTab = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        proveBox = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cuittext = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -86,14 +132,11 @@ public class ListaComprasProv extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
-        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 110));
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, 110));
 
         compraTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "idCompra", "idProveedor", "Razon Social", "Fecha"
@@ -114,8 +157,11 @@ public class ListaComprasProv extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        compraTab.setColumnSelectionAllowed(true);
+        compraTab.setShowHorizontalLines(true);
         compraTab.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(compraTab);
+        compraTab.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (compraTab.getColumnModel().getColumnCount() > 0) {
             compraTab.getColumnModel().getColumn(0).setResizable(false);
             compraTab.getColumnModel().getColumn(0).setPreferredWidth(10);
@@ -130,11 +176,11 @@ public class ListaComprasProv extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Lista de Compras a un Proveedor");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setText("Buscar Proveedor:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         listarPane.setBackground(new java.awt.Color(102, 0, 102));
 
@@ -162,7 +208,7 @@ public class ListaComprasProv extends javax.swing.JPanel {
                 .addComponent(listarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(listarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, 40));
+        add(listarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, 40));
 
         mostrarPane.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -187,53 +233,6 @@ public class ListaComprasProv extends javax.swing.JPanel {
         );
 
         add(mostrarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 30));
-
-        eliminarpan.setBackground(new java.awt.Color(102, 0, 0));
-
-        eliminarlabel.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarlabel.setText("Eliminar Compra");
-        eliminarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarlabelMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminarpanLayout = new javax.swing.GroupLayout(eliminarpan);
-        eliminarpan.setLayout(eliminarpanLayout);
-        eliminarpanLayout.setHorizontalGroup(
-            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        eliminarpanLayout.setVerticalGroup(
-            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        add(eliminarpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 120, 30));
-
-        limpiarPane.setBackground(new java.awt.Color(0, 0, 51));
-
-        limpiarLab.setForeground(new java.awt.Color(255, 255, 255));
-        limpiarLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        limpiarLab.setText("Limpiar campos");
-
-        javax.swing.GroupLayout limpiarPaneLayout = new javax.swing.GroupLayout(limpiarPane);
-        limpiarPane.setLayout(limpiarPaneLayout);
-        limpiarPaneLayout.setHorizontalGroup(
-            limpiarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(limpiarLab, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        limpiarPaneLayout.setVerticalGroup(
-            limpiarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(limpiarLab, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        add(limpiarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, 30));
 
         detalleTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -262,17 +261,44 @@ public class ListaComprasProv extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 310, 310));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 170, -1));
+        proveBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Razon Social" }));
+        proveBox.setBorder(null);
+        proveBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proveBoxActionPerformed(evt);
+            }
+        });
+        add(proveBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 190, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setText("Ingrese Cuit:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        cuittext.setForeground(java.awt.Color.lightGray);
+        cuittext.setText("Cuit");
+        cuittext.setBorder(null);
+        cuittext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cuittextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cuittextFocusLost(evt);
+            }
+        });
+        cuittext.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cuittextKeyReleased(evt);
+            }
+        });
+        add(cuittext, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 160, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 160, 10));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
-        
-    }//GEN-LAST:event_eliminarlabelMouseClicked
-
     private void listarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarLabMouseClicked
+        Proveedor prov = proveD.buscarProveedorPorcuit(Long.parseLong(cuittext.getText()));
+        ArrayList<DetalleCompra> comp = compraD.ComprasAUnProveedor(prov.getIdProveedor());
         
+        CargarCP(comp);
     }//GEN-LAST:event_listarLabMouseClicked
 
     private void mostrarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarLabMouseClicked
@@ -283,33 +309,72 @@ public class ListaComprasProv extends javax.swing.JPanel {
         for(int i = 0; i<tableM.getRowCount();i++){
             tableM.removeRow(i);
         }
-        
+        LimpiarDetaT();
         
         for(DetalleCompra prod : prodL){
             tableM.addRow(new Object[] {prod.getProducto().getNombreProducto(),prod.getProducto().getDescripcion(),prod.getProducto().getPrecioActual(),prod.getCantidad()});
-        }
+        } 
         
-        
-        
+       
     }//GEN-LAST:event_mostrarLabMouseClicked
+
+    private void proveBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveBoxActionPerformed
+       if(!proveBox.getSelectedItem().equals("Cuit / Nombre") && proveBox.getSelectedItem() != null){
+            
+            String item = proveBox.getSelectedItem().toString();
+            String cuit = "";
+                for(int i= 0 ; i<11;i++){
+                    cuit += item.charAt(i);
+                }
+            cuittext.setForeground(Color.BLACK);
+            cuittext.setText(cuit);
+        }
+    }//GEN-LAST:event_proveBoxActionPerformed
+
+    private void cuittextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusLost
+        if(cuittext.getText().equals("")){
+            cuittext.setText("Cuit");
+            cuittext.setForeground(Color.LIGHT_GRAY);
+        }
+    }//GEN-LAST:event_cuittextFocusLost
+
+    private void cuittextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuittextKeyReleased
+        try{
+                if(cuittext.getText().length()==11){
+                    Proveedor prov = proveD.buscarProveedorPorcuit(Long.parseLong(cuittext.getText()));
+                    proveBox.setSelectedItem(prov.getCuit() + " / "+prov.getRazonSocial());
+                }
+            
+            }catch(NumberFormatException e){
+                
+            }catch(NullPointerException e){
+                
+            }
+    }//GEN-LAST:event_cuittextKeyReleased
+
+    private void cuittextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuittextFocusGained
+        if(cuittext.getText().equals("Cuit")){
+            cuittext.setText("");
+            cuittext.setForeground(Color.lightGray);
+        }
+    }//GEN-LAST:event_cuittextFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable compraTab;
+    private javax.swing.JTextField cuittext;
     private javax.swing.JTable detalleTab;
-    private javax.swing.JLabel eliminarlabel;
-    private javax.swing.JPanel eliminarpan;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel limpiarLab;
-    private javax.swing.JPanel limpiarPane;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel listarLab;
     private javax.swing.JPanel listarPane;
     private javax.swing.JLabel logolabel;
     private javax.swing.JLabel mostrarLab;
     private javax.swing.JPanel mostrarPane;
+    private javax.swing.JComboBox<String> proveBox;
     // End of variables declaration//GEN-END:variables
 }

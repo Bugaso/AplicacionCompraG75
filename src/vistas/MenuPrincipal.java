@@ -49,8 +49,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ProvLabel = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
-        paneproveprod = new javax.swing.JPanel();
-        labelproveprod = new javax.swing.JLabel();
+        paneCompras = new javax.swing.JPanel();
+        labelCompras = new javax.swing.JLabel();
+        VentaLab = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(928, 768));
@@ -219,34 +220,49 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         primalPGround.add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 790, 720));
 
-        paneproveprod.setBackground(new java.awt.Color(162, 70, 137));
-        paneproveprod.setPreferredSize(new java.awt.Dimension(140, 50));
+        paneCompras.setBackground(new java.awt.Color(162, 70, 137));
+        paneCompras.setPreferredSize(new java.awt.Dimension(140, 50));
 
-        labelproveprod.setForeground(new java.awt.Color(255, 255, 255));
-        labelproveprod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelproveprod.setText("Admin Compras");
-        labelproveprod.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelCompras.setForeground(new java.awt.Color(255, 255, 255));
+        labelCompras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCompras.setText("Admin Compras");
+        labelCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelproveprodMouseClicked(evt);
+                labelComprasMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout paneproveprodLayout = new javax.swing.GroupLayout(paneproveprod);
-        paneproveprod.setLayout(paneproveprodLayout);
-        paneproveprodLayout.setHorizontalGroup(
-            paneproveprodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneproveprodLayout.createSequentialGroup()
-                .addComponent(labelproveprod, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout paneComprasLayout = new javax.swing.GroupLayout(paneCompras);
+        paneCompras.setLayout(paneComprasLayout);
+        paneComprasLayout.setHorizontalGroup(
+            paneComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneComprasLayout.createSequentialGroup()
+                .addComponent(labelCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 2, Short.MAX_VALUE))
         );
-        paneproveprodLayout.setVerticalGroup(
-            paneproveprodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneproveprodLayout.createSequentialGroup()
+        paneComprasLayout.setVerticalGroup(
+            paneComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneComprasLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelproveprod, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        primalPGround.add(paneproveprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+        primalPGround.add(paneCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+
+        VentaLab.setBackground(new java.awt.Color(162, 70, 137));
+        VentaLab.setForeground(new java.awt.Color(255, 255, 255));
+        VentaLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentaLab.setText("Admin Ventas");
+        VentaLab.setMaximumSize(new java.awt.Dimension(87, 16));
+        VentaLab.setMinimumSize(new java.awt.Dimension(87, 16));
+        VentaLab.setOpaque(true);
+        VentaLab.setPreferredSize(new java.awt.Dimension(140, 50));
+        VentaLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VentaLabMouseClicked(evt);
+            }
+        });
+        primalPGround.add(VentaLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, -1));
 
         getContentPane().add(primalPGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 770));
 
@@ -259,8 +275,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         regProd.setSize(790, 730);
         ProdPane.setBorder(bord);
         ProvePane.setBorder(null);
-        
-        paneproveprod.setBorder(null);
+        VentaLab.setBorder(null);
+        paneCompras.setBorder(null);
         
         escritorio.removeAll();
         escritorio.setLocation(0, 0);
@@ -293,10 +309,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         provPane.setSize(790,730);
         
         ProdPane.setBorder(null);
-        
+        VentaLab.setBorder(null);
         ProvePane.setBorder(bord);
         //ProvePane.setBackground(color);
-        paneproveprod.setBorder(null);
+        paneCompras.setBorder(null);
         
         escritorio.removeAll();
         escritorio.setLocation(0,0);
@@ -305,10 +321,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
     }//GEN-LAST:event_ProvLabelMouseClicked
 
-    private void labelproveprodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelproveprodMouseClicked
+    private void labelComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelComprasMouseClicked
         ProdPane.setBorder(null);
         ProvePane.setBorder(null);
-        paneproveprod.setBorder(bord);
+        VentaLab.setBorder(null);
+        paneCompras.setBorder(bord);
         
         ComprasV comprav = new ComprasV();
         comprav.setVisible(true);
@@ -318,7 +335,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.add(comprav, BorderLayout.CENTER);
         escritorio.revalidate();
         escritorio.repaint();
-    }//GEN-LAST:event_labelproveprodMouseClicked
+    }//GEN-LAST:event_labelComprasMouseClicked
+
+    private void VentaLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaLabMouseClicked
+        ProdPane.setBorder(null);
+        ProvePane.setBorder(null);
+        paneCompras.setBorder(null);
+        VentaLab.setBorder(bord);
+        
+        VentasV ventav = new VentasV();
+        ventav.setVisible(true);
+        ventav.setSize(790,730);
+        escritorio.removeAll();
+        escritorio.setLocation(0,0);
+        escritorio.add(ventav,BorderLayout.CENTER);
+        escritorio.revalidate();
+        escritorio.repaint();
+    }//GEN-LAST:event_VentaLabMouseClicked
 
     /**
      * @param args the command line arguments
@@ -362,14 +395,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel ProdPane;
     private javax.swing.JLabel ProvLabel;
     private javax.swing.JPanel ProvePane;
+    private javax.swing.JLabel VentaLab;
     private javax.swing.JPanel escritorio;
     private javax.swing.JLabel exitlabel;
     private javax.swing.JPanel exitpane;
-    private javax.swing.JLabel labelproveprod;
+    private javax.swing.JLabel labelCompras;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel minPane;
     private javax.swing.JLabel minlabel;
-    private javax.swing.JPanel paneproveprod;
+    private javax.swing.JPanel paneCompras;
     private javax.swing.JPanel primalPGround;
     // End of variables declaration//GEN-END:variables
 }

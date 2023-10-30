@@ -16,19 +16,11 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
-
-import javax.swing.table.TableColumnModel;
 import javax.swing.text.AbstractDocument;
 import vistas.proveedorOp.DocumentSizeFilter;
 
 
-
-/**
- *
- * @author balta
- */
 public class ListarProdV extends javax.swing.JPanel {
 
     /**
@@ -39,6 +31,7 @@ public class ListarProdV extends javax.swing.JPanel {
         cargarP();
         cargarProv();
         ((AbstractDocument) idtext.getDocument()).setDocumentFilter(new DocumentSizeFilter(11));
+        ((AbstractDocument) minimotext.getDocument()).setDocumentFilter(new DocumentSizeFilter(8));
     }
     
     private DetalleCompraData detaCD = new DetalleCompraData();
@@ -178,6 +171,21 @@ public class ListarProdV extends javax.swing.JPanel {
         }
         
     }
+    
+    public void cargarPF(int stock){
+        ArrayList<Producto> prod = proD.ProductosDebajoDelStockMinimo(stock);
+        
+        DefaultTableModel def = (DefaultTableModel) prodtable.getModel();
+        
+        for(int i = def.getRowCount()-1;i>=0; i--){
+            def.removeRow(i);
+        }
+        for(Producto producto : prod){
+            def.addRow(new Object[] {producto.getIdProducto(),producto.getNombreProducto(),producto.getDescripcion(), producto.getPrecioActual(),producto.getStock(),0});
+        }
+        
+    }
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -199,6 +207,11 @@ public class ListarProdV extends javax.swing.JPanel {
         comprarPane = new javax.swing.JPanel();
         compraLab = new javax.swing.JLabel();
         provbox = new javax.swing.JComboBox<>();
+        minimotext = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        mostrarDebajoStockLab = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        mostrarTodoLab = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -246,7 +259,7 @@ public class ListarProdV extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
         logolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1602174810825.jpeg"))); // NOI18N
-        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
+        add(logolabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setText("Buscador:");
@@ -320,14 +333,18 @@ public class ListarProdV extends javax.swing.JPanel {
         modpane.setLayout(modpaneLayout);
         modpaneLayout.setHorizontalGroup(
             modpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(modificarlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+            .addGroup(modpaneLayout.createSequentialGroup()
+                .addComponent(modificarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         modpaneLayout.setVerticalGroup(
             modpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(modificarlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modpaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(modificarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(modpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 110, 30));
+        add(modpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 110, 30));
 
         elimpane.setBackground(new java.awt.Color(102, 0, 0));
         elimpane.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -362,7 +379,7 @@ public class ListarProdV extends javax.swing.JPanel {
                 .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(elimpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, -1));
+        add(elimpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, -1, -1));
 
         comprarPane.setBackground(new java.awt.Color(0, 0, 102));
         comprarPane.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -393,7 +410,7 @@ public class ListarProdV extends javax.swing.JPanel {
             .addComponent(compraLab, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        add(comprarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
+        add(comprarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         provbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuit / Razon Social" }));
         provbox.setBorder(null);
@@ -402,7 +419,49 @@ public class ListarProdV extends javax.swing.JPanel {
                 provboxActionPerformed(evt);
             }
         });
-        add(provbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 190, 30));
+        add(provbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 150, 30));
+
+        minimotext.setForeground(java.awt.Color.lightGray);
+        minimotext.setText("Ingrese Stock");
+        minimotext.setBorder(null);
+        minimotext.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                minimotextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                minimotextFocusLost(evt);
+            }
+        });
+        add(minimotext, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 150, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 150, 10));
+
+        mostrarDebajoStockLab.setBackground(new java.awt.Color(0, 102, 102));
+        mostrarDebajoStockLab.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarDebajoStockLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarDebajoStockLab.setText("Mostrar por debajo del Stock");
+        mostrarDebajoStockLab.setOpaque(true);
+        mostrarDebajoStockLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarDebajoStockLabMouseClicked(evt);
+            }
+        });
+        add(mostrarDebajoStockLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 170, 30));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel4.setText("Ingrese un Stock minimo:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 200, 20));
+
+        mostrarTodoLab.setBackground(new java.awt.Color(0, 102, 102));
+        mostrarTodoLab.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarTodoLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarTodoLab.setText("Mostrar Todo");
+        mostrarTodoLab.setOpaque(true);
+        mostrarTodoLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarTodoLabMouseClicked(evt);
+            }
+        });
+        add(mostrarTodoLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 110, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarlabelMouseClicked
@@ -428,13 +487,6 @@ public class ListarProdV extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_idtextFocusGained
-
-    private void idtextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idtextFocusLost
-        if(idtext.getText().equals("")){
-           idtext.setText("Ingrese el cuit del proveedor");
-           idtext.setForeground(Color.LIGHT_GRAY);
-        }
-    }//GEN-LAST:event_idtextFocusLost
 
     private void provboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provboxActionPerformed
         String str = (String)provbox.getSelectedItem();
@@ -513,6 +565,43 @@ public class ListarProdV extends javax.swing.JPanel {
         elimpane.setBackground(eliminarD);
     }//GEN-LAST:event_eliminarlabelMouseExited
 
+    private void minimotextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_minimotextFocusGained
+       if(minimotext.getText().equals("Ingrese Stock")){
+           minimotext.setText("");
+           minimotext.setForeground(Color.BLACK);
+       }
+    }//GEN-LAST:event_minimotextFocusGained
+
+    private void minimotextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_minimotextFocusLost
+        if(minimotext.getText().equals("")){
+            minimotext.setText("Ingrese Stock");
+            minimotext.setForeground(Color.LIGHT_GRAY);
+        }
+    }//GEN-LAST:event_minimotextFocusLost
+
+    private void idtextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idtextFocusLost
+        if(idtext.getText().equals("")){
+           idtext.setText("Ingrese el cuit del proveedor");
+           idtext.setForeground(Color.LIGHT_GRAY);
+        }
+    }//GEN-LAST:event_idtextFocusLost
+
+    private void mostrarDebajoStockLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarDebajoStockLabMouseClicked
+        try{
+            if(Integer.parseInt(minimotext.getText())>0){
+                cargarPF(Integer.parseInt(minimotext.getText()));
+            }else{
+                JOptionPane.showMessageDialog(null, "Ingrese un numero mayor a 0");
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros!");
+        }
+    }//GEN-LAST:event_mostrarDebajoStockLabMouseClicked
+
+    private void mostrarTodoLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarTodoLabMouseClicked
+        cargarP();
+    }//GEN-LAST:event_mostrarTodoLabMouseClicked
+
               
        
 
@@ -526,11 +615,16 @@ public class ListarProdV extends javax.swing.JPanel {
     private javax.swing.JTextField idtext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel logolabel;
+    private javax.swing.JTextField minimotext;
     private javax.swing.JLabel modificarlabel;
     private javax.swing.JPanel modpane;
+    private javax.swing.JLabel mostrarDebajoStockLab;
+    private javax.swing.JLabel mostrarTodoLab;
     private javax.swing.JTable prodtable;
     private javax.swing.JComboBox<String> provbox;
     // End of variables declaration//GEN-END:variables

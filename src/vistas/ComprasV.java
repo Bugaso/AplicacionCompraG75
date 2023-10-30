@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import vistas.adminCompra.ListaComprasProv;
 import vistas.adminCompra.ListaComprasV;
+import vistas.adminCompra.ListarProdMasComprados;
 import vistas.productoOp.ListarInactivoProdV;
 import vistas.productoOp.ListarProdV;
 import vistas.productoOp.registrarProdV;
@@ -40,6 +41,8 @@ public class ComprasV extends javax.swing.JPanel {
         ListaComprasLab = new javax.swing.JLabel();
         modProdPane = new javax.swing.JPanel();
         modProdLab = new javax.swing.JLabel();
+        listaCFPane = new javax.swing.JPanel();
+        listaCFLab = new javax.swing.JLabel();
         escritorio = new javax.swing.JPanel();
         logolabel = new javax.swing.JLabel();
 
@@ -85,7 +88,7 @@ public class ComprasV extends javax.swing.JPanel {
             .addComponent(ListaComprasLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        menuProvPane.add(ListaComprasPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 170, 30));
+        menuProvPane.add(ListaComprasPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 170, 30));
 
         modProdPane.setBackground(new java.awt.Color(152, 70, 137));
         modProdPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -121,7 +124,43 @@ public class ComprasV extends javax.swing.JPanel {
                 .addComponent(modProdLab, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuProvPane.add(modProdPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 230, 30));
+        menuProvPane.add(modProdPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 230, 30));
+
+        listaCFPane.setBackground(new java.awt.Color(152, 70, 137));
+        listaCFPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        listaCFLab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        listaCFLab.setForeground(new java.awt.Color(255, 255, 255));
+        listaCFLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        listaCFLab.setText("Lista de Compras entre fecha");
+        listaCFLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaCFLabMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                listaCFLabMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                listaCFLabMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout listaCFPaneLayout = new javax.swing.GroupLayout(listaCFPane);
+        listaCFPane.setLayout(listaCFPaneLayout);
+        listaCFPaneLayout.setHorizontalGroup(
+            listaCFPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listaCFPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(listaCFLab, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        listaCFPaneLayout.setVerticalGroup(
+            listaCFPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listaCFPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(listaCFLab, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuProvPane.add(listaCFPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
         add(menuProvPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 50));
 
@@ -139,7 +178,8 @@ public class ComprasV extends javax.swing.JPanel {
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(295, 295, 295)
-                .addComponent(logolabel))
+                .addComponent(logolabel)
+                .addGap(261, 261, 261))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,11 +232,33 @@ public class ComprasV extends javax.swing.JPanel {
         modProdPane.setBackground(oscuro);
     }//GEN-LAST:event_modProdLabMouseExited
 
+    private void listaCFLabMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaCFLabMouseEntered
+        listaCFPane.setBackground(brillo);
+    }//GEN-LAST:event_listaCFLabMouseEntered
+
+    private void listaCFLabMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaCFLabMouseExited
+        listaCFPane.setBackground(oscuro);
+    }//GEN-LAST:event_listaCFLabMouseExited
+
+    private void listaCFLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaCFLabMouseClicked
+        ListarProdMasComprados listCP = new ListarProdMasComprados();
+        listCP.setVisible(true);
+        listCP.setSize(790,670);
+        
+        escritorio.removeAll();
+        escritorio.setLocation(0, 0);
+        escritorio.add(listCP,BorderLayout.CENTER);
+        escritorio.repaint();
+        escritorio.revalidate();
+    }//GEN-LAST:event_listaCFLabMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ListaComprasLab;
     private javax.swing.JPanel ListaComprasPane;
     private javax.swing.JPanel escritorio;
+    private javax.swing.JLabel listaCFLab;
+    private javax.swing.JPanel listaCFPane;
     private javax.swing.JLabel logolabel;
     private javax.swing.JPanel menuProvPane;
     private javax.swing.JLabel modProdLab;

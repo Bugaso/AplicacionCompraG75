@@ -4,13 +4,12 @@
  */
 package vistas.proveedorOp;
 
-import accesoADatos.CompraData;
+
 import accesoADatos.ProveedorData;
 import entidades.Proveedor;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+
 import javax.swing.text.AbstractDocument;
 
 

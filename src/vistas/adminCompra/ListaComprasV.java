@@ -15,6 +15,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultListModel;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,10 +30,22 @@ public class ListaComprasV extends javax.swing.JPanel {
     public ListaComprasV() {
         initComponents();
         CargarC();
+        compraTab.setRowSelectionAllowed(true);
+	compraTab.setColumnSelectionAllowed(false);
+        compraTab.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     ProductoData proD = new ProductoData();
     private CompraData compraD = new CompraData();
     private DetalleCompraData detaD = new DetalleCompraData();
+    
+    public void LimpiarDetaT(){
+         DefaultTableModel def = (DefaultTableModel) detalleTab.getModel();
+        
+        for(int i = def.getRowCount()-1;i>=0; i--){
+            def.removeRow(i);
+        }
+    }
+    
     public void CargarC(){
         ArrayList<Compra> compraL = compraD.listarCompras();
         
@@ -78,10 +91,6 @@ public class ListaComprasV extends javax.swing.JPanel {
         listarLab = new javax.swing.JLabel();
         mostrarPane = new javax.swing.JPanel();
         mostrarLab = new javax.swing.JLabel();
-        eliminarpan = new javax.swing.JPanel();
-        eliminarlabel = new javax.swing.JLabel();
-        limpiarPane = new javax.swing.JPanel();
-        limpiarLab = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         detalleTab = new javax.swing.JTable();
 
@@ -186,61 +195,18 @@ public class ListaComprasV extends javax.swing.JPanel {
         mostrarPane.setLayout(mostrarPaneLayout);
         mostrarPaneLayout.setHorizontalGroup(
             mostrarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostrarLab, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(mostrarPaneLayout.createSequentialGroup()
+                .addComponent(mostrarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         mostrarPaneLayout.setVerticalGroup(
             mostrarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostrarLab, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        add(mostrarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 30));
-
-        eliminarpan.setBackground(new java.awt.Color(102, 0, 0));
-
-        eliminarlabel.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarlabel.setText("Eliminar Compra");
-        eliminarlabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarlabelMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminarpanLayout = new javax.swing.GroupLayout(eliminarpan);
-        eliminarpan.setLayout(eliminarpanLayout);
-        eliminarpanLayout.setHorizontalGroup(
-            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrarPaneLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        eliminarpanLayout.setVerticalGroup(
-            eliminarpanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarpanLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(eliminarlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mostrarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(eliminarpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 120, 30));
-
-        limpiarPane.setBackground(new java.awt.Color(0, 0, 51));
-
-        limpiarLab.setForeground(new java.awt.Color(255, 255, 255));
-        limpiarLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        limpiarLab.setText("Limpiar campos");
-
-        javax.swing.GroupLayout limpiarPaneLayout = new javax.swing.GroupLayout(limpiarPane);
-        limpiarPane.setLayout(limpiarPaneLayout);
-        limpiarPaneLayout.setHorizontalGroup(
-            limpiarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(limpiarLab, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        limpiarPaneLayout.setVerticalGroup(
-            limpiarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(limpiarLab, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        add(limpiarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, 30));
+        add(mostrarPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 130, 30));
 
         detalleTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -270,10 +236,6 @@ public class ListaComprasV extends javax.swing.JPanel {
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 310, 310));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eliminarlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarlabelMouseClicked
-        
-    }//GEN-LAST:event_eliminarlabelMouseClicked
-
     private void listarLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarLabMouseClicked
         LocalDate fecha = listarFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         CargarCF(fecha);
@@ -284,31 +246,23 @@ public class ListaComprasV extends javax.swing.JPanel {
         DefaultTableModel tableM = (DefaultTableModel) detalleTab.getModel();
         ArrayList<DetalleCompra> prodL = detaD.productosDeUnaCompra((int) compraTab.getValueAt(compraTab.getSelectedRow(), 0));
         
-        for(int i = 0; i<tableM.getRowCount();i++){
-            tableM.removeRow(i);
-        }
+        LimpiarDetaT();
         
         
         for(DetalleCompra prod : prodL){
-            tableM.addRow(new Object[] {prod.getProducto().getNombreProducto(),prod.getProducto().getDescripcion(),prod.getProducto().getPrecioActual(),prod.getCantidad()});
+           tableM.addRow(new Object[] {prod.getProducto().getNombreProducto(),prod.getProducto().getDescripcion(),prod.getProducto().getPrecioActual(),prod.getCantidad()});
         }
-        
-        
-        
+
     }//GEN-LAST:event_mostrarLabMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable compraTab;
     private javax.swing.JTable detalleTab;
-    private javax.swing.JLabel eliminarlabel;
-    private javax.swing.JPanel eliminarpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel limpiarLab;
-    private javax.swing.JPanel limpiarPane;
     private com.toedter.calendar.JDateChooser listarFecha;
     private javax.swing.JLabel listarLab;
     private javax.swing.JPanel listarPane;
