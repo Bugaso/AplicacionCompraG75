@@ -4,14 +4,7 @@
  * and open the template in the editor.
  */
 package main;
-import accesoADatos.CompraData;
-import accesoADatos.DetalleCompraData;
-import entidades.Compra;
-import entidades.DetalleCompra;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
-import java.util.Date;
+
 import vistas.MenuPrincipal;
 
 /**
